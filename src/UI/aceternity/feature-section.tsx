@@ -1,29 +1,36 @@
 import { cn } from '@/lib/utils'
-import { Globe, Settings, TerminalIcon } from 'lucide-react'
+import { 
+  Rocket, 
+  Shield, 
+  Palette, 
+  TrendingUp, 
+  Lightbulb, 
+  Cloud 
+} from 'lucide-react'
 
 export function FeaturesSection() {
   const features = [
     {
-      title: 'Pioneering innovation',
+      title: 'Transformative Solutions',
       description:
-        'Our team of veteran developers excels in turning complex ideas into robust solutions. Leveraging cutting-edge technology, we ensure your software stands out in a competitive landscape.',
-      icon: <Globe />,
+        'We leverage advanced technologies to craft intelligent, adaptive solutions that solve real-world challenges and drive meaningful business transformation.',
+      icon: <Rocket />,
     },
     {
-      title: 'Expertise you can trust',
+      title: 'Uncompromising Security',
       description:
-        'Our development team combines deep experience with cutting-edge tools to deliver software that’s reliable, scalable, and future-ready.',
-      icon: <Settings />,
+        'Our comprehensive security approach integrates cutting-edge protocols and proactive defense mechanisms to protect your digital assets with unparalleled reliability.',
+      icon: <Shield />,
     },
     {
-      title: 'Excellence in every line of code',
+      title: 'Creative Innovation',
       description:
-        'We build solutions that are as innovative as they are reliable. We turn your vision into a reality with precision and expertise.',
-      icon: <TerminalIcon />,
-    },
+        'Beyond technical expertise, we bring creative vision to every project, transforming abstract ideas into tangible, impactful digital experiences.',
+      icon: <Palette />,
+    }
   ]
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -45,7 +52,7 @@ const Feature = ({
   return (
     <div
       className={cn(
-        'flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800 cursor-pointer',
+        'flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 cursor-pointer',
         (index === 0 || index === 4) && 'lg:border-l dark:border-neutral-800',
         index < 4 && 'lg:border-b dark:border-neutral-800'
       )}
@@ -71,3 +78,5 @@ const Feature = ({
     </div>
   )
 }
+
+export default FeaturesSection

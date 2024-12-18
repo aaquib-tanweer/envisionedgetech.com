@@ -18,9 +18,9 @@ export const TopNavbar = () => {
               to="/"
               className="flex-shrink-0 flex gap-2 items-center justify-center"
             >
-              <img src={'/28.svg'} className="size-12" />
+              <img src={'/logo.png'} className="size-12" />
               <span className="text-2xl font-bold text-black dark:text-white">
-                28Softwares
+                Envision Edge Tech
               </span>
             </Link>
           </div>

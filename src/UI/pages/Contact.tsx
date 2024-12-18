@@ -9,7 +9,7 @@ export const Contact = () => {
         Let's <span className=" underline">create</span> something together.
       </h1>
       <div className="flex gap-2">
-        <Input placeholder="28softwares@gmail.com" />
+        <Input placeholder="info@envisionedgetech.com" />
         <a href={`mailto:${companyDataConstants.email}`}>
           <Button>Send Email</Button>
         </a>

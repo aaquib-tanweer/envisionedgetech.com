@@ -9,9 +9,9 @@ export const Footer = () => {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 md:justify-items-center gap-4">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight text-primary">
-            28Softwares Pvt. Ltd.
+            Envision Edge Tech Pvt. Ltd.
           </h2>
-          <article>Building tomorrows digital experience today.</article>
+          <article>Where Vision Transforms into Technology.</article>
 
           <p className="flex gap-2">
             <MapPin className="size-5" />
@@ -59,7 +59,7 @@ export const Footer = () => {
 
       <div className="flex  justify-center p-4  text-center">
         Copyright © {companyDataConstants.foundedYear} -{' '}
-        {new Date().getFullYear()} | 28Softwares Pvt. Ltd.
+        {new Date().getFullYear()} | Envision Edge Tech Pvt. Ltd.
       </div>
     </footer>
   )

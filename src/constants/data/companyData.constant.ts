@@ -1,14 +1,14 @@
 export const companyDataConstants = {
-  name: '28Softwares',
-  address: 'Lokanthali, Bhaktapur',
-  country: 'Nepal',
+  name: 'Envision Edge Tech',
+  address: 'New Delhi',
+  country: 'India',
   foundedYear: 2024,
-  email: '28softwaresnp@gmail.com',
+  email: 'info@envisionedgetech.com',
 
   socials: [
     {
       name: 'LinkedIn',
-      link: 'https://linkedin.com/company/28softwares/',
+      link: '-',
     },
   ],
 }
