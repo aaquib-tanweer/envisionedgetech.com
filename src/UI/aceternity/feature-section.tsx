@@ -3,9 +3,6 @@ import {
   Rocket, 
   Shield, 
   Palette, 
-  TrendingUp, 
-  Lightbulb, 
-  Cloud 
 } from 'lucide-react'
 
 export function FeaturesSection() {
