@@ -70,10 +70,10 @@ export default function EnhancedProductShowcase() {
   )
 
   return (
-    <div className="bg-gradient-to-br from-indigo-100 to-purple-200 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-full sm:max-w-4xl lg:max-w-6xl mx-auto relative overflow-hidden">
+    <div className="bg-gradient-to-br from-yellow-100 to-yellow-300 p-6 sm:p-8 rounded-xl shadow-2xl max-w-full sm:max-w-4xl lg:max-w-6xl mx-auto relative overflow-hidden">
       {/* Animated background effect */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-purple-200 opacity-30"
+        className="absolute inset-0 bg-gradient-to-br from-yellow-100 to-yellow-300 opacity-30"
         animate={{ 
           backgroundPosition: ['0% 0%', '100% 100%'], 
           transition: { duration: 10, repeat: Infinity, repeatType: 'reverse' }
@@ -82,28 +82,29 @@ export default function EnhancedProductShowcase() {
 
       <div className="relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold flex items-center text-indigo-900 text-center sm:text-left">
-            <Medal className="mr-2 text-yellow-500" />
-            Premium E-Commerce Solution
-            <span className="ml-3 bg-purple-200 text-purple-800 px-2 py-1 rounded-full text-sm">
+          <h2 className="text-2xl sm:text-3xl font-bold flex items-center text-yellow-800 text-center sm:text-left">
+            <Medal className="mr-2" />
+            Our #1 Sold Product
+            <span className="ml-3 bg-yellow-200 text-yellow-800 px-2 py-1 rounded-full text-sm">
               Top Rated
             </span>
           </h2>
           <a 
             href="/products" 
-            className="bg-indigo-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-700 transition-colors flex items-center group"
+            className="bg-yellow-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-yellow-600 transition-colors flex items-center group"
           >
-            Explore Products
+            View All
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
           </a>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="space-y-6">
-            <p className="text-base sm:text-lg text-indigo-900 text-center lg:text-left">
-              Our cutting-edge e-commerce platform delivers an intelligent, 
-              seamless shopping experience with AI-driven personalization, 
-              secure transactions, and intuitive design.
+            <p className="text-base sm:text-lg text-yellow-800 text-center lg:text-left">
+              Our top-selling e-commerce platform provides seamless navigation,
+              detailed product information, customer reviews, and smooth
+              transactions with various payment options and real-time inventory
+              updates.
             </p>
 
             {/* Feature Category Selector */}
@@ -115,8 +116,8 @@ export default function EnhancedProductShowcase() {
                   className={`
                     px-4 py-2 rounded-full text-sm font-medium transition-colors
                     ${activeCategory === index 
-                      ? 'bg-indigo-600 text-white' 
-                      : 'bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50'}
+                      ? 'bg-yellow-500 text-white' 
+                      : 'bg-white text-yellow-800 border border-yellow-300 hover:bg-yellow-50'}
                   `}
                 >
                   {category.title}
@@ -136,21 +137,21 @@ export default function EnhancedProductShowcase() {
                     exit="exit"
                     className="flex items-start"
                   >
-                    <item.icon className="text-indigo-600 mr-2 mt-1 flex-shrink-0" />
-                    <span className="text-indigo-900">{item.text}</span>
+                    <item.icon className="text-yellow-600 mr-2 mt-1 flex-shrink-0" />
+                    <span className="text-yellow-800">{item.text}</span>
                   </motion.li>
                 ))}
               </ul>
             </AnimatePresence>
 
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-6 sm:mt-8">
-              <button className="bg-indigo-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-800 transition-colors w-full sm:w-auto">
-                Request Demo
+              <button className="bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-700 transition-colors w-full sm:w-auto">
+                Request for Demo
               </button>
               <button 
-                className="border border-indigo-300 text-indigo-800 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-colors w-full sm:w-auto"
+                className="bg-yellow-400 text-yellow-800 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors w-full sm:w-auto"
               >
-                Get Quotation
+                Request for Quotation
               </button>
             </div>
           </div>
@@ -176,8 +177,8 @@ export default function EnhancedProductShowcase() {
                   transition={{ delay: index * 0.2, duration: 0.5 }}
                 >
                   <div className="relative">
-                    <item.icon className="text-indigo-600 h-10 w-10 sm:h-12 sm:w-12" />
-                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+                    <item.icon className="text-yellow-600 h-10 w-10 sm:h-12 sm:w-12" />
+                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-yellow-700 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
                       {item.tooltip}
                     </span>
                   </div>
@@ -199,14 +200,14 @@ export default function EnhancedProductShowcase() {
               >
                 <defs>
                   <linearGradient
-                    id="productGradient"
+                    id="laptopGradient"
                     x1="0%"
                     y1="0%"
                     x2="100%"
                     y2="100%"
                   >
-                    <stop offset="0%" stopColor="#6366F1" />
-                    <stop offset="100%" stopColor="#8B5CF6" />
+                    <stop offset="0%" stopColor="#FFD700" />
+                    <stop offset="100%" stopColor="#FFA500" />
                   </linearGradient>
                 </defs>
                 <motion.rect
@@ -214,15 +215,15 @@ export default function EnhancedProductShowcase() {
                   y="40"
                   width="120"
                   height="80"
-                  rx="10"
-                  fill="url(#productGradient)"
+                  rx="5"
+                  fill="url(#laptopGradient)"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{ duration: 2, ease: 'easeInOut' }}
                 />
                 <motion.path
                   d="M30,120 L170,120 L180,140 L20,140 Z"
-                  fill="#6366F1"
+                  fill="#FFD700"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{ duration: 2, ease: 'easeInOut', delay: 0.5 }}
@@ -231,7 +232,7 @@ export default function EnhancedProductShowcase() {
                   cx="100"
                   cy="80"
                   r="20"
-                  fill="#8B5CF6"
+                  fill="#FFA500"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1, type: 'spring', stiffness: 500 }}

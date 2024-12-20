@@ -1,78 +1,151 @@
-'use client'
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import React, { useState } from 'react';
+import { motion, MotionProps, Variants } from 'framer-motion';
 
-export const WobbleCard = ({
+interface ButtonProps {
+  variant?: 'default' | 'outline' | 'secondary' | 'ghost';
+  size?: 'sm' | 'lg' | 'icon';
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
+const buttonVariants: Variants = {
+  idle: { scale: 1 },
+  hover: { scale: 1.05 },
+  tap: { scale: 0.95 },
+};
+
+const glowVariants: Variants = {
+  hover: {
+    opacity: [0.5, 0.7, 0.5],
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+    },
+  },
+};
+
+const rippleVariants: Variants = {
+  initial: { scale: 0, opacity: 0.7 },
+  animate: { scale: 2, opacity: 0 },
+};
+
+const MotionButton: React.FC<ButtonProps & MotionProps> = ({
+  variant = 'default',
+  size,
   children,
-  containerClassName,
-  className,
-}: {
-  children: React.ReactNode
-  containerClassName?: string
-  className?: string
+  className = '',
+  onClick,
+  disabled = false,
+  ...motionProps
 }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
-    const { clientX, clientY } = event
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = (clientX - (rect.left + rect.width / 2)) / 20
-    const y = (clientY - (rect.top + rect.height / 2)) / 20
-    setMousePosition({ x, y })
-  }
+  const baseClasses = `
+    inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
+    disabled:pointer-events-none disabled:opacity-50
+  `;
+
+  const variantClasses = {
+    default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+    outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+    ghost: 'hover:bg-accent hover:text-accent-foreground',
+  };
+
+  const sizeClasses = {
+    default: 'h-10 px-4 py-2',
+    sm: 'h-9 rounded-md px-3',
+    lg: 'h-11 rounded-md px-8',
+    icon: 'h-10 w-10',
+  };
+
   return (
-    <motion.section
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => {
-        setIsHovering(false)
-        setMousePosition({ x: 0, y: 0 })
-      }}
-      style={{
-        transform: isHovering
-          ? `translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0) scale3d(1, 1, 1)`
-          : 'translate3d(0px, 0px, 0) scale3d(1, 1, 1)',
-        transition: 'transform 0.1s ease-out',
-      }}
-      className={cn(
-        'mx-auto w-full bg-indigo-800  relative rounded-2xl overflow-hidden',
-        containerClassName
-      )}
+    <motion.button
+      className={`
+        ${baseClasses}
+        ${variantClasses[variant]}
+        ${sizeClasses[size || 'default']}
+        ${className}
+        relative overflow-hidden
+      `}
+      initial="idle"
+      whileHover="hover"
+      whileTap="tap"
+      variants={buttonVariants}
+      onPointerEnter={() => setIsHovered(true)}
+      onPointerLeave={() => setIsHovered(false)}
+      onPointerDown={() => setIsPressed(true)}
+      onPointerUp={() => setIsPressed(false)}
+      onClick={onClick}
+      disabled={disabled}
+      {...motionProps}
     >
-      <div
-        className="relative  h-full [background-image:radial-gradient(88%_100%_at_top,rgba(255,255,255,0.5),rgba(255,255,255,0))]  sm:mx-0 sm:rounded-2xl overflow-hidden"
-        style={{
-          boxShadow:
-            '0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)',
-        }}
-      >
+      {isHovered && (
         <motion.div
-          style={{
-            transform: isHovering
-              ? `translate3d(${-mousePosition.x}px, ${-mousePosition.y}px, 0) scale3d(1.03, 1.03, 1)`
-              : 'translate3d(0px, 0px, 0) scale3d(1, 1, 1)',
-            transition: 'transform 0.1s ease-out',
-          }}
-          className={cn('h-full px-4 py-20 sm:px-10', className)}
-        >
-          <Noise />
-          {children}
-        </motion.div>
-      </div>
-    </motion.section>
-  )
-}
+          className="absolute inset-0 bg-primary/20 rounded-lg"
+          variants={glowVariants}
+          animate="hover"
+        />
+      )}
 
-const Noise = () => {
+      {isPressed && (
+        <motion.div
+          className="absolute inset-0 bg-white/30 rounded-full"
+          initial="initial"
+          animate="animate"
+          variants={rippleVariants}
+          transition={{ duration: 0.5 }}
+        />
+      )}
+
+      <motion.div
+        animate={isHovered ? { y: -2 } : { y: 0 }}
+        transition={{ duration: 0.2 }}
+        className="relative z-10 flex items-center gap-2"
+      >
+        {children}
+      </motion.div>
+    </motion.button>
+  );
+};
+
+const ButtonsShowcase: React.FC = () => {
   return (
-    <div
-      className="absolute inset-0 w-full h-full scale-[1.2] transform opacity-10 [mask-image:radial-gradient(#fff,transparent,75%)]"
-      style={{
-        backgroundImage: 'url(/noise.webp)',
-        backgroundSize: '30%',
-      }}
-    ></div>
-  )
-}
+    <div className="p-8 space-y-8 bg-background">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold">Default Buttons</h3>
+        <div className="flex flex-wrap gap-4">
+          <MotionButton>Default Button</MotionButton>
+          <MotionButton variant="outline">Outline Button</MotionButton>
+          <MotionButton variant="secondary">Secondary Button</MotionButton>
+          <MotionButton variant="ghost">Ghost Button</MotionButton>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold">Size Variants</h3>
+        <div className="flex flex-wrap gap-4 items-center">
+          <MotionButton size="sm">Small Button</MotionButton>
+          <MotionButton>Default Size</MotionButton>
+          <MotionButton size="lg">Large Button</MotionButton>
+          <MotionButton size="icon">🔍</MotionButton>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold">States</h3>
+        <div className="flex flex-wrap gap-4">
+          <MotionButton disabled>Disabled Button</MotionButton>
+          <MotionButton variant="outline" disabled>Disabled Outline</MotionButton>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ButtonsShowcase;
