@@ -1,34 +1,47 @@
 import { Button } from '@/UI/shadcn/ui/button'
 import { CheckCircle, ChevronRight } from 'lucide-react'
 import { productsData } from '@/constants/data/products/products'
-import { useEffect, useState } from 'react'
+import { useState, useRef } from 'react'
 import { Dialog, DialogContent } from '../shadcn/ui/dialog'
-
+import { motion, useInView } from 'framer-motion'
 import { PopupModal } from 'react-calendly'
 
 export function ProductsPage() {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }, [])
-
   const [open, setOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState<unknown>()
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
 
+  const titleRef = useRef(null)
+  const productsRef = useRef(null)
+  const titleInView = useInView(titleRef, { once: false })
+  const productsInView = useInView(productsRef, { once: false })
+
+
   return (
-    <div className="min-h-screen p-4 sm:p-6 md:p-8">
-      <center>
-        <h1 className="text-4xl sm:text-2xl md:text-3xl font-bold  bg-primary text-black mb-10  rounded-md cursor-pointer md:w-1/3 w-3/4">
-          List of Envision Edge Tech Softwares
-        </h1>
-      </center>
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16 md:space-y-24 mt-10">
+    <div className="container p-8 min-h-screen overflow-hidden landscape:md:max-lg:pt-80">
+      <motion.div
+        ref={titleRef}
+        initial={{ opacity: 0, y: -50 }}
+        animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+        transition={{ duration: 0.8 }}
+      >
+        <center>
+          <h1 className="text-4xl sm:text-2xl md:text-3xl font-bold bg-primary text-black mb-10 rounded-md cursor-pointer md:w-1/3 w-3/4">
+            List of Envision Edge Tech Softwares
+          </h1>
+        </center>
+      </motion.div>
+
+      <motion.div
+        ref={productsRef}
+        initial={{ opacity: 0, x: -100 }}
+        animate={productsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+        transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+        className="max-w-6xl mx-auto space-y-12 sm:space-y-16 md:space-y-24 mt-10"
+      >
         {productsData.map((product, index) => (
           <div
-            key={product.title + '_' + new Date()}
+            key={product.title + '_' + index}
             className={`grid gap-6 sm:gap-8 md:grid-cols-2 ${
               index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
             }`}
@@ -92,22 +105,15 @@ export function ProductsPage() {
               <img
                 src={product.image}
                 alt={`${product.title} preview`}
-                className="w-full   h-full object-cover"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
           </div>
         ))}
-
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-          {productsData.length + 1}....{28} <br />
-          UNDER DEVELOPMENT
-          <span className="text-primary">.</span>
-        </h1>
-      </div>
+      </motion.div>
 
       {/* Dialog */}
-
       <Dialog onOpenChange={setOpen} open={open}>
         <DialogContent className="max-w-4xl">
           <div className="grid md:grid-cols-3 gap-6 p-4">

@@ -1,12 +1,12 @@
 import { companyDataConstants } from '@/constants/data/companyData.constant'
-import { MapPin } from 'lucide-react'
+import { MapPin, Mail, Phone } from 'lucide-react'
 import { navLinks } from '@/constants/navlinks'
 import { Link } from '@tanstack/react-router'
 
 export const Footer = () => {
   return (
     <footer className="p-8 md:p-12 lg:p-16  bg-secondary">
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 md:justify-items-center gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 md:justify-items-center gap-4">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold tracking-tight text-primary">
             Envision Edge Tech Pvt. Ltd.
@@ -19,6 +19,39 @@ export const Footer = () => {
               {companyDataConstants.address}, {companyDataConstants.country}
             </span>
           </p>
+        </div>
+
+        {/* Contact Us */}
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight uppercase text-primary">
+            Contact Us
+          </h2>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <Mail className="size-4" />
+              <a href="mailto:info@envisionedgetech.com" className="hover:underline">
+                info@envisionedgetech.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="size-4" />
+              <a href="mailto:support@envisionedgetech.com" className="hover:underline">
+                support@envisionedgetech.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="size-4" />
+              <a href="tel:+91987654321" className="hover:underline">
+                +91 98765 43210
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="size-4" />
+              <a href="tel:+91123456789" className="hover:underline">
+                +91 12345 67890
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Socials */}
