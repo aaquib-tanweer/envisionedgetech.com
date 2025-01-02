@@ -1,5 +1,4 @@
 import { projectNames } from './projects'
-import { ImageConstants } from '../image.constant'
 
 interface Member {
   name: string
@@ -10,46 +9,46 @@ interface Member {
 
 const members: Member[] = [
   {
-    name: 'Sushil Gyawali',
+    name: 'Raj Anderson',
     role: 'Mobile App Developer',
-    projectsInvolved: [projectNames.UNIPLAN],
-    image: ImageConstants.MEMBERS.sushilGyawali,
+    projectsInvolved: [projectNames.CLOUDFLOW],
+    image: 'https://randomuser.me/api/portraits/men/71.jpg',
   },
   {
-    name: 'Grishmin Karki',
-    role: 'Frontend Developer',
-    projectsInvolved: [projectNames.A_TO_Z_ECOMMERCE],
-    image: ImageConstants.MEMBERS.grishminKarki,
+    name: 'Priya Williams',
+    role: 'Frontend Developer', 
+    projectsInvolved: [projectNames.DATAFORGE],
+    image: 'https://randomuser.me/api/portraits/women/52.jpg',
   },
   {
-    name: 'Simon Chaudhary',
+    name: 'Arun Miller',
     role: 'Backend Developer',
-    projectsInvolved: [projectNames.INVESTIAA],
-    image: ImageConstants.MEMBERS.simonChaudhary,
+    projectsInvolved: [projectNames.NEXUSAI],
+    image: 'https://randomuser.me/api/portraits/men/83.jpg',
   },
   {
-    name: 'Nirmal Neupane',
+    name: 'Maya Johnson',
     role: 'Fullstack Developer',
-    projectsInvolved: [projectNames.INVESTIAA, projectNames.A_TO_Z_ECOMMERCE],
-    image: ImageConstants.MEMBERS.nirmalNeupane,
+    projectsInvolved: [projectNames.NEXUSAI, projectNames.DATAFORGE],
+    image: 'https://randomuser.me/api/portraits/women/91.jpg',
   },
   {
-    name: 'Sony Sharma',
+    name: 'Vikram Smith',
     role: 'Marketing and QA',
-    projectsInvolved: [projectNames.A_TO_Z_ECOMMERCE],
-    image: ImageConstants.MEMBERS.sonySharma,
+    projectsInvolved: [projectNames.DATAFORGE],
+    image: 'https://randomuser.me/api/portraits/men/62.jpg',
   },
   {
-    name: 'Tej Bahadur Gharti Kshetri',
+    name: 'Anjali Davis',
     role: 'Frontend Developer',
-    projectsInvolved: [projectNames.A_TO_Z_ECOMMERCE],
-    image: ImageConstants.MEMBERS.tejGharti,
+    projectsInvolved: [projectNames.DATAFORGE],
+    image: 'https://randomuser.me/api/portraits/women/73.jpg',
   },
   {
-    name: 'Prayukta Mishra',
+    name: 'Neil Patel',
     role: 'UI/UX Designer',
-    projectsInvolved: [projectNames.A_TO_Z_ECOMMERCE],
-    image: ImageConstants.MEMBERS.prayuktaMishra,
+    projectsInvolved: [projectNames.DATAFORGE],
+    image: 'https://randomuser.me/api/portraits/men/94.jpg',
   },
 ]
 
