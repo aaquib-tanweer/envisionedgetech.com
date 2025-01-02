@@ -18,16 +18,28 @@ export const Hero = () => {
           into Technology <span className="text-primary">.</span>
         </motion.h1>
 
-        {/* Animated Action Button */}
-        <motion.a
-          href="/products"
-          className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          Get Started
-        </motion.a>
+        {/* Animated Action Buttons */}
+        <div className="flex gap-4">
+          <motion.a
+            href="/services"
+            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Explore Our Services
+          </motion.a>
+
+          <motion.a
+            href="/products"
+            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            Explore Our Products
+          </motion.a>
+        </div>
         
         {/* Animated Spacer */}
         <motion.div

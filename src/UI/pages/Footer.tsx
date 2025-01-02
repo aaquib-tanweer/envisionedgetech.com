@@ -5,94 +5,102 @@ import { Link } from '@tanstack/react-router'
 
 export const Footer = () => {
   return (
-    <footer className="p-8 md:p-12 lg:p-16  bg-secondary">
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 md:justify-items-center gap-4">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-semibold tracking-tight text-primary">
-            Envision Edge Tech Pvt. Ltd.
-          </h2>
-          <article>Where Vision Transforms into Technology.</article>
+    <footer className="bg-secondary">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-primary">
+              Envision Edge Tech Pvt. Ltd.
+            </h2>
+            <p className="text-foreground/80 italic">
+              Where Vision Transforms into Technology.
+            </p>
+            <div className="flex items-start gap-3 text-sm">
+              <MapPin className="size-5 mt-1 text-primary" />
+              <span className="text-foreground/90">
+                {companyDataConstants.address}, {companyDataConstants.country}
+              </span>
+            </div>
+          </div>
 
-          <p className="flex gap-2">
-            <MapPin className="size-5" />
-            <span>
-              {companyDataConstants.address}, {companyDataConstants.country}
-            </span>
-          </p>
-        </div>
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-primary uppercase">
+              Contact Us
+            </h2>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 group">
+                <Mail className="size-4 text-primary group-hover:text-primary/80 transition-colors" />
+                <a href="mailto:info@envisionedgetech.com" className="text-sm hover:text-primary transition-colors">
+                  info@envisionedgetech.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Mail className="size-4 text-primary group-hover:text-primary/80 transition-colors" />
+                <a href="mailto:support@envisionedgetech.com" className="text-sm hover:text-primary transition-colors">
+                  support@envisionedgetech.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Phone className="size-4 text-primary group-hover:text-primary/80 transition-colors" />
+                <a href="tel:+91987654321" className="text-sm hover:text-primary transition-colors">
+                  +91 98765 43210
+                </a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Phone className="size-4 text-primary group-hover:text-primary/80 transition-colors" />
+                <a href="tel:+91123456789" className="text-sm hover:text-primary transition-colors">
+                  +91 12345 67890
+                </a>
+              </div>
+            </div>
+          </div>
 
-        {/* Contact Us */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight uppercase text-primary">
-            Contact Us
-          </h2>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <Mail className="size-4" />
-              <a href="mailto:info@envisionedgetech.com" className="hover:underline">
-                info@envisionedgetech.com
-              </a>
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-primary uppercase">
+              Follow Us
+            </h2>
+            <div className="flex flex-col gap-2">
+              {companyDataConstants.socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm hover:text-primary transition-colors"
+                >
+                  {social.name}
+                </a>
+              ))}
             </div>
-            <div className="flex items-center gap-2">
-              <Mail className="size-4" />
-              <a href="mailto:support@envisionedgetech.com" className="hover:underline">
-                support@envisionedgetech.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="size-4" />
-              <a href="tel:+91987654321" className="hover:underline">
-                +91 98765 43210
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="size-4" />
-              <a href="tel:+91123456789" className="hover:underline">
-                +91 12345 67890
-              </a>
-            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold text-primary uppercase">
+              Quick Links
+            </h2>
+            <ul className="space-y-2">
+              {navLinks.map((navLink) => (
+                <li key={navLink.name}>
+                  <Link 
+                    to={navLink.link} 
+                    className="text-sm hover:text-primary transition-colors"
+                  >
+                    {navLink.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Socials */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight uppercase text-primary">
-            Follow Us
-          </h2>
-          <div className="flex flex-col gap-2">
-            {companyDataConstants.socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.link}
-                target="_blank"
-                rel="noreferrer"
-                className='hover:underline'
-              >
-                {social.name}
-              </a>
-            ))}
-          </div>
+        <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-sm text-foreground/70">
+          Copyright © {companyDataConstants.foundedYear} - {new Date().getFullYear()} | 
+          <span className="text-primary"> Envision Edge Tech Pvt. Ltd.</span>
         </div>
-
-        <div className="quick-links">
-          <h2 className="text-2xl font-semibold tracking-tight pb-2 uppercase text-primary">
-            Quick Links
-          </h2>
-          <ul className="space-y-2">
-            {navLinks.map((navLink) => (
-              <li key={navLink.name}>
-                <Link to={navLink.link} className="hover:underline">
-                  {navLink.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex  justify-center p-4  text-center">
-        Copyright © {companyDataConstants.foundedYear} -{' '}
-        {new Date().getFullYear()} | Envision Edge Tech Pvt. Ltd.
       </div>
     </footer>
   )
