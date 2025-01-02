@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardContent } from '../shadcn/ui/card'
 import { Layout } from './Layout'
 import { members } from '@/constants/data/members'
+import { Card } from '../shadcn/ui/card'
 
 export const About = () => {
   return (
