@@ -19,27 +19,30 @@ export const Hero = () => {
         </motion.h1>
 
         {/* Animated Action Buttons */}
-        <div className="flex gap-4">
+        <motion.div 
+          className="flex gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
           <motion.a
             href="/services"
-            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Explore Our Services
           </motion.a>
 
           <motion.a
             href="/products"
-            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-yellow-600 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Explore Our Products
           </motion.a>
-        </div>
+        </motion.div>
         
         {/* Animated Spacer */}
         <motion.div
