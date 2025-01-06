@@ -26,7 +26,7 @@ export default {
         ubuntu: ["Ubuntu", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         rethink: ["Rethink", "sans-serif"],
-        protest:['Protest','sans-serif'],
+        protest: ["Protest", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -77,10 +77,19 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        scroll: {
+          to: { transform: "translateX(-50%)" },
+        },
+        "scroll-pause": {
+          "0%": { animationPlayState: "paused" },
+          "100%": { animationPlayState: "paused" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        scroll: "scroll 20s linear infinite",
+        "scroll-pause": "scroll-pause 20s linear infinite",
       },
     },
   },

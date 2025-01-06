@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ClientsTestimonial } from './ClientsTestimonial'
-
+import { TechStack } from './TechStack'
 export const Home = () => {
   const productRef = useRef(null)
   const contactRef = useRef(null) 
@@ -37,10 +37,12 @@ export const Home = () => {
           transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
         >
           <Contact />
+          
         </motion.div>
 
         <ClientsTestimonial />
         <Faq />
+        <TechStack />
       </div>
     </Layout>
   )
