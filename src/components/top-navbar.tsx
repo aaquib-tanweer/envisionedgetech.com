@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Menu } from 'lucide-react'
 import { Button } from '@/UI/shadcn/ui/button'
@@ -8,9 +8,30 @@ import { ModeToggle } from './mode-toggle'
 
 export const TopNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 100)
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
 
   return (
-    <nav className="bg-background border-b z-40">
+    <nav className={`fixed w-full z-40 transition-transform duration-300 bg-background ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
+      {/* Background Gradient */}
+      <div className="absolute inset-0 -z-10 bg-background">
+        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]"></div>
+        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_top_left,_#1E3A8A,_transparent_50%)]"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -30,7 +51,7 @@ export const TopNavbar = () => {
                 <Link
                   to={link.link}
                   key={link.name}
-                  className="text-secondary-foreground hover:bg-accent hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-secondary-foreground hover:bg-accent/80 hover:text-accent-foreground px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {link.name}
                 </Link>

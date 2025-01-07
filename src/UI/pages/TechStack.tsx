@@ -32,6 +32,15 @@ const TechLogo = ({ src, alt }: { src: string; alt: string }) => (
   export const TechStack = () => {
     return (
       <div>
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300 bg-clip-text text-transparent drop-shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Powered by Cutting-Edge Tech
+        </motion.h2>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

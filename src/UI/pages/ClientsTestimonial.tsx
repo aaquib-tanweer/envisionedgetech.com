@@ -92,18 +92,18 @@ export const ClientsTestimonial = () => {
   }
 
   return (
-    <div className="relative py-24 overflow-hidden bg-gradient-to-b from-background via-muted/50 to-background dark:from-black dark:via-zinc-900 dark:to-black"
+    <div className="relative py-24 overflow-hidden bg-transparent"
       onMouseEnter={() => setIsAutoScrollPaused(true)}
       onMouseLeave={() => setIsAutoScrollPaused(false)}
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(234,179,8,.2)_50%,transparent_75%,transparent_100%)] bg-64 animate-pattern"></div>
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,.2)_50%,transparent_75%,transparent_100%)] bg-64 animate-pattern"></div>
       </div>
 
       <div className="container mx-auto px-4 relative">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300 bg-clip-text text-transparent drop-shadow-lg"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300 bg-clip-text text-transparent drop-shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -119,10 +119,10 @@ export const ClientsTestimonial = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-[1fr,1.5fr] gap-8 items-center bg-gradient-to-br from-background/80 via-muted/80 to-background/80 dark:from-zinc-950/80 dark:via-zinc-900/80 dark:to-zinc-950/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-yellow-500/20 shadow-xl shadow-yellow-500/5"
+              className="grid md:grid-cols-[1fr,1.5fr] gap-8 items-center bg-gradient-to-br from-blue-100/80 via-blue-200/80 to-blue-300/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-blue-500/20 shadow-xl shadow-blue-500/5"
             >
               <div className="flex flex-col items-center md:items-start space-y-6">
-                <div className="w-32 h-32 rounded-full ring-4 ring-yellow-500/30 overflow-hidden shadow-lg shadow-yellow-500/20">
+                <div className="w-32 h-32 rounded-full ring-4 ring-blue-500/30 overflow-hidden shadow-lg shadow-blue-500/20">
                   <img
                     src={testimonials[currentIndex].image}
                     alt={testimonials[currentIndex].name}
@@ -131,27 +131,27 @@ export const ClientsTestimonial = () => {
                 </div>
 
                 <div className="text-center md:text-left">
-                  <h3 className="font-bold text-2xl text-foreground mb-1">
+                  <h3 className="font-bold text-2xl text-blue-800 mb-1">
                     {testimonials[currentIndex].name}
                   </h3>
-                  <p className="text-yellow-500 font-medium">
+                  <p className="text-blue-500 font-medium">
                     {testimonials[currentIndex].role}
                   </p>
                 </div>
 
                 <div className="flex gap-1">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                    <Star key={i} className="w-5 h-5 text-blue-500 fill-blue-500" />
                   ))}
                 </div>
               </div>
 
               <div className="relative">
-                <div className="absolute -top-6 -left-6 text-6xl text-yellow-500/20">"</div>
-                <p className="text-foreground/90 text-lg md:text-xl leading-relaxed italic relative z-10">
+                <div className="absolute -top-6 -left-6 text-6xl text-blue-500/20">"</div>
+                <p className="text-blue-800 text-lg md:text-xl leading-relaxed italic relative z-10">
                   {testimonials[currentIndex].content}
                 </p>
-                <div className="absolute -bottom-6 -right-6 text-6xl text-yellow-500/20">"</div>
+                <div className="absolute -bottom-6 -right-6 text-6xl text-blue-500/20">"</div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -159,7 +159,7 @@ export const ClientsTestimonial = () => {
           <div className="flex justify-center items-center mt-12 gap-4">
             <button
               onClick={prevTestimonial}
-              className="p-3 rounded-full bg-muted/80 hover:bg-muted text-yellow-500 transition-all border border-yellow-500/20 hover:border-yellow-500/40 shadow-lg hover:shadow-yellow-500/10"
+              className="p-3 rounded-full bg-blue-200/80 hover:bg-blue-300 text-blue-500 transition-all border border-blue-500/20 hover:border-blue-500/40 shadow-lg hover:shadow-blue-500/10"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -171,8 +171,8 @@ export const ClientsTestimonial = () => {
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-yellow-500 w-8 shadow-md shadow-yellow-500/50'
-                      : 'bg-muted hover:bg-muted/80'
+                      ? 'bg-blue-500 w-8 shadow-md shadow-blue-500/50'
+                      : 'bg-blue-200 hover:bg-blue-300'
                   }`}
                 />
               ))}
@@ -180,7 +180,7 @@ export const ClientsTestimonial = () => {
 
             <button
               onClick={nextTestimonial}
-              className="p-3 rounded-full bg-muted/80 hover:bg-muted text-yellow-500 transition-all border border-yellow-500/20 hover:border-yellow-500/40 shadow-lg hover:shadow-yellow-500/10"
+              className="p-3 rounded-full bg-blue-200/80 hover:bg-blue-300 text-blue-500 transition-all border border-blue-500/20 hover:border-blue-500/40 shadow-lg hover:shadow-blue-500/10"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
