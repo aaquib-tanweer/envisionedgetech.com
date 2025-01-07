@@ -10,8 +10,8 @@ export function Faq() {
   return (
     <div className="p-8  pt-36 container">
       <div>
-        <h1 className="text-5xl font-bold  pb-8">
-          Frequently Asked Questions<span className="text-primary">.</span>
+        <h1 className="text-5xl font-bold pb-8 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300 bg-clip-text text-transparent">
+          Frequently Asked Questions<span className="text-blue-500">.</span>
         </h1>
       </div>
       <Accordion type="single" collapsible>

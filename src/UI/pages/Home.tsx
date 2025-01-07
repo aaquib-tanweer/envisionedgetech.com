@@ -8,6 +8,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ClientsTestimonial } from './ClientsTestimonial'
 import { TechStack } from './TechStack'
+
 export const Home = () => {
   const productRef = useRef(null)
   const contactRef = useRef(null) 
