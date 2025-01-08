@@ -9,46 +9,46 @@ interface Member {
 
 const members: Member[] = [
   {
-    name: 'Raj Anderson',
+    name: 'Rajesh Kumar Sharma',
     role: 'Mobile App Developer',
     projectsInvolved: [projectNames.CLOUDFLOW],
-    image: 'https://randomuser.me/api/portraits/men/71.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=RajeshKumar',
   },
   {
-    name: 'Priya Williams',
+    name: 'Priyanka Mehta',
     role: 'Frontend Developer', 
     projectsInvolved: [projectNames.DATAFORGE],
-    image: 'https://randomuser.me/api/portraits/women/52.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=PriyankaMehta',
   },
   {
-    name: 'Arun Miller',
+    name: 'Arundhati Nair',
     role: 'Backend Developer',
     projectsInvolved: [projectNames.NEXUSAI],
-    image: 'https://randomuser.me/api/portraits/men/83.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ArundhatiNair',
   },
   {
-    name: 'Maya Johnson',
+    name: 'Mayawati Iyer',
     role: 'Fullstack Developer',
     projectsInvolved: [projectNames.NEXUSAI, projectNames.DATAFORGE],
-    image: 'https://randomuser.me/api/portraits/women/91.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MayawatiIyer',
   },
   {
-    name: 'Vikram Smith',
+    name: 'Vikram Malhotra',
     role: 'Marketing and QA',
     projectsInvolved: [projectNames.DATAFORGE],
-    image: 'https://randomuser.me/api/portraits/men/62.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=VikramMalhotra',
   },
   {
-    name: 'Anjali Davis',
+    name: 'Anjali Deshmukh',
     role: 'Frontend Developer',
     projectsInvolved: [projectNames.DATAFORGE],
-    image: 'https://randomuser.me/api/portraits/women/73.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AnjaliDeshmukh',
   },
   {
-    name: 'Neil Patel',
+    name: 'Nitin Patel',
     role: 'UI/UX Designer',
     projectsInvolved: [projectNames.DATAFORGE],
-    image: 'https://randomuser.me/api/portraits/men/94.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=NitinPatel',
   },
 ]
 
