@@ -1,24 +1,26 @@
-export const ECOMMERCE_BASIC_PACKAGE_FEATURES = [
-  'Customer/Admin Dashboard',
-  'Create/Manage Products', 
-  'Order Tracking',
-  'Order Processing',
-  'Customer Management',
+export const SHOPIFY_BASIC_PACKAGE_FEATURES = [
+  'Store Setup & Configuration',
+  'Theme Customization',
+  'Product Management',
+  'Payment Gateway Integration',
+  'Basic SEO Setup',
   'Analytics Dashboard',
-  'Online Payment Integration',
+  'Training & Documentation',
 ]
 
-export const ECOMMERCE_PROFESSIONAL_PACKAGE_FEATURES = [
+export const SHOPIFY_PROFESSIONAL_PACKAGE_FEATURES = [
   'All Basic features, plus:',
-  'Multiple Admin Management',
-  'Export data to Excel',
-  'Bulk Product Imports',
+  'Custom Theme Development',
+  'App Integration',
+  'Advanced SEO Optimization',
+  'Marketing Tools Setup',
 ]
 
-export const ECOMMERCE_ENTERPRISE_PACKAGE_FEATURES = [
+export const SHOPIFY_ENTERPRISE_PACKAGE_FEATURES = [
   'All Professional features, plus:',
-  'Blog Management', 
-  'Email/Phone Notifications',
+  'Custom App Development',
+  'Multi-store Management',
+  'Advanced Analytics Integration',
 ]
 
 export const DOMAIN_HOSTING_BASIC_FEATURES = [
@@ -165,26 +167,26 @@ export const CLOUD_SERVICES_ENTERPRISE_FEATURES = [
   'Enterprise Support',
 ]
 
-export const DIGITAL_MARKETING_BASIC_FEATURES = [
-  'SEO Optimization',
-  'Social Media Management',
-  'Content Strategy',
-  'Analytics Setup',
-  'Monthly Reports',
+export const WORDPRESS_BASIC_FEATURES = [
+  'WordPress Installation & Setup',
+  'Theme Customization',
+  'Plugin Integration',
+  'Basic SEO Setup',
+  'Content Management System',
 ]
 
-export const DIGITAL_MARKETING_PROFESSIONAL_FEATURES = [
+export const WORDPRESS_PROFESSIONAL_FEATURES = [
   'All Basic features, plus:',
-  'PPC Campaigns',
-  'Email Marketing',
-  'Content Creation',
-  'Competitor Analysis',
+  'Custom Theme Development',
+  'Advanced Plugin Configuration',
+  'Performance Optimization',
+  'Security Hardening',
 ]
 
-export const DIGITAL_MARKETING_ENTERPRISE_FEATURES = [
+export const WORDPRESS_ENTERPRISE_FEATURES = [
   'All Professional features, plus:',
-  'Marketing Automation',
-  'Custom Strategy',
-  'Advanced Analytics',
-  'ROI Tracking',
+  'Custom Plugin Development',
+  'Multisite Setup',
+  'Advanced Security Features',
+  'Scalability Solutions',
 ]

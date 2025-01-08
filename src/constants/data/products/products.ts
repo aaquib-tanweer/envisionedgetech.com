@@ -1,7 +1,7 @@
 import {
-  ECOMMERCE_BASIC_PACKAGE_FEATURES,
-  ECOMMERCE_ENTERPRISE_PACKAGE_FEATURES,
-  ECOMMERCE_PROFESSIONAL_PACKAGE_FEATURES,
+  SHOPIFY_BASIC_PACKAGE_FEATURES,
+  SHOPIFY_ENTERPRISE_PACKAGE_FEATURES,
+  SHOPIFY_PROFESSIONAL_PACKAGE_FEATURES,
   DOMAIN_HOSTING_BASIC_FEATURES,
   DOMAIN_HOSTING_PROFESSIONAL_FEATURES,
   DOMAIN_HOSTING_ENTERPRISE_FEATURES,
@@ -20,20 +20,20 @@ import {
   CLOUD_SERVICES_BASIC_FEATURES,
   CLOUD_SERVICES_PROFESSIONAL_FEATURES,
   CLOUD_SERVICES_ENTERPRISE_FEATURES,
-  DIGITAL_MARKETING_BASIC_FEATURES,
-  DIGITAL_MARKETING_PROFESSIONAL_FEATURES,
-  DIGITAL_MARKETING_ENTERPRISE_FEATURES
+  WORDPRESS_BASIC_FEATURES,
+  WORDPRESS_PROFESSIONAL_FEATURES,
+  WORDPRESS_ENTERPRISE_FEATURES
 } from './productFeatureData'
 
 export enum productNames {
-  ECOMMERCE = 'Ecommerce',
+  SHOPIFY = 'Shopify',
   DOMAIN_HOST_MIS = 'Domain Hosting MIS',
   WEB_DEVELOPMENT = 'Web Development',
   UI_UX = 'UI/UX Design',
   MOBILE_APP = 'Mobile App Development',
   MAINTENANCE = 'Maintenance & Support',
   CLOUD_SERVICES = 'Cloud Services',
-  DIGITAL_MARKETING = 'Digital Marketing'
+  WORDPRESS = 'WordPress'
 }
 
 export const productsData = [
@@ -61,7 +61,7 @@ export const productsData = [
       ...UI_UX_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2017/01/22/12/07/imac-1999636_1280.png',
+      'https://www.nullplex.com/uploads/blogs/coverimages/fad4b53c-9630-48ab-bcbf-2a9b3c536119-20240130071903.png',
   },
   {
     title: 'Cloud Services',
@@ -87,7 +87,7 @@ export const productsData = [
       ...CLOUD_SERVICES_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2017/01/22/12/07/imac-1999636_1280.png',
+      'https://www.pulsion.co.uk/wp-content/uploads/2024/01/aws-vs-azure-blog-featured.png',
   },
   {
     title: 'Web Development',
@@ -113,7 +113,7 @@ export const productsData = [
       ...WEB_DEV_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2016/09/08/04/12/programmer-1653351_1280.png',
+      'https://miro.medium.com/v2/resize:fit:1200/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg',
   },
   {
     title: 'Maintenance & Support',
@@ -139,7 +139,7 @@ export const productsData = [
       ...MAINTENANCE_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2018/03/27/12/16/analytics-3265840_1280.jpg',
+      'https://bairesdev.mo.cloudinary.net/blog/2023/10/IT-Maintenance-Support.jpg',
   },
   {
     title: 'Domain Hosting MIS',
@@ -165,7 +165,7 @@ export const productsData = [
       ...DOMAIN_HOSTING_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_1280.jpg',
+      'https://i.pinimg.com/736x/2b/e1/b9/2be1b972579a7fec9d7cb9a6eaf4e22f.jpg',
   },
   {
     title: 'Mobile App Development',
@@ -191,58 +191,58 @@ export const productsData = [
       ...MOBILE_APP_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg',
+      'https://i.pinimg.com/736x/71/77/b6/7177b6767cac546d5860d28d21fe15a6.jpg',
   },
   {
-    title: 'Ecommerce',
+    title: 'Shopify',
     packages: {
       basic: {
         name: 'Basic',
-        features: [...ECOMMERCE_BASIC_PACKAGE_FEATURES],
+        features: [...SHOPIFY_BASIC_PACKAGE_FEATURES],
       },
 
       professional: {
         name: 'Professional',
-        features: [...ECOMMERCE_PROFESSIONAL_PACKAGE_FEATURES],
+        features: [...SHOPIFY_PROFESSIONAL_PACKAGE_FEATURES],
       },
 
       enterprise: {
         name: 'Enterprise',
-        features: [...ECOMMERCE_ENTERPRISE_PACKAGE_FEATURES],
+        features: [...SHOPIFY_ENTERPRISE_PACKAGE_FEATURES],
       },
     },
     features: [
-      ...ECOMMERCE_BASIC_PACKAGE_FEATURES,
-      ...ECOMMERCE_PROFESSIONAL_PACKAGE_FEATURES.slice(1),
-      ...ECOMMERCE_ENTERPRISE_PACKAGE_FEATURES.slice(1),
+      ...SHOPIFY_BASIC_PACKAGE_FEATURES,
+      ...SHOPIFY_PROFESSIONAL_PACKAGE_FEATURES.slice(1),
+      ...SHOPIFY_ENTERPRISE_PACKAGE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2019/04/26/07/14/store-4156934_1280.png',
+      'https://i.pinimg.com/736x/07/10/4f/07104f00872551c28907f821554ec4ad.jpg',
   },
   {
-    title: 'Digital Marketing',
+    title: 'WordPress',
     packages: {
       basic: {
         name: 'Basic',
-        features: [...DIGITAL_MARKETING_BASIC_FEATURES],
+        features: [...WORDPRESS_BASIC_FEATURES],
       },
 
       professional: {
         name: 'Professional',
-        features: [...DIGITAL_MARKETING_PROFESSIONAL_FEATURES],
+        features: [...WORDPRESS_PROFESSIONAL_FEATURES],
       },
 
       enterprise: {
         name: 'Enterprise',
-        features: [...DIGITAL_MARKETING_ENTERPRISE_FEATURES],
+        features: [...WORDPRESS_ENTERPRISE_FEATURES],
       },
     },
     features: [
-      ...DIGITAL_MARKETING_BASIC_FEATURES,
-      ...DIGITAL_MARKETING_PROFESSIONAL_FEATURES.slice(1),
-      ...DIGITAL_MARKETING_ENTERPRISE_FEATURES.slice(1),
+      ...WORDPRESS_BASIC_FEATURES,
+      ...WORDPRESS_PROFESSIONAL_FEATURES.slice(1),
+      ...WORDPRESS_ENTERPRISE_FEATURES.slice(1),
     ],
     image:
-      'https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649_1280.jpg',
+      'https://i.pinimg.com/736x/27/93/2d/27932d86dbbea73ccd6f5e472ef668cf.jpg',
   }
 ]

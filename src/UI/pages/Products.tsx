@@ -24,9 +24,10 @@ export function ProductsPage() {
         initial={{ opacity: 0, y: -50 }}
         animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
         transition={{ duration: 0.8 }}
+        className="pt-16 md:pt-20" // Added padding-top to prevent navbar overlap
       >
         <center>
-          <h1 className="text-4xl sm:text-2xl md:text-3xl font-bold bg-primary text-black mb-10 rounded-md cursor-pointer md:w-1/3 w-3/4">
+          <h1 className="text-4xl sm:text-2xl md:text-3xl font-bold bg-blue-500 text-black mb-10 rounded-md cursor-pointer md:w-1/3 w-3/4">
             List of Envision Edge Tech Softwares
           </h1>
         </center>
@@ -52,7 +53,7 @@ export function ProductsPage() {
               }`}
             >
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-                {index + 1} <span className="text-primary">.</span>
+                {index + 1} <span className="text-blue-500">.</span>
               </h1>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 {product.title}
@@ -83,7 +84,7 @@ export function ProductsPage() {
                   <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
-                  className="group w-full sm:w-auto"
+                  className="group w-full sm:w-auto bg-blue-500 hover:bg-blue-600"
                   onClick={() => setIsCalendlyOpen(true)}
                 >
                   Request for Quotation
@@ -98,7 +99,7 @@ export function ProductsPage() {
               </div>
             </div>
             <div
-              className={`bg-primary max-w-[420px] rounded-lg overflow-hidden ${
+              className={`bg-blue-500 max-w-[420px] rounded-lg overflow-hidden ${
                 index % 2 === 1 ? 'md:col-start-1' : ''
               }`}
             >
@@ -125,7 +126,7 @@ export function ProductsPage() {
                   className="border rounded-lg p-6 space-y-4 hover:shadow-lg transition-shadow"
                 >
                   <div className="text-xl font-bold">{pkg.name}</div>
-                  <div className="text-2xl font-bold text-primary">
+                  <div className="text-2xl font-bold text-blue-500">
                     {/* {pkg.price} */}
                   </div>
                   <ul className="space-y-2">

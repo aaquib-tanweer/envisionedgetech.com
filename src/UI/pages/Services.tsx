@@ -58,7 +58,7 @@ const ServiceCard: React.FC<ServiceCardProps & MotionProps> = ({
         whileHover="hover"
         className={`
           group relative rounded-xl p-6 bg-background/50 border border-border/50 
-          backdrop-blur-sm hover:border-primary/50 transition-all duration-300 
+          backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300 
           ${className}
         `}
         onHoverStart={() => setIsHovered(true)}
@@ -68,7 +68,7 @@ const ServiceCard: React.FC<ServiceCardProps & MotionProps> = ({
           <motion.div
             variants={iconVariants}
             animate={isHovered ? "hover" : "idle"}
-            className="flex-shrink-0 p-3 rounded-lg bg-primary/10 text-primary"
+            className="flex-shrink-0 p-3 rounded-lg bg-blue-500/10 text-blue-500"
           >
             <span className="text-2xl">{service.icon}</span>
           </motion.div>
@@ -91,7 +91,7 @@ const ServiceCard: React.FC<ServiceCardProps & MotionProps> = ({
           initial={{ opacity: 0 }}
           animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/5 to-primary/10 rounded-xl"
+          className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10 rounded-xl"
         />
       </motion.div>
     </motion.div>
@@ -115,7 +115,7 @@ export function Services() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto text-center mb-12"
         >
-          <h2 className="text-sm font-semibold text-primary mb-3">OUR SERVICES</h2>
+          <h2 className="text-sm font-semibold text-blue-500 mb-3">OUR SERVICES</h2>
           <h3 className="text-3xl font-bold mb-4">
             Power Innovation with Scalable Solutions
           </h3>
@@ -155,7 +155,7 @@ export function Services() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl -z-10"
+          className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"
         />
         <motion.div
           animate={{
@@ -168,7 +168,7 @@ export function Services() {
             ease: "easeInOut",
             delay: 1.5
           }}
-          className="absolute bottom-1/4 left-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl -z-10"
+          className="absolute bottom-1/4 left-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"
         />
       </div>
     </section>

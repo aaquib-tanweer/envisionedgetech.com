@@ -37,7 +37,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
       <Card
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="h-full flex flex-col justify-between relative z-10 overflow-hidden bg-gradient-to-br from-yellow-100 to-yellow-300 dark:from-gray-800 dark:to-gray-900"
+        className="h-full flex flex-col justify-between relative z-10 overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 dark:from-gray-800 dark:to-gray-900"
       >
         <div
           className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
@@ -48,17 +48,17 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
         />
         <CardHeader>
           <div className="flex justify-between items-center mb-2">
-            <CardTitle className="text-xl font-semibold text-yellow-900 dark:text-yellow-100">
+            <CardTitle className="text-xl font-semibold text-blue-900 dark:text-blue-100">
               {project.title}
             </CardTitle>
             <Badge
               variant="secondary"
-              className="bg-yellow-200 text-yellow-900 dark:bg-purple-900 dark:text-purple-100"
+              className="bg-blue-200 text-blue-900 dark:bg-blue-900 dark:text-blue-100"
             >
               {project.type}
             </Badge>
           </div>
-          <CardDescription className="text-yellow-800 dark:text-yellow-200">
+          <CardDescription className="text-blue-800 dark:text-blue-200">
             {project.description}
           </CardDescription>
         </CardHeader>
@@ -79,7 +79,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
             <Button
               variant="secondary"
               disabled={!project.link}
-              className="w-full bg-yellow-500 text-yellow-900 hover:bg-yellow-600 dark:bg-purple-700 dark:text-purple-100 dark:hover:bg-purple-600"
+              className="w-full bg-blue-500 text-blue-50 hover:bg-blue-600 dark:bg-blue-700 dark:text-blue-100 dark:hover:bg-blue-600"
             >
               View Live
               <Globe className="ml-2 h-4 w-4" />
@@ -93,16 +93,16 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
 export default function Projects() {
   return (
-    <section className="bg-yellow-50 dark:bg-gray-900 py-24">
+    <section className="bg-blue-50 dark:bg-gray-900 py-24">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="font-bold text-5xl mb-12 text-center text-yellow-900 dark:text-yellow-100"
+          className="font-bold text-5xl mb-12 text-center text-blue-900 dark:text-blue-100"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           Our Past Works
-          <span className="text-yellow-500 dark:text-purple-500">.</span>
+          <span className="text-blue-500 dark:text-blue-500">.</span>
         </motion.h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectList.map((project, index) => (
