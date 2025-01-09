@@ -5,7 +5,7 @@ import { Link } from '@tanstack/react-router'
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary relative">
+    <footer className="">
       {/* Background Gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_right,_#1E40AF,_transparent_50%)]"></div>
