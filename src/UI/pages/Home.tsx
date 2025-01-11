@@ -37,13 +37,15 @@ export const Home = () => {
           animate={contactInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
         >
-          <Contact />
+          
           
         </motion.div>
 
         <ClientsTestimonial />
         <Faq />
+        <Contact />
         <TechStack />
+        
       </div>
     </Layout>
   )
