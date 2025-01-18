@@ -91,7 +91,7 @@ export function ProductsPage() {
                   <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <PopupModal
-                  url="https://calendly.com/workwithaaquib/30min"
+                  url="https://calendly.com/envisionedgetech/30min"
                   open={isCalendlyOpen}
                   onModalClose={() => setIsCalendlyOpen(false)}
                   rootElement={document.getElementById('root')!}
