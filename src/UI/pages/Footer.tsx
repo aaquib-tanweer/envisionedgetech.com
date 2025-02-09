@@ -1,7 +1,7 @@
 import { companyDataConstants } from '@/constants/data/companyData.constant'
 import { MapPin, Mail, Phone } from 'lucide-react'
-import { navLinks } from '@/constants/navlinks'
 import { Link } from '@tanstack/react-router'
+import { footerLinks } from '@/constants/navlinks'
 
 export const Footer = () => {
   return (
@@ -89,13 +89,13 @@ export const Footer = () => {
               Quick Links
             </h2>
             <ul className="space-y-2">
-              {navLinks.map((navLink) => (
-                <li key={navLink.name}>
+              {footerLinks.map((link) => (
+                <li key={link.name}>
                   <Link 
-                    to={navLink.link} 
+                    to={link.link} 
                     className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
-                    {navLink.name}
+                    {link.name}
                   </Link>
                 </li>
               ))}

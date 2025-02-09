@@ -1,3 +1,4 @@
+// Main navigation links
 export const navLinks = [
   {
     name: 'Home',
@@ -14,5 +15,22 @@ export const navLinks = [
   {
     name: 'Services',
     link: '/services',
+  },
+]
+
+// Footer quick links (includes all nav links plus additional footer-only links)
+export const footerLinks = [
+  ...navLinks,
+  {
+    name: 'Projects',
+    link: '/projects',
+  },
+  {
+    name: 'Privacy Policy',
+    link: '/privacy-policy',
+  },
+  {
+    name: 'Terms & Conditions',
+    link: '/terms-and-conditions',
   },
 ]

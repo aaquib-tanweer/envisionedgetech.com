@@ -11,13 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions.route'
 import { Route as ServicesRouteImport } from './routes/services.route'
 import { Route as ProjectsRouteImport } from './routes/projects.route'
 import { Route as ProductsRouteImport } from './routes/products.route'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy.route'
 import { Route as AboutRouteImport } from './routes/about.route'
 import { Route as IndexRouteImport } from './routes/index.route'
 
 // Create/Update Routes
+
+const TermsAndConditionsRouteRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const ServicesRouteRoute = ServicesRouteImport.update({
   id: '/services',
@@ -34,6 +42,12 @@ const ProjectsRouteRoute = ProjectsRouteImport.update({
 const ProductsRouteRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PrivacyPolicyRouteRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +81,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRoute
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -88,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRoute
     }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -96,51 +124,83 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/products' | '/projects' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/privacy-policy'
+    | '/products'
+    | '/projects'
+    | '/services'
+    | '/terms-and-conditions'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/products' | '/projects' | '/services'
-  id: '__root__' | '/' | '/about' | '/products' | '/projects' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/privacy-policy'
+    | '/products'
+    | '/projects'
+    | '/services'
+    | '/terms-and-conditions'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/privacy-policy'
+    | '/products'
+    | '/projects'
+    | '/services'
+    | '/terms-and-conditions'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRouteRoute: typeof IndexRouteRoute
   AboutRouteRoute: typeof AboutRouteRoute
+  PrivacyPolicyRouteRoute: typeof PrivacyPolicyRouteRoute
   ProductsRouteRoute: typeof ProductsRouteRoute
   ProjectsRouteRoute: typeof ProjectsRouteRoute
   ServicesRouteRoute: typeof ServicesRouteRoute
+  TermsAndConditionsRouteRoute: typeof TermsAndConditionsRouteRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRouteRoute: IndexRouteRoute,
   AboutRouteRoute: AboutRouteRoute,
+  PrivacyPolicyRouteRoute: PrivacyPolicyRouteRoute,
   ProductsRouteRoute: ProductsRouteRoute,
   ProjectsRouteRoute: ProjectsRouteRoute,
   ServicesRouteRoute: ServicesRouteRoute,
+  TermsAndConditionsRouteRoute: TermsAndConditionsRouteRoute,
 }
 
 export const routeTree = rootRoute
@@ -155,9 +215,11 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/privacy-policy",
         "/products",
         "/projects",
-        "/services"
+        "/services",
+        "/terms-and-conditions"
       ]
     },
     "/": {
@@ -165,6 +227,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.route.tsx"
+    },
+    "/privacy-policy": {
+      "filePath": "privacy-policy.route.tsx"
     },
     "/products": {
       "filePath": "products.route.tsx"
@@ -174,6 +239,9 @@ export const routeTree = rootRoute
     },
     "/services": {
       "filePath": "services.route.tsx"
+    },
+    "/terms-and-conditions": {
+      "filePath": "terms-and-conditions.route.tsx"
     }
   }
 }
