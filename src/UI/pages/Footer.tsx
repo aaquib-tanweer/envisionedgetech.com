@@ -39,25 +39,13 @@ export const Footer = () => {
               <div className="flex items-center gap-3 group">
                 <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
                 <a href="mailto:info@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  info@envisionedgetech.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3 group">
-                <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="mailto:support@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  support@envisionedgetech.com
+                  envisionedgetech@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3 group">
                 <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
                 <a href="tel:+91987654321" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  +91 98765 43210
-                </a>
-              </div>
-              <div className="flex items-center gap-3 group">
-                <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="tel:+91123456789" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  +91 12345 67890
+                  +91 74287 82807
                 </a>
               </div>
             </div>
