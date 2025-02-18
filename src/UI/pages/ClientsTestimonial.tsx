@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, User } from 'lucide-react'
 
 const testimonials = [
   {
     id: 1,
     name: "Sarah Johnson",
     role: "CEO, TechCorp",
-    image: "https://randomuser.me/api/portraits/women/32.jpg",
     content: "Working with this team has transformed our business. Their innovative solutions and dedication to excellence are unmatched.",
     rating: 5
   },
@@ -15,15 +14,13 @@ const testimonials = [
     id: 2,
     name: "Michael Chen", 
     role: "CTO, InnovateLabs",
-    image: "https://randomuser.me/api/portraits/men/45.jpg",
     content: "The level of technical expertise and customer service we received was exceptional. They truly understand modern business needs.",
     rating: 5
   },
   {
     id: 3,
     name: "Emma Williams",
-    role: "Director, FutureScale", 
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    role: "Director, FutureScale",
     content: "Their solutions have helped us achieve remarkable growth. The attention to detail and support is outstanding.",
     rating: 5
   },
@@ -31,7 +28,6 @@ const testimonials = [
     id: 4,
     name: "David Rodriguez",
     role: "COO, CloudNine",
-    image: "https://randomuser.me/api/portraits/men/22.jpg",
     content: "The team's ability to deliver complex solutions on time and within budget has been crucial to our success.",
     rating: 5
   },
@@ -39,7 +35,6 @@ const testimonials = [
     id: 5,
     name: "Lisa Zhang",
     role: "VP Engineering, DataFlow",
-    image: "https://randomuser.me/api/portraits/women/45.jpg",
     content: "Their technical prowess and commitment to innovation have helped us stay ahead of the competition.",
     rating: 5
   },
@@ -47,7 +42,6 @@ const testimonials = [
     id: 6,
     name: "James Wilson",
     role: "Founder, TechStart",
-    image: "https://randomuser.me/api/portraits/men/33.jpg",
     content: "From concept to execution, they've been an invaluable partner in our digital transformation journey.",
     rating: 5
   },
@@ -55,7 +49,6 @@ const testimonials = [
     id: 7,
     name: "Maria Garcia",
     role: "CIO, GlobalTech",
-    image: "https://randomuser.me/api/portraits/women/28.jpg",
     content: "Their solutions are not just innovative but also scalable and future-proof. Exactly what we needed.",
     rating: 5
   },
@@ -63,7 +56,6 @@ const testimonials = [
     id: 8,
     name: "Robert Kim",
     role: "Director, NextGen Solutions",
-    image: "https://randomuser.me/api/portraits/men/55.jpg",
     content: "The team's expertise in cutting-edge technologies has been instrumental in modernizing our infrastructure.",
     rating: 5
   }
@@ -122,12 +114,8 @@ export const ClientsTestimonial = () => {
               className="grid md:grid-cols-[1fr,1.5fr] gap-8 items-center bg-gradient-to-br from-blue-100/80 via-blue-200/80 to-blue-300/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-blue-500/20 shadow-xl shadow-blue-500/5"
             >
               <div className="flex flex-col items-center md:items-start space-y-6">
-                <div className="w-32 h-32 rounded-full ring-4 ring-blue-500/30 overflow-hidden shadow-lg shadow-blue-500/20">
-                  <img
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-32 h-32 rounded-full ring-4 ring-blue-500/30 overflow-hidden shadow-lg shadow-blue-500/20 bg-blue-200 flex items-center justify-center">
+                  <User className="w-16 h-16 text-blue-500" />
                 </div>
 
                 <div className="text-center md:text-left">

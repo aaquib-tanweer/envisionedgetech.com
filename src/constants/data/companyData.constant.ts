@@ -9,7 +9,7 @@ export const companyDataConstants = {
   socials: [
     {
       name: 'LinkedIn',
-      link: '-',
+      link: 'https://www.linkedin.com/company/envision-edge-tech',
     },
   ],
 }

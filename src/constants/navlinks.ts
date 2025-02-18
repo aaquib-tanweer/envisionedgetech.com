@@ -21,10 +21,7 @@ export const navLinks = [
 // Footer quick links (includes all nav links plus additional footer-only links)
 export const footerLinks = [
   ...navLinks,
-  {
-    name: 'Projects',
-    link: '/projects',
-  },
+  
   {
     name: 'Privacy Policy',
     link: '/privacy-policy',

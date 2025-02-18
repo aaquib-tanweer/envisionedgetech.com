@@ -76,14 +76,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
             rel="noopener noreferrer"
             className="w-full"
           >
-            <Button
-              variant="secondary"
-              disabled={!project.link}
-              className="w-full bg-blue-500 text-blue-50 hover:bg-blue-600 dark:bg-blue-700 dark:text-blue-100 dark:hover:bg-blue-600"
-            >
-              View Live
-              <Globe className="ml-2 h-4 w-4" />
-            </Button>
+           
           </a>
         </CardFooter>
       </Card>

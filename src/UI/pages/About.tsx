@@ -2,6 +2,7 @@ import { Layout } from './Layout'
 import { members } from '@/constants/data/members'
 import { Card } from '../shadcn/ui/card'
 import { motion } from 'framer-motion'
+import { User } from 'lucide-react'
 
 export const About = () => {
   return (
@@ -83,12 +84,9 @@ export const About = () => {
                       <div className="relative z-10">
                         <div className="mb-6 relative">
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-400/5 rounded-full" />
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-32 h-32 mx-auto rounded-full object-cover border-2 border-blue-600/20"
-                            loading="lazy"
-                          />
+                          <div className="w-32 h-32 mx-auto rounded-full border-2 border-blue-600/20 flex items-center justify-center bg-blue-100/50">
+                            <User className="w-16 h-16 text-blue-500" />
+                          </div>
                         </div>
                         
                         <div className="text-center space-y-3">
