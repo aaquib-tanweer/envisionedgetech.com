@@ -38,13 +38,13 @@ export const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 group">
                 <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="mailto:info@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <a href="mailto:envisionedgetech@gmail.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   envisionedgetech@gmail.com
                 </a>
               </div>
               <div className="flex items-center gap-3 group">
                 <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="tel:+91987654321" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <a href="tel:+917428782807" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   +91 74287 82807
                 </a>
               </div>

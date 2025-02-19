@@ -55,6 +55,34 @@ export default function EnhancedProductShowcase() {
   const [activeCategory, setActiveCategory] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
 
+  // Add Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const openCalendlyDemo = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/envisionedgetech/30min'
+      });
+    }
+  };
+
+  const openCalendlyQuotation = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/envisionedgetech/30min'
+      });
+    }
+  };
+
   // Cycle through feature categories automatically
   useEffect(() => {
     const interval = setInterval(() => {
@@ -145,10 +173,14 @@ export default function EnhancedProductShowcase() {
             </AnimatePresence>
 
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-6 sm:mt-8">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors w-full sm:w-auto">
+              <button 
+                onClick={openCalendlyDemo}
+                className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors w-full sm:w-auto"
+              >
                 Request for Demo
               </button>
               <button 
+                onClick={openCalendlyQuotation}
                 className="bg-blue-400 text-blue-800 px-6 py-3 rounded-full font-semibold hover:bg-blue-500 transition-colors w-full sm:w-auto"
               >
                 Request for Quotation
