@@ -79,12 +79,11 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <a href="products">
-            <button className="group px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-              Start Your Journey
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-              
-            </button>
+            <a href="/products">
+              <button className="group px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                Start Your Journey
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </a>
             <button 
               onClick={openCalendly}
