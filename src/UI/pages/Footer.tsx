@@ -4,8 +4,9 @@ import { Link } from '@tanstack/react-router'
 import { footerLinks } from '@/constants/navlinks'
 
 export const Footer = () => {
+  console.log('Footer rendering');
   return (
-    <footer className="bg-secondary relative">
+    <footer className="bg-secondary relative" id="main-footer">
       {/* Background Gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_right,_#1E40AF,_transparent_50%)]"></div>
@@ -44,9 +45,14 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-3 group">
                 <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="tel:+917428782807" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  +91 74287 82807
-                </a>
+                <div className="flex flex-col">
+                  <a href="tel:+919958137836" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    +91 99581 37836
+                  </a>
+                  <a href="tel:+919958137830" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    +91 99581 37830
+                  </a>
+                </div>
               </div>
             </div>
           </div>

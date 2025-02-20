@@ -6,10 +6,13 @@ type Props = {
 }
 
 export const Layout = ({ children }: Props) => {
+  console.log('Layout rendering');
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" id="main-layout">
       <Navbar />
-      {children}
+      <main>
+        {children}
+      </main>
       <Footer />
     </div>
   )
