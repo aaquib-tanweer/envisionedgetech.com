@@ -39,8 +39,11 @@ export const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 group">
                 <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="mailto:envisionedgetech@gmail.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  envisionedgetech@gmail.com
+                <a href="mailto:contact@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                contact@envisionedgetech.com
+                </a>
+                <a href="mailto:support@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                support@envisionedgetech.com
                 </a>
               </div>
               <div className="flex items-center gap-3 group">
