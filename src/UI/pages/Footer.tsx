@@ -5,12 +5,13 @@ import { footerLinks } from '@/constants/navlinks'
 
 export const Footer = () => {
   console.log('Footer rendering');
+
   return (
     <footer className="bg-secondary relative" id="main-footer">
       {/* Background Gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_right,_#1E40AF,_transparent_50%)]"></div>
-        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_left,_#1E3A8A,_transparent_50%)]"></div>
+        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_right,_#1E40AF,_transparent_60%)]"></div>
+        <div className="absolute h-full w-full bg-[radial-gradient(circle_at_bottom_left,_#1E3A8A,_transparent_60%)]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -37,17 +38,19 @@ export const Footer = () => {
               Contact Us
             </h2>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 group">
-                <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
-                <a href="mailto:contact@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                contact@envisionedgetech.com
-                </a>
-                <a href="mailto:support@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                support@envisionedgetech.com
-                </a>
+              <div className="flex items-start gap-3 group">
+                <Mail className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors mt-1" />
+                <div className="flex flex-col">
+                  <a href="mailto:contact@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    contact@envisionedgetech.com
+                  </a>
+                  <a href="mailto:support@envisionedgetech.com" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    support@envisionedgetech.com
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-3 group">
-                <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors" />
+              <div className="flex items-start gap-3 group">
+                <Phone className="size-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition-colors mt-1" />
                 <div className="flex flex-col">
                   <a href="tel:+919958137836" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     +91 99581 37836
@@ -72,6 +75,7 @@ export const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`Follow us on ${social.name}`}
                   className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   {social.name}
@@ -100,6 +104,7 @@ export const Footer = () => {
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-sm text-foreground/70">
           Copyright © {companyDataConstants.foundedYear} - {new Date().getFullYear()} | 
           <span className="text-blue-600 dark:text-blue-400"> Envision Edge Tech Pvt. Ltd.</span>
