@@ -41,8 +41,8 @@ We would love to collaborate with you! Feel free to reach out:
 
 - **Website**: [www.envisionedgetech.com](http://www.envisionedgetech.com)
 - **Email**: contact@envisionedgetech.com
-- **Phone**: +1 (123) 456-7890
-- **LinkedIn**: [EnvisionEdgeTech](https://www.linkedin.com/company/envisionedgetech)
+- **Phone**: +91 99581 37836
+- **LinkedIn**: [EnvisionEdgeTech](https://www.linkedin.com/company/envision-edge-tech/)
 
 ---
 
