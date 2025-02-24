@@ -1,19 +1,17 @@
 import { Footer } from './Footer'
 import { Navbar } from './Navbar'
-
+import { Analytics } from "@vercel/analytics/react"
 type Props = {
   children?: React.ReactNode
 }
 
 export const Layout = ({ children }: Props) => {
-  console.log('Layout rendering');
   return (
-    <div className="min-h-screen" id="main-layout">
+    <div className="min-h-screen">
       <Navbar />
-      <main>
-        {children}
-      </main>
+      {children}
       <Footer />
+      <Analytics />
     </div>
   )
 }
