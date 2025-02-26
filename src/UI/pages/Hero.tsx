@@ -34,7 +34,8 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative pb-[4.5rem] lg:pt-[4.5rem] dark:text-white text-slate-900">
+    <div className="relative pb-[4.5rem] pt-16 lg:pt-[4.5rem] dark:text-white text-slate-900">
+
       {/* Background Gradient */}
       <div className="fixed inset-0 overflow-hidden -z-10">
         <div className="fixed h-screen w-screen bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]"></div>
