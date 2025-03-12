@@ -16,6 +16,10 @@ export const navLinks = [
     name: 'Services',
     link: '/services',
   },
+  {
+    name: 'Careers',
+    link: '/careers',
+  },
 ]
 
 // Footer quick links (includes all nav links plus additional footer-only links)
