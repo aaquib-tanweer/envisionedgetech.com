@@ -28,5 +28,10 @@ export const seoConfig = {
     title: "Terms and Conditions - Envision Edge Tech",
     description: "Read our terms and conditions to understand the rules, guidelines, and agreements for using Envision Edge Tech's services.",
     keywords: "terms and conditions, user agreement, legal terms, service terms, usage policy"
-  }
+  },
+  careers: {
+    title: "Careers - Join Our Team at Envision Edge Tech",
+    description: "Explore exciting career opportunities at Envision Edge Tech. Join our team of innovators and help shape the future of technology.",
+    keywords: "careers, jobs, technology jobs, remote work, software development, web development"
+  },
 }; 
