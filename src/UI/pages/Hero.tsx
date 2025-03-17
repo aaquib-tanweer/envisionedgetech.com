@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, Globe2, Cpu, Rocket, Code2, Blocks, Zap } from 'lucide-react';
+import { ArrowRight, Code2, Blocks, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Declare the Calendly type
