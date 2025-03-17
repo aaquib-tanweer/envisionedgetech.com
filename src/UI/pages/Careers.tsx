@@ -7,7 +7,6 @@ import {
   MapPin, 
   Clock,  
   ChevronRight,
-  GraduationCap
 } from 'lucide-react';
 import { Button } from '@/UI/shadcn/ui/button';
 import { SEOHead } from '@/components/SEOHead';

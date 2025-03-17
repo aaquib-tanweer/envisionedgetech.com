@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight, Globe2, Cpu, Rocket } from 'lucide-react';
+import { ArrowRight, Globe2, Cpu, Rocket, Code2, Blocks, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Declare the Calendly type
@@ -9,6 +9,9 @@ declare global {
     Calendly?: any;
   }
 }
+
+const MotionLink = motion(Link);
+const MotionButton = motion.button;
 
 export const Hero = () => {
   useEffect(() => {
@@ -34,38 +37,71 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative pb-[4.5rem] lg:pt-[4.5rem] dark:text-white text-slate-900">
-      {/* Background Gradient */}
-      <div className="fixed inset-0 overflow-hidden -z-10">
-        <div className="fixed h-screen w-screen bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]"></div>
-        <div className="fixed h-screen w-screen bg-[radial-gradient(circle_at_top_left,_#1E3A8A,_transparent_50%)]"></div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#1E3A8A,_transparent_50%)]" />
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute h-full w-full"
+            animate={{
+              background: [
+                'radial-gradient(circle at 0% 0%, rgba(30, 64, 175, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 100% 100%, rgba(30, 64, 175, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 0% 100%, rgba(30, 64, 175, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 100% 0%, rgba(30, 64, 175, 0.1) 0%, transparent 50%)',
+                'radial-gradient(circle at 0% 0%, rgba(30, 64, 175, 0.1) 0%, transparent 50%)',
+              ],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+          />
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Content */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="inline-block"
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6">
-              Innovate • Transform • Succeed
+            <span className="relative inline-flex items-center px-4 py-1 rounded-full bg-gradient-to-r from-blue-500/10 via-blue-600/10 to-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6 group cursor-pointer">
+              <span className="relative z-10">Innovate • Transform • Succeed</span>
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 via-blue-600/20 to-blue-500/20"
+                animate={{
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </span>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-8"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             Transform Your Business with
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600"> Cutting-Edge Tech</span>
+            <div className="relative inline-block ml-3">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 animate-gradient">
+                Cutting-Edge Tech
+              </span>
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-blue-500/20 to-blue-600/20 rounded-lg blur"
+                animate={{
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </div>
           </motion.h1>
 
           <motion.p
-            className="text-xl text-slate-600 dark:text-gray-400 mb-10"
+            className="text-xl text-foreground/80 mb-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -80,79 +116,68 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Link 
+            <MotionLink
               to="/products"
-              className="group px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Start Your Journey
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <button 
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Start Your Journey
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600"
+                initial={{ x: '100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </MotionLink>
+            
+            <MotionButton
               onClick={openCalendly}
-              className="px-8 py-4 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
+              className="relative px-8 py-4 bg-foreground/10 backdrop-blur-sm text-foreground rounded-lg overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Book a Demo
-            </button>
+              <span className="relative z-10">Book a Demo</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-500/20"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            </MotionButton>
           </motion.div>
         </div>
 
-        {/* Features Grid */}
+        {/* Tech Icons Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-20 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           {[
-            {
-              icon: <Globe2 className="h-6 w-6" />,
-              title: "Global Solutions",
-              description: "Reach customers worldwide with scalable applications"
-            },
-            {
-              icon: <Cpu className="h-6 w-6" />,
-              title: "Smart Technology",
-              description: "Leverage AI and machine learning capabilities"
-            },
-            {
-              icon: <Rocket className="h-6 w-6" />,
-              title: "Rapid Development",
-              description: "Fast deployment with agile methodology"
-            }
-          ].map((feature, index) => (
-            <div
+            { icon: Code2, label: "Modern Tech Stack", desc: "Latest frameworks & tools" },
+            { icon: Blocks, label: "Scalable Architecture", desc: "Built for growth" },
+            { icon: Zap, label: "High Performance", desc: "Optimized solutions" },
+          ].map((item, index) => (
+            <motion.div
               key={index}
               className="relative group"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.2 }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/20 to-blue-400/20 dark:from-blue-600 dark:to-blue-800 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-              <div className="relative p-6 bg-gradient-to-br from-white via-blue-50/50 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 rounded-lg">
-                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 mb-4">
-                  {feature.icon}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/20 to-blue-400/20 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+              <div className="relative p-6 bg-background/50 backdrop-blur-sm rounded-lg border border-blue-500/10">
+                <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-400/5 text-blue-500 mb-4 group-hover:scale-110 transition-transform">
+                  <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-slate-600 dark:text-gray-400">{feature.description}</p>
+                <h3 className="text-lg font-semibold mb-1">{item.label}</h3>
+                <p className="text-sm text-foreground/70">{item.desc}</p>
               </div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          {[
-            { number: "98%", label: "Client Satisfaction" },
-            { number: "250+", label: "Projects Delivered" },
-            { number: "15+", label: "Countries Served" },
-            { number: "24/7", label: "Support Available" }
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl font-bold mb-2">{stat.number}</div>
-              <div className="text-slate-600 dark:text-gray-400">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
