@@ -37,7 +37,8 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+ Develop
+     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pb-[4.5rem] pt-16 lg:pt-[4.5rem] dark:text-white text-slate-900">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]" />
@@ -57,6 +58,13 @@ export const Hero = () => {
             transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
           />
         </div>
+    <div className="relative pb-[4.5rem] pt-16 lg:pt-[4.5rem] dark:text-white text-slate-900">
+
+      {/* Background Gradient */}
+      <div className="fixed inset-0 overflow-hidden -z-10">
+        <div className="fixed h-screen w-screen bg-[radial-gradient(circle_at_top_right,_#1E40AF,_transparent_50%)]"></div>
+        <div className="fixed h-screen w-screen bg-[radial-gradient(circle_at_top_left,_#1E3A8A,_transparent_50%)]"></div>
+ main
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
