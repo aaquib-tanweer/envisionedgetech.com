@@ -18,6 +18,7 @@ import { Route as ProductsRouteImport } from './routes/products.route'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy.route'
 import { Route as CareersRouteImport } from './routes/careers.route'
 import { Route as AboutRouteImport } from './routes/about.route'
+import { Route as R404RouteImport } from './routes/404.route'
 import { Route as IndexRouteImport } from './routes/index.route'
 
 // Create/Update Routes
@@ -64,6 +65,12 @@ const AboutRouteRoute = AboutRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const R404RouteRoute = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRouteRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -79,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRoute
     }
     '/about': {
@@ -137,6 +151,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRouteRoute
+  '/404': typeof R404RouteRoute
   '/about': typeof AboutRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
@@ -148,6 +163,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
+  '/404': typeof R404RouteRoute
   '/about': typeof AboutRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
@@ -160,6 +176,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRouteRoute
+  '/404': typeof R404RouteRoute
   '/about': typeof AboutRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
@@ -173,6 +190,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/404'
     | '/about'
     | '/careers'
     | '/privacy-policy'
@@ -183,6 +201,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/404'
     | '/about'
     | '/careers'
     | '/privacy-policy'
@@ -193,6 +212,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/404'
     | '/about'
     | '/careers'
     | '/privacy-policy'
@@ -205,6 +225,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRouteRoute: typeof IndexRouteRoute
+  R404RouteRoute: typeof R404RouteRoute
   AboutRouteRoute: typeof AboutRouteRoute
   CareersRouteRoute: typeof CareersRouteRoute
   PrivacyPolicyRouteRoute: typeof PrivacyPolicyRouteRoute
@@ -216,6 +237,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRouteRoute: IndexRouteRoute,
+  R404RouteRoute: R404RouteRoute,
   AboutRouteRoute: AboutRouteRoute,
   CareersRouteRoute: CareersRouteRoute,
   PrivacyPolicyRouteRoute: PrivacyPolicyRouteRoute,
@@ -236,6 +258,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/404",
         "/about",
         "/careers",
         "/privacy-policy",
@@ -247,6 +270,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.route.tsx"
+    },
+    "/404": {
+      "filePath": "404.route.tsx"
     },
     "/about": {
       "filePath": "about.route.tsx"

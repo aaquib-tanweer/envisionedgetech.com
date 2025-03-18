@@ -2,4 +2,26 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://envisionedgetech.com/sitemap.xml 
+Sitemap: https://envisionedgetech.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow all public pages
+Allow: /about
+Allow: /products
+Allow: /services
+Allow: /careers
+Allow: /projects
+Allow: /privacy-policy
+Allow: /terms-and-conditions
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Host
+Host: https://envisionedgetech.com 
