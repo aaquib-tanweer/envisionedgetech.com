@@ -4,7 +4,14 @@ export const companyDataConstants = {
   address: 'New Delhi',
   country: 'India',
   foundedYear: 2024,
-  email: 'contact@envisionedgetech.com',
+  emails: [
+    'contact@envisionedgetech.com',
+    'support@envisionedgetech.com'
+  ],
+  phones: [
+    '+91 99581 37836',
+    '+91 99581 37830'
+  ],
 
   socials: [
     {
