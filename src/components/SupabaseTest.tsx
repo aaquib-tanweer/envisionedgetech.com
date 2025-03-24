@@ -8,12 +8,12 @@ export const SupabaseTest = () => {
   useEffect(() => {
     const testConnection = async () => {
       try {
-        // Simple query to test connection
+        // Query to test connection and get data from the 'test' table
         const { data, error } = await supabase
           .from('test')
           .select('*')
           .limit(1)
-        
+
         if (error) {
           if (error.message.includes('relation "public.test" does not exist')) {
             setError('Please create a table named "test" in your Supabase database with the following SQL:\n\n' +
@@ -29,7 +29,12 @@ export const SupabaseTest = () => {
           return
         }
 
-        setMessage('Successfully connected to Supabase!')
+        // If no error, use the data from the query
+        if (data && data.length > 0) {
+          setMessage(`Successfully connected to Supabase! First test entry: ${data[0].name}`)
+        } else {
+          setMessage('Successfully connected to Supabase, but no entries found in the "test" table.')
+        }
       } catch (err) {
         console.error('Connection error:', err)
         setError('Failed to connect to Supabase')
@@ -50,4 +55,4 @@ export const SupabaseTest = () => {
       )}
     </div>
   )
-} 
+}
