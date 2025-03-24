@@ -10,9 +10,12 @@ import {
 } from 'lucide-react';
 import { Button } from '@/UI/shadcn/ui/button';
 import { SEOHead } from '@/components/SEOHead';
+import { JobApplicationModal } from '@/components/JobApplicationModal';
+import { Toaster } from 'sonner';
 
 export const Careers = () => {
   const [selectedJob, setSelectedJob] = useState(careerOpenings[0]);
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
 
   return (
     <>
@@ -131,24 +134,21 @@ export const Careers = () => {
                   <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                     <h3 className="text-lg font-semibold mb-3">How to Apply</h3>
                     <div className="space-y-2 text-sm">
-                      <p>To apply for this position, please:</p>
+                      <p>To apply for this position:</p>
                       <ol className="list-decimal pl-4 space-y-2">
-                        <li>Click the "Apply Now" button below to open your email client</li>
-                        <li>Include your full name and the position you're applying for in the email body</li>
-                        <li>Attach your resume/CV in PDF format</li>
-                        <li>Add a brief cover letter explaining why you'd be a great fit for this role</li>
-                        <li>Include links to your portfolio/GitHub (if applicable)</li>
+                        <li>Click the "Apply Now" button below</li>
+                        <li>Fill out the application form with your details</li>
+                        <li>Upload your resume in PDF format</li>
+                        <li>Add a cover letter explaining why you'd be a great fit</li>
+                        <li>Submit your application</li>
                       </ol>
-                      <p className="mt-4 text-blue-600 dark:text-blue-400">
-                        <strong>Note:</strong> Applications without a resume or proper documentation may not be considered.
-                      </p>
                     </div>
                   </div>
 
                   <Button 
                     size="lg"
                     className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white"
-                    onClick={() => window.location.href = `mailto:careers@envisionedgetech.com?subject=Application for ${selectedJob.title}`}
+                    onClick={() => setIsApplicationModalOpen(true)}
                   >
                     Apply Now
                     <ChevronRight className="ml-2 h-4 w-4" />
@@ -159,6 +159,14 @@ export const Careers = () => {
           </div>
         </div>
       </Layout>
+
+      <JobApplicationModal
+        isOpen={isApplicationModalOpen}
+        onClose={() => setIsApplicationModalOpen(false)}
+        jobTitle={selectedJob.title}
+      />
+
+      <Toaster />
     </>
   );
 }; 
