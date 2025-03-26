@@ -5,7 +5,7 @@ import { Input } from '@/UI/shadcn/ui/input';
 import { Label } from '@/UI/shadcn/ui/label';
 import { Textarea } from '@/UI/shadcn/ui/textarea';
 import { supabase } from '@/lib/supabase';
-import { Loader2, } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface JobApplicationModalProps {
@@ -48,18 +48,16 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
       // Insert application data into Supabase
       const { error: insertError } = await supabase
         .from('job_applications')
-        .insert([
-          {
-            job_title: jobTitle,
-            full_name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            portfolio: formData.portfolio,
-            cover_letter: formData.coverLetter,
-            resume_url: resumeUrl,
-            status: 'pending',
-          },
-        ]);
+        .insert([{
+          job_title: jobTitle,
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          portfolio: formData.portfolio,
+          cover_letter: formData.coverLetter,
+          resume_url: resumeUrl,
+          status: 'pending',
+        }]);
 
       if (insertError) throw insertError;
 
@@ -99,6 +97,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
+              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -110,6 +109,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -121,6 +121,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
+              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -131,6 +132,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               type="url"
               value={formData.portfolio}
               onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
+              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -143,9 +145,10 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
                 accept=".pdf"
                 onChange={(e) => setResume(e.target.files?.[0] || null)}
                 required
+                className="border-blue-500 focus:ring-blue-500 focus:border-blue-500"
               />
               {resume && (
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-blue-600">
                   {resume.name}
                 </span>
               )}
@@ -159,11 +162,15 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.coverLetter}
               onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
               required
-              className="min-h-[150px]"
+              className="min-h-[150px] border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full bg-blue-600 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -177,4 +184,4 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
       </DialogContent>
     </Dialog>
   );
-}; 
+};
