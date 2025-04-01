@@ -6,7 +6,7 @@ import { Dialog, DialogContent } from '../shadcn/ui/dialog'
 import { motion, useInView } from 'framer-motion'
 import { PopupModal } from 'react-calendly'
 
-export function ProductsPage() {
+export function Products() {
   const [open, setOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState<unknown>()
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)

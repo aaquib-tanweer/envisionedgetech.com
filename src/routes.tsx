@@ -1,7 +1,7 @@
 import { createRouter, createRoute, createRootRoute } from '@tanstack/react-router'
 import { Home } from './UI/pages/Home'
 import { About } from './UI/pages/About'
-import { Products } from './UI/pages/Products'
+import { ProductsPage as Products } from './UI/pages/Products'
 import { Services } from './UI/pages/Services'
 import { Careers } from './UI/pages/Careers'
 import { PrivacyPolicy } from './UI/pages/PrivacyPolicy'
