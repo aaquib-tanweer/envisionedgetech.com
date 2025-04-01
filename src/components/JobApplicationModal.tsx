@@ -81,15 +81,15 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto my-4 z-50">
         <DialogHeader>
           <DialogTitle>Apply for {jobTitle}</DialogTitle>
           <DialogDescription>
-            Please fill out the form below to submit your application.
+            Fill out the form below to submit your application. All fields marked with * are required.
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 py-4">
           <div className="space-y-2">
             <Label htmlFor="fullName">Full Name</Label>
             <Input
