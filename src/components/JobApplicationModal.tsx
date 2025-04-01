@@ -97,7 +97,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
               required
-              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
+              className="border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -109,7 +109,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
-              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
+              className="border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -121,7 +121,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
-              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
+              className="border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -132,7 +132,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               type="url"
               value={formData.portfolio}
               onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
-              className="border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
+              className="border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
@@ -145,7 +145,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
                 accept=".pdf"
                 onChange={(e) => setResume(e.target.files?.[0] || null)}
                 required
-                className="border-blue-500 focus:ring-blue-500 focus:border-blue-500"
+                className="border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
               />
               {resume && (
                 <span className="text-sm text-blue-600">
@@ -162,7 +162,7 @@ export const JobApplicationModal = ({ isOpen, onClose, jobTitle }: JobApplicatio
               value={formData.coverLetter}
               onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
               required
-              className="min-h-[150px] border-blue-500 text-blue-900 focus:ring-blue-500 focus:border-blue-500"
+              className="min-h-[150px] border-blue-500 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
