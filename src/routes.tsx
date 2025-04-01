@@ -1,13 +1,20 @@
 import { createRouter, createRoute, createRootRoute } from '@tanstack/react-router'
-import { Home } from './UI/pages/Home'
-import { About } from './UI/pages/About'
-import { Products } from './UI/pages/Products'
-import { Services } from './UI/pages/Services'
-import { Careers } from './UI/pages/Careers'
-import { PrivacyPolicy } from './UI/pages/PrivacyPolicy'
-import { TermsAndConditions } from './UI/pages/TermsAndConditions'
+import { Home } from '@/UI/pages/Home'
+import { About } from '@/UI/pages/About'
+import { Products } from '@/UI/pages/Products'
+import { Services } from '@/UI/pages/Services'
+import { Careers } from '@/UI/pages/Careers'
+import { PrivacyPolicy } from '@/UI/pages/PrivacyPolicy'
+import { TermsAndConditions } from '@/UI/pages/TermsAndConditions'
+import { Layout } from '@/UI/pages/Layout'
 
-const rootRoute = createRootRoute()
+const rootRoute = createRootRoute({
+  component: () => (
+    <Layout>
+      <Outlet />
+    </Layout>
+  )
+})
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
