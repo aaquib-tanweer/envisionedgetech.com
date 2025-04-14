@@ -1,5 +1,5 @@
 import { Button } from '@/UI/shadcn/ui/button'
-import { CheckCircle, ChevronRight } from 'lucide-react'
+import { CheckCircle, ChevronRight, X } from 'lucide-react'
 import { productsData } from '@/constants/data/products/products'
 import { useState, useRef } from 'react'
 import { Dialog, DialogContent } from '../shadcn/ui/dialog'
@@ -116,16 +116,27 @@ export function Products() {
 
       {/* Dialog */}
       <Dialog onOpenChange={setOpen} open={open}>
-        <DialogContent className="max-w-4xl">
-          <div className="grid md:grid-cols-3 gap-6 p-4">
+        <DialogContent className="w-[95%] max-w-4xl p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
+          <div className="sticky top-0 flex justify-between items-center mb-4 bg-background/95 backdrop-blur-sm pb-2 border-b">
+            <h2 className="text-lg font-semibold">Package Details</h2>
+            <button
+              onClick={() => setOpen(false)}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <X className="h-5 w-5" />
+              <span className="sr-only">Close</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* @ts-ignore */}
             {selectedPackage &&
               Object.values(selectedPackage).map((pkg) => (
                 <div
-                  // key={pkg.name}
-                  className="border rounded-lg p-6 space-y-4 hover:shadow-lg transition-shadow"
+                  key={pkg.name}
+                  className="border rounded-lg p-4 sm:p-6 space-y-4 hover:shadow-lg transition-shadow"
                 >
-                  <div className="text-xl font-bold">{pkg.name}</div>
+                  <div className="text-xl font-bold text-blue-600">{pkg.name}</div>
                   <div className="text-2xl font-bold text-blue-500">
                     {/* {pkg.price} */}
                   </div>
@@ -134,14 +145,13 @@ export function Products() {
                     {pkg.features.map((feature) => (
                       <li
                         key={feature.slice(0, 5)}
-                        className="flex items-start space-x-2 sm:space-x-3"
+                        className="flex items-start space-x-2"
                       >
-                        <CheckCircle className="text-green-500 flex-shrink-0 mt-1 w-4 h-4 sm:w-5 sm:h-5" />
-                        <span className="text-sm sm:text-base">{feature}</span>
+                        <CheckCircle className="text-green-500 flex-shrink-0 mt-1 w-4 h-4" />
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  {/* <Button className="w-full mt-4">Select {pkg.name}</Button> */}
                 </div>
               ))}
           </div>
