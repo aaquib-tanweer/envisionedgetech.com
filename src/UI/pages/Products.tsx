@@ -116,8 +116,8 @@ export function Products() {
 
       {/* Dialog */}
       <Dialog onOpenChange={setOpen} open={open}>
-        <DialogContent className="w-[95%] max-w-4xl p-4 sm:p-6 max-h-[90vh] overflow-y-auto [&>button]:hidden">
-          <div className="sticky top-0 flex justify-between items-center mb-4 bg-background/95 backdrop-blur-sm pb-2 border-b">
+        <DialogContent className="w-[95%] max-w-4xl p-4 sm:p-6 max-h-[90vh] overflow-y-auto [&>button]:hidden relative z-50 bg-background">
+          <div className="sticky top-0 flex justify-between items-center mb-4 bg-background pb-2 border-b z-50">
             <h2 className="text-lg font-semibold">Package Details</h2>
             <button
               onClick={() => setOpen(false)}
@@ -128,13 +128,13 @@ export function Products() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 relative z-50 bg-background">
             {/* @ts-ignore */}
             {selectedPackage &&
               Object.values(selectedPackage).map((pkg) => (
                 <div
                   key={pkg.name}
-                  className="border rounded-lg p-4 sm:p-6 space-y-4 hover:shadow-lg transition-shadow"
+                  className="border rounded-lg p-4 sm:p-6 space-y-4 hover:shadow-lg transition-shadow bg-background"
                 >
                   <div className="text-xl font-bold text-blue-600">{pkg.name}</div>
                   <div className="text-2xl font-bold text-blue-500">
