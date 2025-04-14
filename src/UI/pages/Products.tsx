@@ -117,7 +117,7 @@ export function Products() {
       {/* Dialog */}
       <Dialog onOpenChange={setOpen} open={open}>
         <DialogContent className="w-[95%] max-w-4xl p-4 sm:p-6 max-h-[90vh] overflow-y-auto [&>button]:hidden">
-          <div className="sticky top-0 flex justify-between items-center mb-4 bg-background/95 backdrop-blur-sm pb-2 border-b">
+          <div className="sticky top-0 flex justify-between items-center mb-4 bg-background/95 backdrop-blur-sm pb-2 border-b z-10">
             <h2 className="text-lg font-semibold">Package Details</h2>
             <button
               onClick={() => setOpen(false)}
