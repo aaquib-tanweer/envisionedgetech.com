@@ -4,7 +4,7 @@ import { productsData } from '@/constants/data/products/products'
 import { useState, useRef } from 'react'
 import { Dialog, DialogContent } from '../shadcn/ui/dialog'
 import { motion, useInView } from 'framer-motion'
-import { PopupModal } from 'react-calendly'
+import { InlineWidget } from 'react-calendly'
 
 export function Products() {
   const [open, setOpen] = useState(false)
@@ -90,14 +90,6 @@ export function Products() {
                   Request for Quotation
                   <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                {isCalendlyOpen && (
-                  <PopupModal
-                    url="https://calendly.com/envisionedgetech/30min"
-                    open={isCalendlyOpen}
-                    onModalClose={() => setIsCalendlyOpen(false)}
-                    rootElement={document.body}
-                  />
-                )}
               </div>
             </div>
             <div
@@ -156,6 +148,20 @@ export function Products() {
                   </ul>
                 </div>
               ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
+        <DialogContent className="max-w-4xl h-[80vh] p-0">
+          <div className="h-full w-full">
+            <InlineWidget
+              url="https://calendly.com/envisionedgetech/30min"
+              styles={{
+                height: '100%',
+                width: '100%'
+              }}
+            />
           </div>
         </DialogContent>
       </Dialog>
