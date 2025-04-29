@@ -153,16 +153,16 @@ export function Products() {
       </Dialog>
 
       <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
-        <DialogContent className="max-w-4xl h-[80vh] p-4">
+        <DialogContent className="max-w-4xl h-[80vh] p-4 [&>button]:hidden">
           <div className="h-full w-full relative">
-            <div className="absolute right-0 top-0 z-10">
+            <div className="absolute right-2 top-2 z-10">
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
                 onClick={() => setIsCalendlyOpen(false)}
-                className="rounded-full"
+                className="rounded-full bg-white hover:bg-gray-100"
               >
-                <X className="h-4 w-4" />
+                <X className="h-4 w-4 text-black" />
               </Button>
             </div>
             <InlineWidget
