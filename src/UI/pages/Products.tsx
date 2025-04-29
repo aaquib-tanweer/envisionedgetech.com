@@ -153,8 +153,18 @@ export function Products() {
       </Dialog>
 
       <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
-        <DialogContent className="max-w-4xl h-[80vh] p-0">
-          <div className="h-full w-full">
+        <DialogContent className="max-w-4xl h-[80vh] p-4">
+          <div className="h-full w-full relative">
+            <div className="absolute right-0 top-0 z-10">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsCalendlyOpen(false)}
+                className="rounded-full"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
             <InlineWidget
               url="https://calendly.com/envisionedgetech/30min"
               styles={{
