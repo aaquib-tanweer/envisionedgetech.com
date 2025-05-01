@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Code2, Blocks, Zap } from "lucide-react";
 import { motion } from "framer-motion";
@@ -14,6 +14,9 @@ const MotionLink = motion(Link);
 const MotionButton = motion.button;
 
 export const Hero = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subheadingRef = useRef<HTMLParagraphElement>(null);
+
   useEffect(() => {
     // Add Calendly script
     const script = document.createElement("script");
@@ -21,8 +24,50 @@ export const Hero = () => {
     script.async = true;
     document.body.appendChild(script);
 
+    // Load and use anime.js
+    const loadAnimation = async () => {
+      const anime = (await import('animejs')).default;
+      
+      if (headingRef.current && subheadingRef.current) {
+        // Split text into spans
+        const headingText = headingRef.current.textContent || '';
+        const subheadingText = subheadingRef.current.textContent || '';
+        
+        headingRef.current.innerHTML = headingText.split('').map(char => 
+          `<span class="letter">${char}</span>`
+        ).join('');
+        
+        subheadingRef.current.innerHTML = subheadingText.split('').map(char => 
+          `<span class="letter">${char}</span>`
+        ).join('');
+
+        // Animate heading
+        anime({
+          targets: headingRef.current.querySelectorAll('.letter'),
+          translateY: [100, 0],
+          translateZ: 0,
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1400,
+          delay: (_el: Element, i: number) => 300 + 30 * i
+        });
+
+        // Animate subheading
+        anime({
+          targets: subheadingRef.current.querySelectorAll('.letter'),
+          translateY: [100, 0],
+          translateZ: 0,
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1400,
+          delay: (_el: Element, i: number) => 300 + 30 * i
+        });
+      }
+    };
+
+    loadAnimation();
+
     return () => {
-      // Cleanup
       document.body.removeChild(script);
     };
   }, []);
@@ -76,27 +121,23 @@ export const Hero = () => {
           </span>
         </motion.div>
 
-        <motion.h1
+        <h1
+          ref={headingRef}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Transform Your Business with{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600">
             Cutting-Edge Tech
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
+        <p
+          ref={subheadingRef}
           className="text-xl text-foreground/80 mb-10 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
         >
           Empower your enterprise with custom software solutions that drive
           growth, enhance efficiency, and deliver exceptional results.
-        </motion.p>
+        </p>
 
         <motion.div
           className="flex flex-col sm:flex-row justify-center gap-4"
