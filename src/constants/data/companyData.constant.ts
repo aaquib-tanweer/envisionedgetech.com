@@ -9,8 +9,18 @@ export const companyDataConstants = {
     'support@envisionedgetech.com'
   ],
   phones: [
-    '+91 99581 37836',
-    '+91 99581 37830'
+    {
+      number: '+91 99581 37836',
+      country: 'IN'
+    },
+    {
+      number: '+91 99581 37830',
+      country: 'IN'
+    },
+    {
+      number: '+1 210 898 8560',
+      country: 'US'
+    }
   ],
 
   socials: [

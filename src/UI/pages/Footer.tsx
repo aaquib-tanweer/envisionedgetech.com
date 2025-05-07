@@ -94,10 +94,13 @@ export const Footer = () => {
               <div className="space-y-3">
                 <h3 className="text-sm font-medium text-foreground/90">Call Us:</h3>
                 {companyDataConstants.phones.map((phone) => (
-                  <div key={phone} className="group">
-                    <FooterLink href={`tel:${phone}`}>
+                  <div key={phone.number} className="group">
+                    <FooterLink href={`tel:${phone.number}`}>
                       <Phone className="size-5 text-blue-500" />
-                      <span className="text-foreground/80 hover:text-foreground">{phone}</span>
+                      <span className="text-foreground/80 hover:text-foreground">
+                        {phone.country === 'IN' ? '🇮🇳 ' : '🇺🇸 '}
+                        {phone.number}
+                      </span>
                     </FooterLink>
                   </div>
                 ))}
