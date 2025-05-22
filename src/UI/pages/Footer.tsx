@@ -100,6 +100,9 @@ export const Footer = () => {
                       <span className="text-foreground/80 hover:text-foreground">
                         {phone.country === 'IN' ? '🇮🇳 ' : '🇺🇸 '}
                         {phone.number}
+                        {phone.number === '+91 99581 37836' ? ' (India Support)' : 
+                         phone.number === '+91 99581 37830' ? ' (HR)' :
+                         phone.number === '+1 210 898 8560' ? ' (US Support)' : ''}
                       </span>
                     </FooterLink>
                   </div>

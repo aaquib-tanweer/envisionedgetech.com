@@ -10,16 +10,16 @@ export const companyDataConstants = {
   ],
   phones: [
     {
+      number: '+1 210 898 8560',
+      country: 'US'
+    },
+    {
       number: '+91 99581 37836',
       country: 'IN'
     },
     {
       number: '+91 99581 37830',
       country: 'IN'
-    },
-    {
-      number: '+1 210 898 8560',
-      country: 'US'
     }
   ],
 
