@@ -17,10 +17,6 @@ export const companyDataConstants = {
       number: '+91 99581 37836',
       country: 'IN'
     },
-    {
-      number: '+91 99581 37830',
-      country: 'IN'
-    }
   ],
 
   socials: [
