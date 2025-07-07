@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Sparkles, Zap, Shield, Rocket, Globe, Code, Palette, Database, Cloud, Headphones } from 'lucide-react';
 import { services } from '@/constants/services';
 
@@ -178,8 +178,6 @@ const PremiumStats = () => {
 
 export function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const heroRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroRef, { once: true });
 

@@ -1,7 +1,6 @@
 import { members } from '@/constants/data/members'
-import { Card } from '../shadcn/ui/card'
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
-import { User, ArrowRight, Sparkles, Award, Users, Globe, Zap, CheckCircle2, Rocket, Shield, Target } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { User, ArrowRight, Sparkles, Award, Users, Globe, Zap, Rocket, Shield, Target } from 'lucide-react'
 import { SEOHead } from '@/components/SEOHead'
 import { seoConfig } from '@/constants/seo.config'
 import { useRef } from 'react'
@@ -156,8 +155,6 @@ const CompanyStats = () => {
 
 export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const heroRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
@@ -349,7 +346,7 @@ export const About = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Link
-                  to="/projects"
+                  to="/services"
                   className="block px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/15 transition-all duration-300 text-center"
                 >
                   View Our Work

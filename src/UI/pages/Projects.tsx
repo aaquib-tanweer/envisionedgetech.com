@@ -6,7 +6,6 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
 } from '../shadcn/ui/card'
 import { Badge } from '../shadcn/ui/badge'
 import { motion } from 'framer-motion'
@@ -67,16 +66,6 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
             className="rounded-lg object-cover w-full h-48"
           />
         </CardContent>
-        <CardFooter className="pt-4">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full"
-          >
-           
-          </a>
-        </CardFooter>
       </Card>
     </motion.div>
   )
