@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Check, Star, Zap, Shield, Crown, ArrowRight, Sparkles, Users, Database, Cloud, Headphones, ChevronRight } from 'lucide-react';
+import { Check, Star, Zap, Shield, Crown, ArrowRight, Sparkles, Users, Database, Headphones, ChevronRight } from 'lucide-react';
 import { useState, useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 
@@ -492,7 +492,7 @@ export const PremiumPricing = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/projects"
+                to="/services"
                 className="block px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/15 transition-all duration-300 text-center"
               >
                 View Portfolio

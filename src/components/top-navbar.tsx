@@ -6,7 +6,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/UI/shadcn/ui/sheet'
 import { navLinks } from '@/constants/navlinks'
 import { ModeToggle } from './mode-toggle'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme } from '@/components/theme-provider'
 import logoImage from '@/assets/images/ET logo.jpg'
 
 // Declare the Calendly type
@@ -21,7 +20,6 @@ export const TopNavbar = () => {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
-  const { theme } = useTheme()
   const location = useLocation()
 
   useEffect(() => {

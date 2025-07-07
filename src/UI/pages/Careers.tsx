@@ -7,7 +7,6 @@ import {
   Clock,  
   ChevronRight,
 } from 'lucide-react';
-import { Button } from '@/UI/shadcn/ui/button';
 import { SEOHead } from '@/components/SEOHead';
 import { JobApplicationModal } from '@/components/JobApplicationModal';
 import { Toaster } from 'sonner';

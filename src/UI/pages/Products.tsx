@@ -1,7 +1,7 @@
 import { Button } from '@/UI/shadcn/ui/button'
 import { CheckCircle, ChevronRight, X, ArrowRight, Sparkles, Zap, Shield, Star, Users } from 'lucide-react'
 import { productsData } from '@/constants/data/products/products'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { Dialog, DialogContent } from '../shadcn/ui/dialog'
 import { motion, useInView } from 'framer-motion'
 import { InlineWidget } from 'react-calendly'
