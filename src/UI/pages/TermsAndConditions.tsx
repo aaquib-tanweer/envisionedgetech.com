@@ -1,72 +1,202 @@
 import { SEOHead } from '@/components/SEOHead';
 import { seoConfig } from '@/constants/seo.config';
+import { motion, useInView } from 'framer-motion';
+import { FileText, CheckCircle2, Shield, AlertTriangle, Scale, RefreshCw, Gavel, Mail } from 'lucide-react';
+import { useRef } from 'react';
 
 export const TermsAndConditions = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroInView = useInView(heroRef, { once: true });
+
+  const sections = [
+    {
+      id: 1,
+      icon: CheckCircle2,
+      title: "Acceptance of Terms",
+      content: "By accessing and using our services, you accept and agree to be bound by the terms and conditions of this agreement.",
+      items: []
+    },
+    {
+      id: 2,
+      icon: Shield,
+      title: "Use License",
+      content: "Permission is granted to temporarily access our services for personal, non-commercial use.",
+      items: [
+        "Permission is granted to temporarily access our services for personal, non-commercial use",
+        "This license does not include modifying or copying our materials",
+        "Using materials for commercial purposes is prohibited",
+        "Attempting to reverse engineer any software is not allowed",
+        "Removing any copyright or proprietary notations is forbidden"
+      ]
+    },
+    {
+      id: 3,
+      icon: AlertTriangle,
+      title: "Disclaimer",
+      content: "Our services are provided \"as is\". We make no warranties, expressed or implied, and hereby disclaim all warranties including, but not limited to, implied warranties or merchantability and fitness for a particular purpose.",
+      items: []
+    },
+    {
+      id: 4,
+      icon: Shield,
+      title: "Limitations",
+      content: "We shall not be held liable for any damages arising from the use or inability to use our services, even if we have been notified of the possibility of such damages.",
+      items: []
+    },
+    {
+      id: 5,
+      icon: RefreshCw,
+      title: "Revisions and Updates",
+      content: "We may update these terms and conditions at any time. By using our services, you agree to be bound by the current version of these terms and conditions.",
+      items: []
+    },
+    {
+      id: 6,
+      icon: Scale,
+      title: "Governing Law",
+      content: "These terms and conditions are governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.",
+      items: []
+    }
+  ];
+
   return (
     <>
       <SEOHead {...seoConfig.termsAndConditions} />
-      <main>
-        <article className="max-w-4xl mx-auto px-4 py-12">
-          <header>
-            <h1 className="text-3xl font-bold mb-6">Terms and Conditions</h1>
-          </header>
-          <div className="prose prose-blue dark:prose-invert max-w-none">
-            <p className="text-lg mb-6">
-              Welcome to Envision Edge Tech Pvt. Ltd. By accessing our website and services, you agree to these terms and conditions.
-            </p>
+      <div ref={containerRef} className="relative py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hero Section */}
+          <motion.div 
+            ref={heroRef}
+            className="text-center mb-16"
+          >
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center mb-8"
+            >
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-xl shadow-blue-500/10 dark:shadow-electric-500/20">
+                <Gavel className="w-4 h-4 text-blue-600 dark:text-electric-400" />
+                <span className="text-sm font-medium">Legal Terms</span>
+              </div>
+            </motion.div>
 
-            <h2 className="text-2xl font-semibold mt-8 mb-4">1. Acceptance of Terms</h2>
-            <p className="mb-6">
-              By accessing and using our services, you accept and agree to be bound by the terms and conditions of this agreement.
-            </p>
+            {/* Main Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-bold leading-tight mb-8"
+            >
+              <span className="block text-gray-900 dark:text-white">Terms &</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
+                Conditions
+              </span>
+            </motion.h1>
 
-            <h2 className="text-2xl font-semibold mt-8 mb-4">2. Use License</h2>
-            <ul className="list-disc pl-6 mb-6">
-              <li>Permission is granted to temporarily access our services for personal, non-commercial use.</li>
-              <li>This license does not include:
-                <ul className="list-disc pl-6 mt-2">
-                  <li>Modifying or copying our materials</li>
-                  <li>Using materials for commercial purposes</li>
-                  <li>Attempting to reverse engineer any software</li>
-                  <li>Removing any copyright or proprietary notations</li>
-                </ul>
-              </li>
-            </ul>
+            {/* Subtitle */}
+                         <motion.p
+               initial={{ opacity: 0, y: 20 }}
+               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.5, delay: 0.2 }}
+               className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+             >
+               Welcome to Envision Edge Tech Pvt. Ltd. By accessing our website and services, 
+               you agree to these terms and conditions.
+             </motion.p>
+          </motion.div>
 
-            <h2 className="text-2xl font-semibold mt-8 mb-4">3. Disclaimer</h2>
-            <p className="mb-6">
-              Our services are provided "as is". We make no warranties, expressed or implied, and hereby disclaim all warranties including, but not limited to, implied warranties or merchantability and fitness for a particular purpose.
-            </p>
-
-            <h2 className="text-2xl font-semibold mt-8 mb-4">4. Limitations</h2>
-            <p className="mb-6">
-              We shall not be held liable for any damages arising from the use or inability to use our services, even if we have been notified of the possibility of such damages.
-            </p>
-
-            <h2 className="text-2xl font-semibold mt-8 mb-4">5. Revisions and Updates</h2>
-            <p className="mb-6">
-              We may update these terms and conditions at any time. By using our services, you agree to be bound by the current version of these terms and conditions.
-            </p>
-
-            <h2 className="text-2xl font-semibold mt-8 mb-4">6. Governing Law</h2>
-            <p className="mb-6">
-              These terms and conditions are governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
-            </p>
-
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
-            <p className="mb-6">
-              If you have any questions about these Terms and Conditions, please contact us at{' '}
-              <a href="mailto:info@envisionedgetech.com" className="text-blue-600 dark:text-blue-400 hover:underline">
-                info@envisionedgetech.com
-              </a>
-            </p>
-
-            <p className="text-sm text-foreground/70 mt-8">
-              Last updated: {new Date().getFullYear()}
-            </p>
+          {/* Content Sections */}
+          <div className="space-y-8">
+            {sections.map((section, index) => (
+              <motion.div
+                key={section.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-premium p-8 bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-3xl shadow-xl shadow-blue-500/10 dark:shadow-electric-500/20"
+              >
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-electric-500 dark:to-electric-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25 flex-shrink-0">
+                    <section.icon className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                      {section.id}. {section.title}
+                    </h2>
+                    
+                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                      {section.content}
+                    </p>
+                    
+                    {section.items.length > 0 && (
+                      <ul className="space-y-3">
+                        {section.items.map((item, itemIndex) => (
+                          <motion.li
+                            key={itemIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.2 + itemIndex * 0.05 }}
+                            viewport={{ once: true }}
+                            className="flex items-start gap-3"
+                          >
+                            <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 dark:from-electric-500 dark:to-neon-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <CheckCircle2 className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-gray-700 dark:text-gray-300 leading-relaxed">{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Contact Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              viewport={{ once: true }}
+              className="glass-premium p-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-electric-500/10 dark:to-neon-500/10 backdrop-blur-xl border border-blue-200/50 dark:border-electric-500/20 rounded-3xl shadow-xl shadow-blue-500/10 dark:shadow-electric-500/20"
+            >
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 dark:from-emerald-500 dark:to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/25 dark:shadow-emerald-500/25 flex-shrink-0">
+                  <Mail className="w-8 h-8 text-white" />
+                </div>
+                
+                <div className="flex-1">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    Contact Us
+                  </h2>
+                  
+                  <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    If you have any questions about these Terms and Conditions, please contact us at{' '}
+                    <a 
+                      href="mailto:info@envisionedgetech.com" 
+                      className="text-blue-600 dark:text-electric-400 hover:text-blue-700 dark:hover:text-electric-300 font-medium underline decoration-2 underline-offset-2 transition-colors"
+                    >
+                      info@envisionedgetech.com
+                    </a>
+                  </p>
+                  
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-white/5 backdrop-blur-sm border border-gray-200/50 dark:border-white/10 rounded-full">
+                    <FileText className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      Last updated: {new Date().getFullYear()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </article>
-      </main>
+        </div>
+      </div>
     </>
   );
 }; 

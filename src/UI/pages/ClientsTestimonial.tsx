@@ -1,180 +1,422 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight, User } from 'lucide-react'
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { Star, Quote, ChevronLeft, ChevronRight, Users, TrendingUp, Shield, Award } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 
-const testimonials = [
+// Declare the Calendly type
+declare global {
+  interface Window {
+    Calendly?: any;
+  }
+}
+
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  rating: number;
+  image?: string;
+  companyLogo?: string;
+  metrics?: {
+    improvement: string;
+    metric: string;
+  };
+}
+
+const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Sarah Johnson",
-    role: "CEO, TechCorp",
-    content: "Working with this team has transformed our business. Their innovative solutions and dedication to excellence are unmatched.",
-    rating: 5
+    role: "CTO",
+    company: "TechCorp Solutions",
+    content: "Envision Edge Tech transformed our entire digital infrastructure. Their AI-powered MIS system increased our operational efficiency by 40% and reduced costs significantly. The team's expertise and professionalism are unmatched.",
+    rating: 5,
+    metrics: {
+      improvement: "40%",
+      metric: "Efficiency Increase"
+    }
   },
   {
     id: 2,
-    name: "Michael Chen", 
-    role: "CTO, InnovateLabs",
-    content: "The level of technical expertise and customer service we received was exceptional. They truly understand modern business needs.",
-    rating: 5
+    name: "Michael Chen",
+    role: "CEO",
+    company: "HealthCare Plus",
+    content: "The CRM platform they built for us revolutionized how we handle patient relationships. The intuitive design and powerful analytics have helped us serve over 1,200 patients more effectively.",
+    rating: 5,
+    metrics: {
+      improvement: "1.2K+",
+      metric: "Patients Served"
+    }
   },
   {
     id: 3,
-    name: "Emma Williams",
-    role: "Director, FutureScale",
-    content: "Their solutions have helped us achieve remarkable growth. The attention to detail and support is outstanding.",
-    rating: 5
+    name: "Emily Rodriguez",
+    role: "Director of Operations",
+    company: "EduTech Innovations",
+    content: "Their education management system streamlined our entire operation. Student engagement increased by 60%, and administrative tasks are now 70% faster. Exceptional work and ongoing support.",
+    rating: 5,
+    metrics: {
+      improvement: "60%",
+      metric: "Engagement Boost"
+    }
   },
   {
     id: 4,
-    name: "David Rodriguez",
-    role: "COO, CloudNine",
-    content: "The team's ability to deliver complex solutions on time and within budget has been crucial to our success.",
-    rating: 5
-  },
-  {
-    id: 5,
-    name: "Lisa Zhang",
-    role: "VP Engineering, DataFlow",
-    content: "Their technical prowess and commitment to innovation have helped us stay ahead of the competition.",
-    rating: 5
-  },
-  {
-    id: 6,
-    name: "James Wilson",
-    role: "Founder, TechStart",
-    content: "From concept to execution, they've been an invaluable partner in our digital transformation journey.",
-    rating: 5
-  },
-  {
-    id: 7,
-    name: "Maria Garcia",
-    role: "CIO, GlobalTech",
-    content: "Their solutions are not just innovative but also scalable and future-proof. Exactly what we needed.",
-    rating: 5
-  },
-  {
-    id: 8,
-    name: "Robert Kim",
-    role: "Director, NextGen Solutions",
-    content: "The team's expertise in cutting-edge technologies has been instrumental in modernizing our infrastructure.",
-    rating: 5
+    name: "David Wilson",
+    role: "Founder",
+    company: "Hospitality Masters",
+    content: "The custom ERP solution exceeded all expectations. Our revenue increased by 35% in the first quarter alone. The real-time analytics and automation features are game-changing.",
+    rating: 5,
+    metrics: {
+      improvement: "35%",
+      metric: "Revenue Growth"
+    }
   }
-]
+];
 
-export const ClientsTestimonial = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (!isAutoScrollPaused) {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-      }
-    }, 5000) // Change testimonial every 5 seconds
-
-    return () => clearInterval(timer)
-  }, [isAutoScrollPaused])
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+const TestimonialCard = ({ testimonial, isActive }: { testimonial: Testimonial, isActive: boolean }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-50px" });
 
   return (
-    <div className="relative py-24 overflow-hidden bg-transparent"
-      onMouseEnter={() => setIsAutoScrollPaused(true)}
-      onMouseLeave={() => setIsAutoScrollPaused(false)}
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={isInView ? { 
+        opacity: 1, 
+        y: 0, 
+        scale: isActive ? 1 : 0.95,
+      } : {}}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`relative group ${isActive ? 'z-10' : 'z-0'}`}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,.2)_50%,transparent_75%,transparent_100%)] bg-64 animate-pattern"></div>
-      </div>
+      <motion.div
+        whileHover={{ y: -8, scale: 1.02 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="relative p-8 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden h-full"
+      >
+        {/* Glow effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-electric-500/10 to-neon-500/10"
+          animate={isActive ? { opacity: 1, scale: 1.1 } : { opacity: 0.5, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        />
 
-      <div className="container mx-auto px-4 relative">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300 bg-clip-text text-transparent drop-shadow-lg"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Client Success Stories
-        </motion.h2>
+        {/* Quote icon */}
+        <div className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-electric-500/20 to-neon-500/20 rounded-full flex items-center justify-center">
+          <Quote className="w-6 h-6 text-electric-400" />
+        </div>
 
-        <div className="max-w-6xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-[1fr,1.5fr] gap-8 items-center bg-gradient-to-br from-blue-100/80 via-blue-200/80 to-blue-300/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-blue-500/20 shadow-xl shadow-blue-500/5"
-            >
-              <div className="flex flex-col items-center md:items-start space-y-6">
-                <div className="w-32 h-32 rounded-full ring-4 ring-blue-500/30 overflow-hidden shadow-lg shadow-blue-500/20 bg-blue-200 flex items-center justify-center">
-                  <User className="w-16 h-16 text-blue-500" />
+        <div className="relative z-10">
+          {/* Rating */}
+          <div className="flex items-center gap-1 mb-6">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, delay: i * 0.1 }}
+              >
+                <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Content */}
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-8 font-medium">
+            "{testimonial.content}"
+          </p>
+
+          {/* Metrics */}
+          {testimonial.metrics && (
+            <div className="mb-6 p-4 bg-gray-100/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-neon-500 to-electric-500 rounded-xl flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-white" />
                 </div>
-
-                <div className="text-center md:text-left">
-                  <h3 className="font-bold text-2xl text-blue-800 mb-1">
-                    {testimonials[currentIndex].name}
-                  </h3>
-                  <p className="text-blue-500 font-medium">
-                    {testimonials[currentIndex].role}
-                  </p>
-                </div>
-
-                <div className="flex gap-1">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-blue-500 fill-blue-500" />
-                  ))}
+                <div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-white">{testimonial.metrics.improvement}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">{testimonial.metrics.metric}</div>
                 </div>
               </div>
-
-              <div className="relative">
-                <div className="absolute -top-6 -left-6 text-6xl text-blue-500/20">"</div>
-                <p className="text-blue-800 text-lg md:text-xl leading-relaxed italic relative z-10">
-                  {testimonials[currentIndex].content}
-                </p>
-                <div className="absolute -bottom-6 -right-6 text-6xl text-blue-500/20">"</div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="flex justify-center items-center mt-12 gap-4">
-            <button
-              onClick={prevTestimonial}
-              className="p-3 rounded-full bg-blue-200/80 hover:bg-blue-300 text-blue-500 transition-all border border-blue-500/20 hover:border-blue-500/40 shadow-lg hover:shadow-blue-500/10"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <div className="flex gap-3">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
-                      ? 'bg-blue-500 w-8 shadow-md shadow-blue-500/50'
-                      : 'bg-blue-200 hover:bg-blue-300'
-                  }`}
-                />
-              ))}
             </div>
+          )}
 
-            <button
-              onClick={nextTestimonial}
-              className="p-3 rounded-full bg-blue-200/80 hover:bg-blue-300 text-blue-500 transition-all border border-blue-500/20 hover:border-blue-500/40 shadow-lg hover:shadow-blue-500/10"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+          {/* Author */}
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-gradient-to-br from-blue-500/20 dark:from-electric-500/20 to-purple-500/20 dark:to-neon-500/20 rounded-2xl flex items-center justify-center border border-gray-200 dark:border-white/20">
+              <Users className="w-7 h-7 text-gray-700 dark:text-white/80" />
+            </div>
+            <div>
+              <h4 className="text-gray-900 dark:text-white font-bold text-lg">{testimonial.name}</h4>
+              <p className="text-gray-600 dark:text-gray-400">{testimonial.role}</p>
+              <p className="text-blue-600 dark:text-electric-400 font-medium">{testimonial.company}</p>
+            </div>
           </div>
         </div>
+
+        {/* Border animation */}
+        <motion.div
+          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100"
+          style={{
+            background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent)',
+          }}
+          animate={{
+            rotate: 360,
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const TrustStats = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(statsRef, { once: true });
+
+  const stats = [
+    { value: "25+", label: "Happy Clients", icon: Users },
+    { value: "96%", label: "Success Rate", icon: Award },
+    { value: "24/7", label: "Support", icon: Shield },
+    { value: "12+", label: "Industries", icon: TrendingUp },
+  ];
+
+  return (
+    <motion.div
+      ref={statsRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+      className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+    >
+      {stats.map((stat, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+          className="text-center p-6 bg-white/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300 group"
+        >
+          <stat.icon className="w-8 h-8 text-blue-600 dark:text-electric-400 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+          <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">{stat.label}</div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
+export const ClientsTestimonial = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroInView = useInView(heroRef, { once: true });
+
+  // Add Calendly script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: "https://calendly.com/envisionedgetech/30min",
+      });
+    }
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
+  const getVisibleTestimonials = () => {
+    const visibleCount = 3;
+    const testimonialsList = [];
+    
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (currentIndex + i) % testimonials.length;
+      testimonialsList.push({
+        ...testimonials[index],
+        isActive: i === 1 // Middle card is active
+      });
+    }
+    
+    return testimonialsList;
+  };
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative py-20"
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <motion.div 
+          ref={heroRef}
+          className="text-center mb-16"
+        >
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center mb-8"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white">
+              <Star className="w-4 h-4 text-blue-600 dark:text-neon-400" />
+              <span className="text-sm font-medium">Client Success Stories</span>
+            </div>
+          </motion.div>
+
+          {/* Main Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold leading-tight mb-8"
+          >
+            <span className="block text-gray-900 dark:text-white">Trusted by Industry</span>
+            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
+              Leaders Worldwide
+            </span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+          >
+            See how we've helped companies across the globe transform their operations 
+            and achieve extraordinary results with our enterprise solutions.
+          </motion.p>
+        </motion.div>
+
+        {/* Trust Stats */}
+        <TrustStats />
+
+        {/* Testimonials Carousel */}
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 z-20">
+            <motion.button
+              onClick={prevTestimonial}
+              whileHover={{ scale: 1.1, x: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-12 h-12 bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full flex items-center justify-center text-gray-900 dark:text-white hover:bg-white/20 dark:hover:bg-white/20 transition-all duration-300"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </motion.button>
+          </div>
+          
+          <div className="absolute top-1/2 -translate-y-1/2 right-0 z-20">
+            <motion.button
+              onClick={nextTestimonial}
+              whileHover={{ scale: 1.1, x: 2 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-12 h-12 bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full flex items-center justify-center text-gray-900 dark:text-white hover:bg-white/20 dark:hover:bg-white/20 transition-all duration-300"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </motion.button>
+          </div>
+
+          {/* Testimonials Grid */}
+          <div className="grid md:grid-cols-3 gap-8 px-16">
+            <AnimatePresence mode="wait">
+              {getVisibleTestimonials().map((testimonial, index) => (
+                <motion.div
+                  key={`${testimonial.id}-${currentIndex}`}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    isActive={testimonial.isActive}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex justify-center gap-3 mt-12">
+            {testimonials.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsAutoPlaying(false);
+                }}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-blue-600 dark:bg-electric-500 w-8' 
+                    : 'bg-gray-400/50 dark:bg-white/30 hover:bg-gray-500/70 dark:hover:bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-20 pt-16 border-t border-gray-200 dark:border-white/10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            Ready to Join Our Success Stories?
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            Let's discuss how we can help transform your business and achieve similar results.
+          </p>
+          <motion.button
+            onClick={openCalendly}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-electric-600 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-electric-500/25"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Start Your Success Story
+              <TrendingUp className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-electric-500 to-neon-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+        </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};

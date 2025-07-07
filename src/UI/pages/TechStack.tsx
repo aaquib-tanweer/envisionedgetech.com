@@ -31,31 +31,33 @@ const LogoSection = () => (
 
 export const TechStack = () => {
   return (
-    <div>
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-300 bg-clip-text text-transparent drop-shadow-lg"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Powered by Cutting-Edge Tech
-      </motion.h2>
+    <div className="relative pt-8 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent drop-shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Powered by Cutting-Edge Tech
+        </motion.h2>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="w-full overflow-hidden py-4 select-none relative"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent 100%)',
-        }}
-      >
-        <div className="flex animate-[scroll_20s_linear_infinite]">
-          <LogoSection />
-          <LogoSection />
-        </div>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="w-full overflow-hidden py-4 select-none relative"
+          style={{
+            maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent 100%)',
+          }}
+        >
+          <div className="flex animate-[scroll_20s_linear_infinite]">
+            <LogoSection />
+            <LogoSection />
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

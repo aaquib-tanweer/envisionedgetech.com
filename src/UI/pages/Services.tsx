@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { motion, MotionProps, Variants } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, CheckCircle2, Sparkles, Zap, Shield, Rocket, Globe, Code, Palette, Database, Cloud, Headphones } from 'lucide-react';
 import { services } from '@/constants/services';
 
 interface ServiceItem {
@@ -10,129 +11,287 @@ interface ServiceItem {
 
 interface ServiceCardProps {
   service: ServiceItem;
-  className?: string;
-  index?: number;
+  index: number;
+  icon: any;
 }
 
-const cardVariants: Variants = {
-  idle: { scale: 1 },
-  hover: { 
-    scale: 1.02,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut"
-    }
+declare global {
+  interface Window {
+    Calendly?: any;
   }
-};
+}
 
-const iconVariants: Variants = {
-  hover: {
-    scale: [1, 1.1, 1],
-    rotate: [0, -10, 10, 0],
-    transition: {
-      duration: 0.6,
-      ease: "easeInOut",
-      times: [0, 0.2, 0.5, 0.8],
-      repeat: Infinity,
-      repeatDelay: 1
-    }
-  }
-};
-
-const ServiceCard: React.FC<ServiceCardProps & MotionProps> = ({ 
-  service, 
-  className = "",
-  index = 0
-}) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, icon: IconComponent }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-100px" });
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 50, rotateX: 10 }}
+      animate={isInView ? { 
+        opacity: 1, 
+        y: 0, 
+        rotateX: 0,
+        transition: { 
+          duration: 0.6, 
+          delay: index * 0.1,
+          ease: "easeOut"
+        }
+      } : {}}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative"
     >
       <motion.div
-        variants={cardVariants}
-        initial="idle"
-        whileHover="hover"
-        className={`
-          group relative rounded-xl p-6 bg-background/50 border border-border/50 
-          backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300 
-          ${className}
-        `}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
+        whileHover={{ 
+          y: -8,
+          transition: { duration: 0.3, ease: "easeOut" }
+        }}
+        className="relative p-8 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-lg dark:shadow-none"
       >
-        <div className="flex items-start gap-4">
-          <motion.div
-            variants={iconVariants}
-            animate={isHovered ? "hover" : "idle"}
-            className="flex-shrink-0 p-3 rounded-lg bg-blue-500/10 text-blue-500"
-          >
-            <span className="text-2xl">{service.icon}</span>
-          </motion.div>
-          
-          <div className="space-y-2">
-            <motion.h3
-              animate={isHovered ? { x: 5 } : { x: 0 }}
-              transition={{ duration: 0.2 }}
-              className="text-lg font-semibold tracking-tight"
-            >
-              {service.name}
-            </motion.h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {service.description}
-            </p>
-          </div>
-        </div>
-        
+        {/* Animated background gradient */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 dark:from-electric-500/10 via-transparent to-purple-500/10 dark:to-neon-500/10"
+          animate={isHovered ? { 
+            scale: 1.1,
+            opacity: 1
+          } : { 
+            scale: 1,
+            opacity: 0.5
+          }}
+          transition={{ duration: 0.4 }}
+        />
+
+        {/* Glow effect on hover */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/20 dark:from-electric-500/20 to-purple-500/20 dark:to-neon-500/20 blur-xl"
+          animate={isHovered ? { opacity: 1, scale: 1.1 } : { opacity: 0, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10 rounded-xl"
+        />
+
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Icon */}
+          <motion.div
+            className="mb-6 relative"
+            animate={isHovered ? { 
+              rotate: [0, -5, 5, 0],
+              scale: 1.1
+            } : { 
+              rotate: 0,
+              scale: 1
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-electric-500 dark:to-electric-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25">
+              <IconComponent className="w-8 h-8 text-white" />
+            </div>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 dark:from-electric-400 dark:to-electric-600 rounded-2xl blur-md"
+              animate={isHovered ? { opacity: 0.8, scale: 1.2 } : { opacity: 0, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+
+          {/* Title */}
+          <motion.h3
+            className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
+            animate={isHovered ? { x: 4 } : { x: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {service.name}
+          </motion.h3>
+
+          {/* Description */}
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          {/* Learn More Link */}
+          <motion.div
+            className="flex items-center gap-2 text-blue-600 dark:text-electric-400 font-medium group-hover:text-blue-700 dark:group-hover:text-electric-300 transition-colors"
+            animate={isHovered ? { x: 8 } : { x: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span>Learn More</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </motion.div>
+        </div>
+
+        {/* Border animation */}
+        <motion.div
+          className="absolute inset-0 rounded-3xl"
+          style={{
+            background: isHovered 
+              ? 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent)'
+              : 'transparent',
+          }}
+          animate={isHovered ? {
+            rotate: 360,
+          } : {}}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
       </motion.div>
     </motion.div>
   );
 };
 
-export function Services() {
+const PremiumStats = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(statsRef, { once: true });
+
+  const stats = [
+    { value: "40+", label: "Projects Delivered", icon: Rocket },
+          { value: "99.2%", label: "Uptime Guarantee", icon: Shield },
+          { value: "20+", label: "Enterprise Clients", icon: Globe },
+    { value: "24/7", label: "Support Available", icon: Headphones },
+  ];
+
   return (
-    <section className="relative py-20">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" 
-      />
-      
-      <div className="container relative mx-auto px-4">
+    <motion.div
+      ref={statsRef}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+    >
+      {stats.map((stat, index) => (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto text-center mb-12"
+          key={index}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+          className="relative group"
         >
-          <h2 className="text-sm font-semibold text-blue-500 mb-3">OUR SERVICES</h2>
-          <h3 className="text-3xl font-bold mb-4">
-            Power Innovation with Scalable Solutions
-          </h3>
-          <p className="text-muted-foreground">
-            From web and mobile app development to UI/UX design and ongoing
-            support, we deliver exceptional services that drive growth.
-          </p>
+          <div className="text-center p-6 bg-white/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl hover:bg-white dark:hover:bg-white/10 transition-all duration-300 shadow-lg dark:shadow-none">
+            <stat.icon className="w-8 h-8 text-blue-600 dark:text-electric-400 mx-auto mb-3" />
+            <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{stat.value}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">{stat.label}</div>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
+export function Services() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroInView = useInView(heroRef, { once: true });
+
+  const openCalendly = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: "https://calendly.com/envisionedgetech/30min",
+      });
+    }
+  };
+
+  const serviceIcons = {
+    'Web Development': Code,
+    'Mobile App Development': Rocket,
+    'UI/UX Design': Palette,
+    'Database Management': Database,
+    'Cloud Solutions': Cloud,
+    'Technical Support': Headphones,
+  };
+
+  const getServiceIcon = (serviceName: string) => {
+    return serviceIcons[serviceName as keyof typeof serviceIcons] || Code;
+  };
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative py-20"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <motion.div 
+          ref={heroRef}
+          className="text-center mb-20"
+        >
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center mb-8"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-lg dark:shadow-none">
+              <Sparkles className="w-4 h-4 text-blue-600 dark:text-neon-400" />
+              <span className="text-sm font-medium">Custom Development Services</span>
+            </div>
+          </motion.div>
+
+          {/* Main Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold leading-tight mb-8"
+                      >
+              <span className="block text-gray-900 dark:text-white">Build Your Vision with</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
+                Expert Development
+              </span>
+            </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
+          >
+            From concept to deployment, our expert development team creates custom solutions tailored to your unique business needs. 
+            We turn your ideas into powerful, scalable digital experiences that drive real results.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.button
+            onClick={openCalendly}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-electric-600 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-electric-500/25"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Discuss Your Project
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-electric-500 to-neon-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
         </motion.div>
 
-        <div className="grid gap-6">
-          <ServiceCard 
-            service={services.webDevelopement}
-            className="md:flex-row"
-            index={0}
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Stats Section */}
+        <PremiumStats />
+
+        {/* Services Grid */}
+        <div className="space-y-8">
+          {/* Featured Service */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <ServiceCard 
+              service={services.webDevelopement}
+              index={0}
+              icon={getServiceIcon(services.webDevelopement.name)}
+            />
+          </motion.div>
+
+          {/* Other Services */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(services)
               .slice(1)
               .map(([key, service], index) => (
@@ -140,37 +299,40 @@ export function Services() {
                   key={key} 
                   service={service} 
                   index={index + 1}
+                  icon={getServiceIcon(service.name)}
                 />
             ))}
           </div>
         </div>
-        
+
+        {/* Bottom CTA */}
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 right-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5
-          }}
-          className="absolute bottom-1/4 left-0 w-1/3 h-1/3 bg-blue-500/5 rounded-full blur-3xl -z-10"
-        />
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-20 pt-20 border-t border-gray-200 dark:border-white/10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            Ready to Bring Your Vision to Life?
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            Partner with our expert development team to create custom solutions that drive measurable business results.
+          </p>
+          <motion.button
+            onClick={openCalendly}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-neon-500 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-neon-500/25"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              <Zap className="w-5 h-5" />
+              Start Your Project
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </motion.button>
+        </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

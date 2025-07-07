@@ -24,5 +24,13 @@ export const companyDataConstants = {
       name: 'LinkedIn',
       link: 'https://www.linkedin.com/company/envision-edge-tech',
     },
+    {
+      name: 'Instagram',
+      link: 'https://www.instagram.com/envisionedgetech',
+    },
+    {
+      name: 'Facebook',
+      link: 'https://www.facebook.com/profile.php?id=61574579866083',
+    },
   ],
 }
