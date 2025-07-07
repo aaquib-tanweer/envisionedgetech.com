@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useInView, useMotionValue, useSpring } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { 
   Code2, Palette, Layers, Sparkles, ArrowRight, CheckCircle, Zap, Users, 
   TrendingUp, Globe, Shield, PlayCircle, Brush, Rocket
