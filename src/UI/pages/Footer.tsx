@@ -1,5 +1,5 @@
 import { companyDataConstants } from '@/constants/data/companyData.constant'
-import { MapPin, Mail, Phone, ArrowUpRight, Globe, Users, Code2, Github, Linkedin, Twitter, Instagram, Facebook, Sparkles, CheckCircle2 } from 'lucide-react'
+import { MapPin, Mail, Phone, ArrowUpRight, Globe, Users, Code2, Github, Linkedin, Twitter, Instagram, Facebook, Sparkles, CheckCircle2, MessageCircle } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import { footerLinks } from '@/constants/navlinks'
 import { motion, useInView } from 'framer-motion'
@@ -130,9 +130,13 @@ export const Footer = () => {
                   <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 uppercase tracking-wider">Phone</h3>
                   {companyDataConstants.phones.map((phone) => (
                     <div key={phone.number} className="group">
-                      <FooterLink href={`tel:${phone.number}`}>
+                      <FooterLink href={phone.country === 'IN' ? `https://wa.me/${phone.number.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello! I need support from Envision Edge Tech.')}` : `tel:${phone.number}`}>
                         <div className="w-8 h-8 bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-lg flex items-center justify-center">
-                          <Phone className="size-4 text-green-600 dark:text-neon-400" />
+                          {phone.country === 'IN' ? (
+                            <MessageCircle className="size-4 text-green-600 dark:text-neon-400" />
+                          ) : (
+                            <Phone className="size-4 text-green-600 dark:text-neon-400" />
+                          )}
                         </div>
                         <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
                           {phone.country === 'IN' ? '🇮🇳 ' : '🇺🇸 '}
