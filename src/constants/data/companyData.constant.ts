@@ -5,7 +5,7 @@ export const companyDataConstants = {
   country: 'India',
   foundedYear: 2024,
   emails: [
-    'contact@envisionedgetech.com',
+    'info@envisionedgetech.com',
     'support@envisionedgetech.com'
   ],
   phones: [

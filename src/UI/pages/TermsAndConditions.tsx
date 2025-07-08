@@ -181,7 +181,7 @@ export const TermsAndConditions = () => {
                       href="mailto:info@envisionedgetech.com" 
                       className="text-blue-600 dark:text-electric-400 hover:text-blue-700 dark:hover:text-electric-300 font-medium underline decoration-2 underline-offset-2 transition-colors"
                     >
-                      info@envisionedgetech.com
+                      contact@envisionedgetech.com
                     </a>
                   </p>
                   
