@@ -10,7 +10,6 @@ import {
   Users, 
   ArrowRight,
   Calendar,
-  Clock,
   Share2,
   MessageCircle,
   Heart,
@@ -22,11 +21,8 @@ import {
   BarChart3,
   CheckCircle,
   XCircle,
-  Star,
   Mail,
-  Globe,
-  ChevronDown,
-  Tag
+  Globe
 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 
@@ -81,8 +77,7 @@ export const Blog = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
-  // Selected blog and engagement states
-  const [selectedBlog, setSelectedBlog] = useState<number | null>(null);
+  // Engagement states
   const [likedBlogs, setLikedBlogs] = useState<{[key: number]: boolean}>({});
   const [blogLikes, setBlogLikes] = useState<{[key: number]: number}>({
     1: 94,
@@ -127,7 +122,6 @@ export const Blog = () => {
   };
 
   const scrollToBlog = (blogId: number) => {
-    setSelectedBlog(blogId);
     const element = document.getElementById(`blog-${blogId}`);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });

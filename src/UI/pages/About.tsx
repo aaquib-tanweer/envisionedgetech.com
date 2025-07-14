@@ -1,6 +1,6 @@
 import { members } from '@/constants/data/members'
 import { motion, useInView } from 'framer-motion'
-import { User, ArrowRight, Sparkles, Award, Users, Globe, Zap, Rocket, Shield, Target } from 'lucide-react'
+import { User, ArrowRight, Award, Users, Globe, Zap, Rocket, Shield, Target } from 'lucide-react'
 import { SEOHead } from '@/components/SEOHead'
 import { seoConfig } from '@/constants/seo.config'
 import { useRef } from 'react'

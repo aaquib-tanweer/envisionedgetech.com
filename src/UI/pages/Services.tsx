@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Shield, Rocket, Globe, Code, Palette, Database, Cloud, Headphones } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Rocket, Globe, Code, Palette, Database, Cloud, Headphones } from 'lucide-react';
 import { services } from '@/constants/services';
 
 interface ServiceItem {
