@@ -208,64 +208,117 @@ export function Services() {
       className="relative py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
+        {/* Technical Hero Section */}
         <motion.div 
           ref={heroRef}
-          className="text-center mb-20"
+          className="mb-20"
         >
-          {/* Badge */}
+          {/* Terminal-style Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="flex justify-center mb-8"
+            className="bg-gray-900 dark:bg-gray-800 rounded-lg p-6 mb-8 font-mono text-sm"
           >
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-lg dark:shadow-none">
-              <Sparkles className="w-4 h-4 text-blue-600 dark:text-neon-400" />
-              <span className="text-sm font-medium">Custom Development Services</span>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <span className="ml-4 text-gray-400">services.config.ts</span>
+            </div>
+            <div className="text-green-400">
+              <span className="text-blue-400">export const</span> services = &#123;<br />
+              &nbsp;&nbsp;<span className="text-yellow-400">development</span>: <span className="text-purple-400">'enterprise-grade'</span>,<br />
+              &nbsp;&nbsp;<span className="text-yellow-400">architecture</span>: <span className="text-purple-400">'scalable'</span>,<br />
+              &nbsp;&nbsp;<span className="text-yellow-400">deployment</span>: <span className="text-purple-400">'cloud-native'</span>,<br />
+              &nbsp;&nbsp;<span className="text-yellow-400">support</span>: <span className="text-purple-400">'24/7'</span><br />
+              &#125;
             </div>
           </motion.div>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold leading-tight mb-8"
-                      >
-              <span className="block text-gray-900 dark:text-white">Build Your Vision with</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
-                Expert Development
-              </span>
-            </motion.h1>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              {/* Technical Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6"
+              >
+                <span className="font-mono text-green-600 dark:text-green-400">$</span> Build Your Vision
+                <span className="block text-gray-700 dark:text-gray-300">
+                  With Expert Development
+                </span>
+              </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
-          >
-            From concept to deployment, our expert development team creates custom solutions tailored to your unique business needs. 
-            We turn your ideas into powerful, scalable digital experiences that drive real results.
-          </motion.p>
+              {/* Technical Description */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-4 mb-8"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="font-mono text-green-600 dark:text-green-400 text-sm">{'>'}</span>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Concept to deployment: Custom solutions engineered for your business requirements
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="font-mono text-green-600 dark:text-green-400 text-sm">{'>'}</span>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Scalable architecture with modern technology stack
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="font-mono text-green-600 dark:text-green-400 text-sm">{'>'}</span>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Performance-optimized with enterprise-grade security
+                  </p>
+                </div>
+              </motion.div>
 
-          {/* CTA */}
-          <motion.button
-            onClick={openCalendly}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-gradient-to-r from-electric-600 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-electric-500/25"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              Discuss Your Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-electric-500 to-neon-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </motion.button>
+              {/* Technical CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <button
+                  onClick={openCalendly}
+                  className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-mono font-semibold transition-colors flex items-center gap-2"
+                >
+                  <Code className="w-4 h-4" />
+                  ./discuss-project
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Technical Visualization */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="bg-gray-900 dark:bg-gray-800 rounded-lg p-6 font-mono text-sm">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="ml-4 text-gray-400">development-stack.json</span>
+                </div>
+                <div className="text-gray-300 space-y-2">
+                  <div><span className="text-blue-400">"frontend"</span>: <span className="text-green-400">"React, Next.js, TypeScript"</span>,</div>
+                  <div><span className="text-blue-400">"backend"</span>: <span className="text-green-400">"Node.js, Python, Go"</span>,</div>
+                  <div><span className="text-blue-400">"database"</span>: <span className="text-green-400">"PostgreSQL, MongoDB"</span>,</div>
+                  <div><span className="text-blue-400">"cloud"</span>: <span className="text-green-400">"AWS, Vercel, Docker"</span>,</div>
+                  <div><span className="text-blue-400">"tools"</span>: <span className="text-green-400">"Git, CI/CD, Testing"</span></div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Stats Section */}

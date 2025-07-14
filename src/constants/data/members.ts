@@ -15,6 +15,12 @@ const members: Member[] = [
     image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=RajeshKumar',
   },
   {
+    name: 'Aaquib Tanweer',
+    role: 'Full Stack Developer',
+    projectsInvolved: [projectNames.CLOUDFLOW],
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AaquibTanweer',
+  },
+  {
     name: 'Priyanka Mehta',
     role: 'Frontend Developer', 
     projectsInvolved: [projectNames.DATAFORGE],

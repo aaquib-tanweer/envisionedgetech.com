@@ -91,66 +91,136 @@ export function Products() {
 
   return (
     <div className="container mx-auto px-4 py-24">
+      {/* Innovation Showcase Hero */}
       <motion.div
         ref={titleRef}
         initial={{ opacity: 0, y: -50 }}
         animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-20"
+        className="mb-20"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex justify-center mb-6"
-        >
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-lg dark:shadow-none">
-            <Sparkles className="w-4 h-4 text-blue-600 dark:text-electric-400" />
-            <span className="text-sm font-medium">Ready-to-Deploy Solutions</span>
-          </div>
-        </motion.div>
-        
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-5xl md:text-7xl font-bold mb-6"
-        >
-          <span className="block text-gray-900 dark:text-white">Business-Ready</span>
-          <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
-            Digital Products
-          </span>
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-        >
-          Deploy powerful, production-ready software solutions that scale with your business. 
-          Our enterprise-grade products deliver measurable ROI from day one, with built-in security, analytics, and 24/7 support.
-        </motion.p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+                <span className="text-indigo-700 dark:text-indigo-300 font-medium text-sm">
+                  INNOVATION LABS
+                </span>
+              </div>
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight"
+            >
+              <span className="block text-gray-900 dark:text-white">Next-Gen</span>
+              <span className="block relative">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400">
+                  Digital Products
+                </span>
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 rounded-full transform scale-x-0 animate-pulse origin-left"></div>
+              </span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8"
+            >
+              Cutting-edge software solutions engineered for tomorrow's challenges. 
+              Deploy enterprise-grade products that deliver instant ROI with AI-powered insights, 
+              quantum-ready security, and seamless scalability.
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+             
+            </motion.div>
+          </div>
+
+          {/* Tech Visualization */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="relative"
+          >
+            {/* Floating Cards */}
+            <div className="relative h-96 w-full">
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 left-4 w-32 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg shadow-lg p-4 flex items-center justify-center"
+              >
+                <Zap className="w-8 h-8 text-white" />
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-16 right-8 w-28 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg shadow-lg p-3 flex items-center justify-center"
+              >
+                <Shield className="w-6 h-6 text-white" />
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute bottom-20 left-12 w-36 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg p-4 flex items-center justify-center"
+              >
+                <Users className="w-8 h-8 text-white" />
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute bottom-4 right-4 w-24 h-24 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full shadow-lg flex items-center justify-center"
+              >
+                <Star className="w-6 h-6 text-white" />
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Innovation Metrics */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-8 mt-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 p-8 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700"
         >
           {[
-            { icon: Users, value: "25+", label: "Enterprise Clients" },
-            { icon: Star, value: "4.8/5", label: "Customer Rating" },
-            { icon: Shield, value: "99.5%", label: "Uptime SLA" },
-            { icon: Zap, value: "24/7", label: "Global Support" },
+            { icon: Users, value: "25+", label: "Enterprise Clients", color: "text-indigo-600 dark:text-indigo-400" },
+            { icon: Star, value: "4.8/5", label: "Innovation Score", color: "text-purple-600 dark:text-purple-400" },
+            { icon: Shield, value: "99.5%", label: "Uptime SLA", color: "text-cyan-600 dark:text-cyan-400" },
+            { icon: Zap, value: "24/7", label: "AI Support", color: "text-emerald-600 dark:text-emerald-400" },
           ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 dark:from-electric-500/20 to-purple-500/20 dark:to-electric-600/20 border border-blue-500/30 dark:border-electric-500/30 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg dark:shadow-none">
-                <stat.icon className="w-6 h-6 text-blue-600 dark:text-electric-400" />
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+              className="text-center"
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 ${stat.color} bg-current/10`}>
+                <stat.icon className={`w-6 h-6 ${stat.color}`} />
               </div>
               <div className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
               <div className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </motion.div>

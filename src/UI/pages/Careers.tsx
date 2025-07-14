@@ -23,23 +23,24 @@ export const Careers = () => {
         keywords="careers, jobs, technology jobs, remote work, software development, web development"
       />
       <div className="container mx-auto px-4 py-24">
-          {/* Hero Section */}
+          {/* Dynamic Opportunity Hero */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-4xl mx-auto mb-20"
+            className="text-center max-w-5xl mx-auto mb-20"
           >
-            {/* Badge */}
+            {/* Energetic Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex justify-center mb-8"
             >
-              <div className="glass-premium inline-flex items-center gap-2 px-6 py-3 bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-xl shadow-blue-500/10 dark:shadow-electric-500/20">
-                <Briefcase className="w-4 h-4 text-blue-600 dark:text-electric-400" />
-                <span className="text-sm font-medium">Join Our Team</span>
+              <div className="relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <Briefcase className="w-4 h-4" />
+                <span className="font-semibold">🚀 We're Hiring!</span>
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
               </div>
             </motion.div>
 
@@ -47,11 +48,17 @@ export const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+              className="text-5xl md:text-7xl font-black mb-6 leading-tight"
             >
-              <span className="block text-gray-900 dark:text-white">Career Opportunities at</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
-                Envision Edge Tech
+              <span className="block text-gray-900 dark:text-white">Your Next</span>
+              <span className="block relative mb-12">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 animate-pulse">
+                  BIG OPPORTUNITY
+                </span>
+                <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full"></div>
+              </span>
+              <span className="block text-gray-700 dark:text-gray-300 text-4xl md:text-5xl">
+                Starts Here! 🎯
               </span>
             </motion.h1>
             
@@ -61,31 +68,36 @@ export const Careers = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12"
             >
-              Help us shape the future of technology while working with the latest tools and technologies. 
-              Join our team of innovators and build solutions that impact thousands of users worldwide.
+              Ready to build something amazing? Join our crew of innovators, creators, and problem-solvers. 
+              We're not just building software – we're crafting the future, one line of code at a time! 💻✨
             </motion.p>
 
-            {/* Career Stats */}
+            {/* Vibrant Benefits Grid */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
               {[
-                { value: "100%", label: "Remote Work", icon: "🌍" },
-                { value: "5+", label: "Open Positions", icon: "💼" },
-                { value: "Growth", label: "Opportunities", icon: "📈" },
-                { value: "Flexible", label: "Hours", icon: "⏰" },
+                { value: "100%", label: "Remote First", icon: "🌍", color: "from-blue-500 to-cyan-500" },
+                { value: "5+", label: "Open Roles", icon: "💼", color: "from-purple-500 to-pink-500" },
+                { value: "Unlimited", label: "Growth", icon: "📈", color: "from-green-500 to-emerald-500" },
+                { value: "Flexible", label: "Schedule", icon: "⏰", color: "from-orange-500 to-red-500" },
               ].map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="glass-premium text-center p-4 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-2xl shadow-lg shadow-blue-500/5 dark:shadow-electric-500/10"
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  className={`relative text-center p-4 bg-gradient-to-br ${stat.color} text-white rounded-xl shadow-lg transform hover:shadow-xl transition-all duration-300`}
                 >
-                  <div className="text-2xl mb-2">{stat.icon}</div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider">{stat.label}</div>
-                </div>
+                  <div className="text-3xl mb-2">{stat.icon}</div>
+                  <div className="text-2xl font-black mb-1">{stat.value}</div>
+                  <div className="text-sm font-semibold uppercase tracking-wider opacity-90">{stat.label}</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>

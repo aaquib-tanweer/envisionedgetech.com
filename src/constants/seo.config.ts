@@ -34,4 +34,9 @@ export const seoConfig = {
     description: "Explore exciting career opportunities at Envision Edge Tech. Join our team of innovators and help shape the future of technology.",
     keywords: "careers, jobs, technology jobs, remote work, software development, web development"
   },
+  blog: {
+    title: "Blog - Insights & Tips | Envision Edge Tech",
+    description: "Stay updated with the latest insights, tips, and trends in web development, digital transformation, and business growth from Envision Edge Tech.",
+    keywords: "technology blog, web development tips, business insights, digital transformation, website design, software development trends"
+  },
 }; 

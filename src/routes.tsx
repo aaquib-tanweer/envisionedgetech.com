@@ -3,6 +3,7 @@ import { Home } from '@/UI/pages/Home'
 import { About } from '@/UI/pages/About'
 import { Products } from '@/UI/pages/Products'
 import { Services } from '@/UI/pages/Services'
+import { Blog } from '@/UI/pages/Blog'
 import { Careers } from '@/UI/pages/Careers'
 import { PrivacyPolicy } from '@/UI/pages/PrivacyPolicy'
 import { TermsAndConditions } from '@/UI/pages/TermsAndConditions'
@@ -40,6 +41,12 @@ const servicesRoute = createRoute({
   component: Services,
 })
 
+const blogRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/blog',
+  component: Blog,
+})
+
 const careersRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/careers',
@@ -63,6 +70,7 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   productsRoute,
   servicesRoute,
+  blogRoute,
   careersRoute,
   privacyPolicyRoute,
   termsAndConditionsRoute,

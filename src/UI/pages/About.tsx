@@ -197,56 +197,120 @@ export const About = () => {
         className="relative py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
+          {/* Corporate Hero Section */}
           <motion.div 
             ref={heroRef}
-            className="text-center mb-20"
+            className="mb-20"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              className="flex justify-center mb-8"
-            >
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-lg dark:shadow-none">
-                <Sparkles className="w-4 h-4 text-blue-600 dark:text-neon-400" />
-                <span className="text-sm font-medium">About Envision Edge Tech</span>
+            {/* Professional Header */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5 }}
+                  className="mb-6"
+                >
+                  <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                    <div className="w-2 h-2 bg-slate-600 dark:bg-slate-400 rounded-full"></div>
+                    <span className="text-slate-600 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">
+                      Est. 2021 • Technology Excellence
+                    </span>
+                  </div>
+                </motion.div>
+
+                {/* Corporate Title */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6"
+                >
+                  Delivering Technology That 
+                  <span className="block text-slate-700 dark:text-slate-300 font-light">
+                    Drives Growth
+                  </span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8"
+                >
+                  We partner with forward-thinking organizations to deliver enterprise-grade technology solutions that transform operations, enhance productivity, and accelerate growth.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <button
+                    onClick={openCalendly}
+                    className="px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg font-semibold hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
+                  >
+                    Schedule Consultation
+                  </button>
+                  <Link
+                    to="/services"
+                    className="px-6 py-3 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center"
+                  >
+                    Our Services
+                  </Link>
+                </motion.div>
               </div>
-            </motion.div>
 
-            {/* Main Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold leading-tight mb-8"
-            >
-              <span className="block text-gray-900 dark:text-white">Delivering Technology That</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent animate-gradient">
-                Drives Growth
-              </span>
-            </motion.h1>
-
-            {/* Company Description */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="max-w-5xl mx-auto"
-            >
-              <div className="relative p-8 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-lg dark:shadow-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 dark:from-electric-500/5 to-purple-500/5 dark:to-neon-500/5 rounded-3xl" />
-                <div className="relative z-10">
-                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                    <span className="text-blue-600 dark:text-electric-400 font-bold text-2xl md:text-3xl">Envision Edge Tech</span> specializes in developing intelligent software solutions that empower businesses across hospitality, education, and healthcare sectors.
-                  </p>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Our expertise spans AI/ML-driven Management Information Systems (MIS), Enterprise Resource Planning (ERP), and Customer Relationship Management (CRM) platforms. We deliver end-to-end web and mobile application development services, ensuring scalable and cutting-edge digital solutions.
-                  </p>
+              {/* Corporate Visual */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="relative"
+              >
+                <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-8 h-80">
+                  <div className="grid grid-cols-2 gap-4 h-full">
+                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                      <Award className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                    </div>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                      <Shield className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                    </div>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                      <Users className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                    </div>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                      <Globe className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                    </div>
+                  </div>
                 </div>
+              </motion.div>
+            </div>
+
+          </motion.div>
+
+          {/* Company Overview */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-20"
+          >
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-8">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Enterprise Solutions for Modern Business
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                  <span className="font-semibold text-slate-900 dark:text-slate-100">Envision Edge Tech</span> specializes in developing intelligent software solutions that empower businesses across hospitality, education, and healthcare sectors.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Our expertise spans AI/ML-driven Management Information Systems (MIS), Enterprise Resource Planning (ERP), and Customer Relationship Management (CRM) platforms. We deliver end-to-end web and mobile application development services, ensuring scalable and cutting-edge digital solutions.
+                </p>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Company Stats */}
