@@ -123,7 +123,7 @@ const CompanyStats = () => {
 
   const stats = [
     { value: "25+", label: "Global Clients", icon: Globe },
-    { value: "40+", label: "Projects Delivered", icon: Rocket },
+    { value: "35+", label: "Projects Delivered", icon: Rocket },
     { value: "6+", label: "Countries Served", icon: Target },
     { value: "98%", label: "Client Satisfaction", icon: Shield },
   ];

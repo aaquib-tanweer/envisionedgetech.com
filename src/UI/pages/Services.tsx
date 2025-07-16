@@ -143,7 +143,7 @@ const PremiumStats = () => {
   const isInView = useInView(statsRef, { once: true });
 
   const stats = [
-    { value: "40+", label: "Projects Delivered", icon: Rocket },
+    { value: "35+", label: "Projects Delivered", icon: Rocket },
           { value: "99.2%", label: "Uptime Guarantee", icon: Shield },
           { value: "20+", label: "Enterprise Clients", icon: Globe },
     { value: "24/7", label: "Support Available", icon: Headphones },
