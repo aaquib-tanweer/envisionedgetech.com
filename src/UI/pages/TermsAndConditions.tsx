@@ -1,4 +1,4 @@
-import { SEOHead } from '@/components/SEOHead';
+
 import { seoConfig } from '@/constants/seo.config';
 import { motion, useInView } from 'framer-motion';
 import { FileText, CheckCircle2, Shield, AlertTriangle, Scale, RefreshCw, Gavel, Mail } from 'lucide-react';
@@ -62,7 +62,7 @@ export const TermsAndConditions = () => {
 
   return (
     <>
-      <SEOHead {...seoConfig.termsAndConditions} />
+
       <div ref={containerRef} className="relative py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}

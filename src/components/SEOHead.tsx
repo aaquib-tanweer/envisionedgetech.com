@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface SEOHeadProps {
   title: string;
@@ -12,36 +12,34 @@ export const SEOHead = ({
   title,
   description,
   keywords,
-  ogImage = 'https://envisionedgetech.com/og-image.jpg',
-  canonicalUrl = 'https://envisionedgetech.com'
+  ogImage = 'https://www.envisionedgetech.com/og-image.jpg',
+  canonicalUrl = 'https://www.envisionedgetech.com'
 }: SEOHeadProps) => {
-  useEffect(() => {
-    document.title = title;
-    
-    const metaTags = {
-      'meta[name="description"]': description,
-      'meta[name="keywords"]': keywords,
-      'meta[property="og:title"]': title,
-      'meta[property="og:description"]': description,
-      'meta[property="og:image"]': ogImage,
-      'meta[property="og:url"]': canonicalUrl,
-      'meta[property="twitter:title"]': title,
-      'meta[property="twitter:description"]': description,
-      'meta[property="twitter:image"]': ogImage,
-      'link[rel="canonical"]': canonicalUrl,
-    };
-
-    Object.entries(metaTags).forEach(([selector, content]) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        if (selector.includes('link')) {
-          (element as HTMLLinkElement).href = content;
-        } else {
-          element.setAttribute('content', content);
-        }
-      }
-    });
-  }, [title, description, keywords, ogImage, canonicalUrl]);
-
-  return null;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={canonicalUrl} />
+      
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
+      <meta property="twitter:image" content={ogImage} />
+      
+      {/* Canonical URL */}
+      <link rel="canonical" href={canonicalUrl} />
+      
+      {/* Additional SEO tags */}
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Envision Edge Tech" />
+    </Helmet>
+  );
 }; 

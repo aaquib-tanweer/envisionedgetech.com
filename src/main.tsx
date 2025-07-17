@@ -1,10 +1,13 @@
-import { RouterProvider } from '@tanstack/react-router'
-import { router } from './routes'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { routeTree } from './routeTree.gen'
 import ReactDOM from 'react-dom/client'
 import './assets/global.css'
 import { ThemeProvider } from './components/theme-provider'
 
-// Register your router before using it
+// Create the router instance
+const router = createRouter({ routeTree })
+
+// Register the router type
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router

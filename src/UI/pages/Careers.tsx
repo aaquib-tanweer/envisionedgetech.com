@@ -7,7 +7,7 @@ import {
   Clock,  
   ChevronRight,
 } from 'lucide-react';
-import { SEOHead } from '@/components/SEOHead';
+
 import { JobApplicationModal } from '@/components/JobApplicationModal';
 import { Toaster } from 'sonner';
 
@@ -17,11 +17,7 @@ export const Careers = () => {
 
   return (
     <>
-      <SEOHead
-        title="Careers - Join Our Team at Envision Edge Tech"
-        description="Explore exciting career opportunities at Envision Edge Tech. Join our team of innovators and help shape the future of technology."
-        keywords="careers, jobs, technology jobs, remote work, software development, web development"
-      />
+
       <div className="container mx-auto px-4 py-24">
           {/* Dynamic Opportunity Hero */}
           <motion.div

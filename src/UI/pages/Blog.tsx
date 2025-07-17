@@ -24,7 +24,7 @@ import {
   Mail,
   Globe
 } from 'lucide-react';
-import { SEOHead } from '@/components/SEOHead';
+
 
 declare global {
   interface Window {
@@ -390,11 +390,7 @@ export const Blog = () => {
 
   return (
     <>
-      <SEOHead
-        title="Blog - Latest Insights & Guides | Envision Edge Tech"
-        description="Explore our latest blog posts about web development, e-commerce platforms, business growth, and digital transformation. Expert insights from Envision Edge Tech."
-        keywords="blog, web development, e-commerce, business growth, digital transformation, WooCommerce vs Shopify, website development"
-      />
+
       
       <div ref={containerRef} className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

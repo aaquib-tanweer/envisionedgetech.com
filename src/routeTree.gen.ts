@@ -17,6 +17,7 @@ import { Route as ProjectsRouteImport } from './routes/projects.route'
 import { Route as ProductsRouteImport } from './routes/products.route'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy.route'
 import { Route as CareersRouteImport } from './routes/careers.route'
+import { Route as BlogRouteImport } from './routes/blog.route'
 import { Route as AboutRouteImport } from './routes/about.route'
 import { Route as IndexRouteImport } from './routes/index.route'
 
@@ -58,6 +59,12 @@ const CareersRouteRoute = CareersRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BlogRouteRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AboutRouteRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -86,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRoute
     }
     '/careers': {
@@ -138,6 +152,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/blog': typeof BlogRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
@@ -149,6 +164,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/blog': typeof BlogRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
@@ -161,6 +177,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/blog': typeof BlogRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
@@ -174,6 +191,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/blog'
     | '/careers'
     | '/privacy-policy'
     | '/products'
@@ -184,6 +202,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/blog'
     | '/careers'
     | '/privacy-policy'
     | '/products'
@@ -194,6 +213,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/blog'
     | '/careers'
     | '/privacy-policy'
     | '/products'
@@ -206,6 +226,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRouteRoute: typeof IndexRouteRoute
   AboutRouteRoute: typeof AboutRouteRoute
+  BlogRouteRoute: typeof BlogRouteRoute
   CareersRouteRoute: typeof CareersRouteRoute
   PrivacyPolicyRouteRoute: typeof PrivacyPolicyRouteRoute
   ProductsRouteRoute: typeof ProductsRouteRoute
@@ -217,6 +238,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRouteRoute: IndexRouteRoute,
   AboutRouteRoute: AboutRouteRoute,
+  BlogRouteRoute: BlogRouteRoute,
   CareersRouteRoute: CareersRouteRoute,
   PrivacyPolicyRouteRoute: PrivacyPolicyRouteRoute,
   ProductsRouteRoute: ProductsRouteRoute,
@@ -237,6 +259,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/blog",
         "/careers",
         "/privacy-policy",
         "/products",
@@ -250,6 +273,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.route.tsx"
+    },
+    "/blog": {
+      "filePath": "blog.route.tsx"
     },
     "/careers": {
       "filePath": "careers.route.tsx"

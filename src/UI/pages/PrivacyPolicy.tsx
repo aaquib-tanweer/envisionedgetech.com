@@ -1,4 +1,4 @@
-import { SEOHead } from '@/components/SEOHead';
+
 import { seoConfig } from '@/constants/seo.config';
 import { motion, useInView } from 'framer-motion';
 import { Shield, Lock, Eye, CheckCircle2, Mail, FileText } from 'lucide-react';
@@ -71,7 +71,7 @@ export const PrivacyPolicy = () => {
 
   return (
     <>
-      <SEOHead {...seoConfig.privacyPolicy} />
+
       <div ref={containerRef} className="relative py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}

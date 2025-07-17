@@ -1,8 +1,6 @@
 import { members } from '@/constants/data/members'
 import { motion, useInView } from 'framer-motion'
 import { User, ArrowRight, Award, Users, Globe, Zap, Rocket, Shield, Target } from 'lucide-react'
-import { SEOHead } from '@/components/SEOHead'
-import { seoConfig } from '@/constants/seo.config'
 import { useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 
@@ -44,15 +42,38 @@ const CompanyValue = ({ icon: IconComponent, title, description, index }: {
         }}
         className="relative p-8 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-lg dark:shadow-none"
       >
-        {/* Glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 dark:from-electric-500/10 to-purple-500/10 dark:to-neon-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
+        {/* Animated background gradient */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/10 dark:from-electric-500/10 via-transparent to-purple-500/10 dark:to-neon-500/10"
+          animate={{ 
+            scale: [1, 1.05, 1],
+            opacity: [0.5, 0.8, 0.5]
+          }}
+          transition={{ 
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Content */}
         <div className="relative z-10">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-electric-500 dark:to-electric-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25 mb-6">
-            <IconComponent className="w-8 h-8 text-white" />
+          {/* Icon */}
+          <div className="mb-6">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-electric-500 dark:to-electric-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25">
+              <IconComponent className="w-8 h-8 text-white" />
+            </div>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+
+          {/* Title */}
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+            {title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            {description}
+          </p>
         </div>
       </motion.div>
     </motion.div>
@@ -190,237 +211,234 @@ export const About = () => {
   ];
 
   return (
-    <>
-      <SEOHead {...seoConfig.about} />
-      <div 
-        ref={containerRef}
-        className="relative py-20"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Corporate Hero Section */}
-          <motion.div 
-            ref={heroRef}
-            className="mb-20"
-          >
-            {/* Professional Header */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5 }}
-                  className="mb-6"
-                >
-                  <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                    <div className="w-2 h-2 bg-slate-600 dark:bg-slate-400 rounded-full"></div>
-                    <span className="text-slate-600 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">
-                      Est. 2021 • Technology Excellence
-                    </span>
-                  </div>
-                </motion.div>
-
-                {/* Corporate Title */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6"
-                >
-                  Delivering Technology That 
-                  <span className="block text-slate-700 dark:text-slate-300 font-light">
-                    Drives Growth
-                  </span>
-                </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8"
-                >
-                  We partner with forward-thinking organizations to deliver enterprise-grade technology solutions that transform operations, enhance productivity, and accelerate growth.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="flex flex-col sm:flex-row gap-4"
-                >
-                  <button
-                    onClick={openCalendly}
-                    className="px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg font-semibold hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
-                  >
-                    Schedule Consultation
-                  </button>
-                  <Link
-                    to="/services"
-                    className="px-6 py-3 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center"
-                  >
-                    Our Services
-                  </Link>
-                </motion.div>
-              </div>
-
-              {/* Corporate Visual */}
+    <div 
+      ref={containerRef}
+      className="relative py-20"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Corporate Hero Section */}
+        <motion.div 
+          ref={heroRef}
+          className="mb-20"
+        >
+          {/* Professional Header */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5 }}
+                className="mb-6"
               >
-                <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-8 h-80">
-                  <div className="grid grid-cols-2 gap-4 h-full">
-                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
-                      <Award className="w-12 h-12 text-slate-600 dark:text-slate-400" />
-                    </div>
-                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
-                      <Shield className="w-12 h-12 text-slate-600 dark:text-slate-400" />
-                    </div>
-                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
-                      <Users className="w-12 h-12 text-slate-600 dark:text-slate-400" />
-                    </div>
-                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
-                      <Globe className="w-12 h-12 text-slate-600 dark:text-slate-400" />
-                    </div>
-                  </div>
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                  <div className="w-2 h-2 bg-slate-600 dark:bg-slate-400 rounded-full"></div>
+                  <span className="text-slate-600 dark:text-slate-400 font-medium text-sm uppercase tracking-wider">
+                    Est. 2021 • Technology Excellence
+                  </span>
                 </div>
               </motion.div>
-            </div>
 
-          </motion.div>
-
-          {/* Company Overview */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-8">
-              <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Enterprise Solutions for Modern Business
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  <span className="font-semibold text-slate-900 dark:text-slate-100">Envision Edge Tech</span> specializes in developing intelligent software solutions that empower businesses across hospitality, education, and healthcare sectors.
-                </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  Our expertise spans AI/ML-driven Management Information Systems (MIS), Enterprise Resource Planning (ERP), and Customer Relationship Management (CRM) platforms. We deliver end-to-end web and mobile application development services, ensuring scalable and cutting-edge digital solutions.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Company Stats */}
-          <div className="mb-20">
-            <CompanyStats />
-          </div>
-
-          {/* Company Values */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Our Core Values
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The principles that guide every decision and drive our commitment to excellence
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {companyValues.map((value, index) => (
-                <CompanyValue
-                  key={index}
-                  icon={value.icon}
-                  title={value.title}
-                  description={value.description}
-                  index={index}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Team Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Meet Our Amazing Team
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                The talented professionals behind our innovative solutions and exceptional client experiences
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-              {members.map((member, index) => (
-                <TeamMember
-                  key={index}
-                  member={member}
-                  index={index}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center pt-20 border-t border-gray-200 dark:border-white/10"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Ready to Partner With Us?
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let's build something extraordinary together. Schedule a consultation to discuss your vision.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                onClick={openCalendly}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-electric-600 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-electric-500/25"
+              {/* Corporate Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6"
               >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Schedule Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Delivering Technology That 
+                <span className="block text-slate-700 dark:text-slate-300 font-light">
+                  Drives Growth
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-electric-500 to-neon-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
-              
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8"
               >
+                We partner with forward-thinking organizations to deliver enterprise-grade technology solutions that transform operations, enhance productivity, and accelerate growth.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <button
+                  onClick={openCalendly}
+                  className="px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg font-semibold hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
+                >
+                  Schedule Consultation
+                </button>
                 <Link
                   to="/services"
-                  className="block px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/15 transition-all duration-300 text-center"
+                  className="px-6 py-3 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-center"
                 >
-                  View Our Work
+                  Our Services
                 </Link>
               </motion.div>
             </div>
-          </motion.div>
+
+            {/* Corporate Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-8 h-80">
+                <div className="grid grid-cols-2 gap-4 h-full">
+                  <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                    <Award className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                  </div>
+                  <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                    <Shield className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                  </div>
+                  <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                    <Users className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                  </div>
+                  <div className="bg-white dark:bg-slate-700 rounded-lg p-4 flex items-center justify-center">
+                    <Globe className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </motion.div>
+
+        {/* Company Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Enterprise Solutions for Modern Business
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                <span className="font-semibold text-slate-900 dark:text-slate-100">Envision Edge Tech</span> specializes in developing intelligent software solutions that empower businesses across hospitality, education, and healthcare sectors.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Our expertise spans AI/ML-driven Management Information Systems (MIS), Enterprise Resource Planning (ERP), and Customer Relationship Management (CRM) platforms. We deliver end-to-end web and mobile application development services, ensuring scalable and cutting-edge digital solutions.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Company Stats */}
+        <div className="mb-20">
+          <CompanyStats />
         </div>
+
+        {/* Company Values */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              The principles that guide every decision and drive our commitment to excellence
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {companyValues.map((value, index) => (
+              <CompanyValue
+                key={index}
+                icon={value.icon}
+                title={value.title}
+                description={value.description}
+                index={index}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Team Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Meet Our Amazing Team
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              The talented professionals behind our innovative solutions and exceptional client experiences
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {members.map((member, index) => (
+              <TeamMember
+                key={index}
+                member={member}
+                index={index}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center pt-20 border-t border-gray-200 dark:border-white/10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            Ready to Partner With Us?
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            Let's build something extraordinary together. Schedule a consultation to discuss your vision.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.button
+              onClick={openCalendly}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative px-8 py-4 bg-gradient-to-r from-electric-600 to-electric-500 text-white rounded-xl font-semibold text-lg overflow-hidden shadow-xl shadow-electric-500/25"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Schedule Consultation
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-electric-500 to-neon-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
+            
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                to="/services"
+                className="block px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold text-lg hover:bg-white/15 transition-all duration-300 text-center"
+              >
+                View Our Work
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
-    </>
+    </div>
   );
 };
 

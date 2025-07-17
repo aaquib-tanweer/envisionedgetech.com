@@ -19,6 +19,11 @@ export const seoConfig = {
     description: "Explore our suite of innovative software products designed to transform your business operations. From e-commerce to enterprise solutions.",
     keywords: "software products, enterprise solutions, e-commerce platform, custom software, business applications"
   },
+  projects: {
+    title: "Projects - Our Portfolio | Envision Edge Tech",
+    description: "Discover our portfolio of successful projects across various industries. See how we've helped clients transform their businesses with technology.",
+    keywords: "project portfolio, case studies, client work, software projects, technology solutions, business transformation"
+  },
   privacyPolicy: {
     title: "Privacy Policy - Envision Edge Tech",
     description: "Read our privacy policy to understand how we collect, use, and protect your personal information at Envision Edge Tech.",
