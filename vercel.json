@@ -1,11 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "https://envisionedgetech.com/(.*)",
-      "destination": "https://www.envisionedgetech.com/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
