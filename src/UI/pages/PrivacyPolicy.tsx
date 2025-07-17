@@ -1,5 +1,4 @@
 
-import { seoConfig } from '@/constants/seo.config';
 import { motion, useInView } from 'framer-motion';
 import { Shield, Lock, Eye, CheckCircle2, Mail, FileText } from 'lucide-react';
 import { useRef } from 'react';

@@ -75,15 +75,7 @@ export default function Projects() {
   return (
     <section className="bg-blue-50 dark:bg-gray-900 py-24">
       <div className="container mx-auto px-4">
-        <motion.h2
-          className="font-bold text-5xl mb-12 text-center text-blue-900 dark:text-blue-100"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Our Past Works
-          <span className="text-blue-500 dark:text-blue-500">.</span>
-        </motion.h2>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectList.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />

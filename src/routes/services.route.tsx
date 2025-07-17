@@ -1,6 +1,5 @@
 import { IntegratedFooterSection } from '@/UI/pages/IntegratedFooterSection'
 import { Layout } from '@/UI/pages/Layout'
-import Projects from '@/UI/pages/Projects'
 import { Services } from '@/UI/pages/Services'
 import { createFileRoute } from '@tanstack/react-router'
 import { SEOHead } from "@/components/SEOHead";
@@ -17,7 +16,6 @@ export const Route = createFileRoute('/services')({
       />
       <Layout>
         <Services />
-        <Projects />
         <IntegratedFooterSection />
       </Layout>
     </>
