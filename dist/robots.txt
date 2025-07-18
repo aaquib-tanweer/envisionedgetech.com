@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
 
+# Block access to sensitive files
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+
 # Sitemaps
-Sitemap: https://envisionedgetech.com/sitemap.xml 
+Sitemap: https://www.envisionedgetech.com/sitemap.xml 
