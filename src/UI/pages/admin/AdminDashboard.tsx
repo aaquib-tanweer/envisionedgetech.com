@@ -2,21 +2,12 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
 import { 
-  Users, 
   MessageCircle, 
   FileText, 
   Briefcase,
   LogOut,
-  Eye,
   Trash2,
-  Archive,
-  Search,
-  Filter,
-  Calendar,
-  Mail,
-  Phone,
-  Globe,
-  Download
+  Search
 } from 'lucide-react';
 import logo from '@/assets/images/logo.png';
 
