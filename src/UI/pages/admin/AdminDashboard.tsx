@@ -184,7 +184,7 @@ export const AdminDashboard = () => {
     }
   };
 
-  const handleViewResume = async (resumeUrl: string, fileName: string) => {
+  const handleViewResume = async (resumeUrl: string) => {
     try {
       if (!resumeUrl) {
         toast.error('No resume uploaded');
@@ -556,7 +556,7 @@ const JobApplicationsTable = ({ data, onDelete, onStatusUpdate, onViewResume }: 
             {item.resume_url ? (
               <div className="flex flex-col gap-1">
                 <button
-                  onClick={() => onViewResume(item.resume_url, `${item.full_name}_resume`)}
+                  onClick={() => onViewResume(item.resume_url)}
                   className="text-electric-400 hover:text-electric-300 transition-colors duration-300 underline"
                   title="View Resume"
                 >
