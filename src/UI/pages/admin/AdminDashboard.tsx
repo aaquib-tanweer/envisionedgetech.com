@@ -184,6 +184,53 @@ export const AdminDashboard = () => {
     }
   };
 
+  const handleViewResume = async (resumeUrl: string, fileName: string) => {
+    try {
+      if (!resumeUrl) {
+        toast.error('No resume uploaded');
+        return;
+      }
+
+      console.log('Attempting to view resume:', resumeUrl);
+
+      // The bucket exists, let's try to access it directly
+      console.log('Attempting to access job-applications bucket with resume:', resumeUrl);
+
+      // Try to get a signed URL (for private bucket)
+      const { data: signedData, error: signedError } = await supabase.storage
+        .from('job-applications')
+        .createSignedUrl(resumeUrl, 60); // URL valid for 60 seconds
+
+      if (signedError) {
+        console.error('Error creating signed URL:', signedError);
+        
+        // If signed URL fails, try public URL (for public bucket)
+        console.log('Trying public URL instead...');
+        const { data: publicData } = supabase.storage
+          .from('job-applications')
+          .getPublicUrl(resumeUrl);
+
+        if (publicData.publicUrl) {
+          console.log('Resume URL (public):', publicData.publicUrl);
+          window.open(publicData.publicUrl, '_blank');
+        } else {
+          toast.error('Failed to access resume');
+        }
+        return;
+      }
+
+      if (signedData.signedUrl) {
+        console.log('Resume URL (signed):', signedData.signedUrl);
+        window.open(signedData.signedUrl, '_blank');
+      } else {
+        toast.error('Resume not found');
+      }
+    } catch (error) {
+      console.error('Error viewing resume:', error);
+      toast.error('Failed to view resume');
+    }
+  };
+
   const getFilteredData = () => {
     let data: any[] = [];
     
@@ -429,6 +476,7 @@ export const AdminDashboard = () => {
                     data={getPaginatedData()}
                     onDelete={(id: string) => handleDelete('job_applications', id)}
                     onStatusUpdate={(id: string, status: string) => handleStatusUpdate('job_applications', id, status)}
+                    onViewResume={handleViewResume}
                   />
                 )}
                 
@@ -483,7 +531,7 @@ export const AdminDashboard = () => {
 };
 
 // Table Components
-const JobApplicationsTable = ({ data, onDelete, onStatusUpdate }: any) => (
+const JobApplicationsTable = ({ data, onDelete, onStatusUpdate, onViewResume }: any) => (
   <table className="w-full">
     <thead>
       <tr className="border-b border-white/20">
@@ -491,6 +539,7 @@ const JobApplicationsTable = ({ data, onDelete, onStatusUpdate }: any) => (
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Email</th>
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Job Title</th>
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Phone</th>
+        <th className="text-left py-4 px-6 text-white/90 font-semibold">Resume</th>
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Status</th>
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Date</th>
         <th className="text-left py-4 px-6 text-white/90 font-semibold">Actions</th>
@@ -503,6 +552,24 @@ const JobApplicationsTable = ({ data, onDelete, onStatusUpdate }: any) => (
           <td className="py-4 px-6 text-white/90">{item.email}</td>
           <td className="py-4 px-6 text-white/90">{item.job_title}</td>
           <td className="py-4 px-6 text-white/90">{item.phone}</td>
+          <td className="py-4 px-6">
+            {item.resume_url ? (
+              <div className="flex flex-col gap-1">
+                <button
+                  onClick={() => onViewResume(item.resume_url, `${item.full_name}_resume`)}
+                  className="text-electric-400 hover:text-electric-300 transition-colors duration-300 underline"
+                  title="View Resume"
+                >
+                  View Resume
+                </button>
+                <span className="text-xs text-white/60">
+                  File: {item.resume_url}
+                </span>
+              </div>
+            ) : (
+              <span className="text-white/50">No resume</span>
+            )}
+          </td>
           <td className="py-4 px-6">
             <select
               value={item.status}
