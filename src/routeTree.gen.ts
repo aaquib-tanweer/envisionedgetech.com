@@ -18,6 +18,7 @@ import { Route as ProductsRouteImport } from './routes/products.route'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy.route'
 import { Route as CareersRouteImport } from './routes/careers.route'
 import { Route as BlogRouteImport } from './routes/blog.route'
+import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard.route'
 import { Route as AboutRouteImport } from './routes/about.route'
 import { Route as IndexRouteImport } from './routes/index.route'
 import { Route as BlogIndexRouteImport } from './routes/blog/index.route'
@@ -66,6 +67,12 @@ const CareersRouteRoute = CareersRouteImport.update({
 const BlogRouteRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AdminDashboardRouteRoute = AdminDashboardRouteImport.update({
+  id: '/admin-dashboard',
+  path: '/admin-dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -124,6 +131,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/admin-dashboard': {
+      id: '/admin-dashboard'
+      path: '/admin-dashboard'
+      fullPath: '/admin-dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRoute
     }
     '/blog': {
@@ -231,6 +245,7 @@ const BlogRouteRouteWithChildren = BlogRouteRoute._addFileChildren(
 export interface FileRoutesByFullPath {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/admin-dashboard': typeof AdminDashboardRouteRoute
   '/blog': typeof BlogRouteRouteWithChildren
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
@@ -247,6 +262,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/admin-dashboard': typeof AdminDashboardRouteRoute
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
   '/products': typeof ProductsRouteRoute
@@ -263,6 +279,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRouteRoute
   '/about': typeof AboutRouteRoute
+  '/admin-dashboard': typeof AdminDashboardRouteRoute
   '/blog': typeof BlogRouteRouteWithChildren
   '/careers': typeof CareersRouteRoute
   '/privacy-policy': typeof PrivacyPolicyRouteRoute
@@ -281,6 +298,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/admin-dashboard'
     | '/blog'
     | '/careers'
     | '/privacy-policy'
@@ -296,6 +314,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/admin-dashboard'
     | '/careers'
     | '/privacy-policy'
     | '/products'
@@ -310,6 +329,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/admin-dashboard'
     | '/blog'
     | '/careers'
     | '/privacy-policy'
@@ -327,6 +347,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRouteRoute: typeof IndexRouteRoute
   AboutRouteRoute: typeof AboutRouteRoute
+  AdminDashboardRouteRoute: typeof AdminDashboardRouteRoute
   BlogRouteRoute: typeof BlogRouteRouteWithChildren
   CareersRouteRoute: typeof CareersRouteRoute
   PrivacyPolicyRouteRoute: typeof PrivacyPolicyRouteRoute
@@ -339,6 +360,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRouteRoute: IndexRouteRoute,
   AboutRouteRoute: AboutRouteRoute,
+  AdminDashboardRouteRoute: AdminDashboardRouteRoute,
   BlogRouteRoute: BlogRouteRouteWithChildren,
   CareersRouteRoute: CareersRouteRoute,
   PrivacyPolicyRouteRoute: PrivacyPolicyRouteRoute,
@@ -360,6 +382,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/admin-dashboard",
         "/blog",
         "/careers",
         "/privacy-policy",
@@ -374,6 +397,9 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.route.tsx"
+    },
+    "/admin-dashboard": {
+      "filePath": "admin-dashboard.route.tsx"
     },
     "/blog": {
       "filePath": "blog.route.tsx",

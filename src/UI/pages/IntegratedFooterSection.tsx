@@ -10,12 +10,19 @@ import {
   Zap,
   Shield,
   Globe,
-  Send
+  Send,
+  User,
+  Phone,
+  MessageSquare,
+  Building
 } from 'lucide-react';
 import { faqs } from '@/constants/data/faqs';
 import { companyDataConstants } from '@/constants/data/companyData.constant';
 import { Input } from '@/UI/shadcn/ui/input';
 import { Button } from '@/UI/shadcn/ui/button';
+import { Textarea } from '@/UI/shadcn/ui/textarea';
+import { supabase } from '@/lib/supabase';
+import { toast } from 'sonner';
 import {
   Accordion,
   AccordionContent,
@@ -69,7 +76,15 @@ const StatCard = ({ icon: Icon, value, label, delay }: {
 
 export const IntegratedFooterSection = () => {
   const [activeSection, setActiveSection] = useState<'faq' | 'contact' | 'tech'>('faq');
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    website: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -96,6 +111,55 @@ export const IntegratedFooterSection = () => {
     { id: 'contact', label: 'Get in Touch', icon: Mail },
     { id: 'tech', label: 'Our Stack', icon: Code2 }
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            website: formData.website,
+            message: formData.message,
+            status: 'new'
+          }
+        ]);
+
+      if (error) {
+        console.error('Error submitting form:', error);
+        toast.error('Failed to send message. Please try again.');
+      } else {
+        toast.success('Message sent successfully! We\'ll get back to you soon.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          website: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div ref={sectionRef} className="relative">
@@ -186,75 +250,141 @@ export const IntegratedFooterSection = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  <span className="text-gray-900 dark:text-white">Let's Create Something </span>
+                  <span className="text-gray-900 dark:text-white">Ready to Join Our </span>
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-electric-400 dark:via-electric-500 dark:to-neon-400 bg-clip-text text-transparent">
-                    Amazing Together
+                    Success Stories?
                   </span>
                 </h2>
                 <p className="text-xl text-gray-600 dark:text-gray-300">
-                  Ready to transform your business? Get in touch with our expert team.
+                  Let's discuss how we can help transform your business and achieve similar results.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                {/* Contact Form */}
-                <div className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-3xl p-8 shadow-xl dark:shadow-none">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                    <Mail className="w-6 h-6 text-blue-600 dark:text-electric-400" />
-                    Send us a message
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <Input
-                      type="email"
-                      placeholder="Enter your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
-                    />
-                    
-                    <a href={`mailto:${companyDataConstants.emails[0]}?subject=Project Inquiry&body=Hi, I'm interested in discussing a project. My email is: ${email}`}>
-                      <Button 
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 dark:from-electric-600 dark:to-electric-500 hover:from-blue-700 hover:to-purple-700 dark:hover:from-electric-500 dark:hover:to-neon-500 text-white shadow-lg transition-all duration-300 group"
-                        size="lg"
-                      >
-                        <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                        Send Email
-                      </Button>
-                    </a>
-                  </div>
-                </div>
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-3xl p-8 shadow-xl dark:shadow-none">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Name */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <User className="w-4 h-4 inline mr-2" />
+                        Full Name *
+                      </label>
+                      <Input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Enter your full name"
+                        required
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
+                      />
+                    </div>
 
-                {/* Quick Contact Info */}
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 backdrop-blur-xl border border-blue-200/50 dark:border-electric-500/20 rounded-3xl p-8 shadow-xl dark:shadow-none">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                      Get Instant Support
-                    </h3>
-                    <div className="space-y-4">
-                      {companyDataConstants.emails.slice(0, 2).map((email, index) => (
-                        <a
-                          key={index}
-                          href={`mailto:${email}`}
-                          className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-electric-400 transition-colors group"
-                        >
-                          <div className="w-10 h-10 bg-blue-100 dark:bg-electric-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <Mail className="w-5 h-5 text-blue-600 dark:text-electric-400" />
-                          </div>
-                          <span className="font-medium">{email}</span>
-                          <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                        </a>
-                      ))}
+                    {/* Email */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <Mail className="w-4 h-4 inline mr-2" />
+                        Email Address *
+                      </label>
+                      <Input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Enter your email address"
+                        required
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
+                      />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <Phone className="w-4 h-4 inline mr-2" />
+                        Phone Number
+                      </label>
+                      <Input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Enter your phone number"
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
+                      />
+                    </div>
+
+                    {/* Company */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <Building className="w-4 h-4 inline mr-2" />
+                        Company Name
+                      </label>
+                      <Input
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        placeholder="Enter your company name"
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
+                      />
+                    </div>
+
+                    {/* Website */}
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <Globe className="w-4 h-4 inline mr-2" />
+                        Website URL
+                      </label>
+                      <Input
+                        type="url"
+                        name="website"
+                        value={formData.website}
+                        onChange={handleInputChange}
+                        placeholder="www.your-website.com"
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500"
+                      />
+                    </div>
+
+                    {/* Message */}
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <MessageSquare className="w-4 h-4 inline mr-2" />
+                        Project Details *
+                      </label>
+                      <Textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder="Tell us about your project requirements, timeline, and goals..."
+                        required
+                        rows={6}
+                        className="border-gray-200/50 dark:border-white/20 bg-white/80 dark:bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-electric-500 resize-none"
+                      />
                     </div>
                   </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {stats.slice(0, 4).map((stat, index) => (
-                      <StatCard key={index} {...stat} delay={index * 0.1} />
-                    ))}
+                  {/* Submit Button */}
+                  <div className="text-center pt-4">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-electric-600 dark:to-electric-500 hover:from-blue-700 hover:to-purple-700 dark:hover:from-electric-500 dark:hover:to-neon-500 text-white rounded-xl font-semibold text-lg shadow-xl shadow-blue-500/25 dark:shadow-electric-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      size="lg"
+                    >
+                      {isSubmitting ? (
+                        <div className="flex items-center gap-2">
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending...
+                        </div>
+                      ) : (
+                        <span className="flex items-center gap-2">
+                          <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                          Start Your Success Story
+                        </span>
+                      )}
+                    </Button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           )}

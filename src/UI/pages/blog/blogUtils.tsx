@@ -516,7 +516,7 @@ export const BlogEngagement = ({ blogId }: { blogId: number }) => {
                 type="url"
                 value={commentData.website}
                 onChange={(e) => updateComment(blogId, 'website', e.target.value)}
-                placeholder="https://yourwebsite.com"
+                placeholder="www.your-website.com"
                 className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
