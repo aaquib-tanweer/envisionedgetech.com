@@ -9,7 +9,7 @@ import {
   Trash2,
   Search
 } from 'lucide-react';
-import logo from '@/assets/images/logo.png';
+import logo from '@/assets/images/ET logo (White).png';
 
 interface JobApplication {
   id: string;
@@ -72,6 +72,8 @@ export const AdminDashboard = () => {
     if (session?.user?.email === 'admin@envisionedgetech.com') {
       setIsAuthenticated(true);
       fetchData();
+    } else {
+      setIsAuthenticated(false);
     }
     setIsLoading(false);
   };
@@ -81,9 +83,10 @@ export const AdminDashboard = () => {
     setLoading(true);
 
     try {
+      // Use actual form values instead of hardcoded credentials
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: 'admin@envisionedgetech.com',
-        password: 'Admin$envision'
+        email: email,
+        password: password
       });
 
       if (error) {
@@ -106,7 +109,7 @@ export const AdminDashboard = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setIsAuthenticated(false);
-    toast.success('Logged out successfully');
+    toast.success('Logged out successfully. You have been signed out.');
   };
 
   const fetchData = async () => {
@@ -240,7 +243,7 @@ export const AdminDashboard = () => {
           <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
             <div className="text-center mb-8">
               <div className="flex justify-center mb-6">
-                <img src={logo} alt="Envision Edge Tech" className="w-20 h-20 object-contain" />
+                <img src={logo} alt="Envision Edge Tech" className="w-32 h-32 object-contain" />
               </div>
               <h1 className="text-3xl font-bold text-white mb-2">Admin Dashboard</h1>
               <p className="text-white/70">Sign in to access the admin panel</p>
@@ -303,7 +306,7 @@ export const AdminDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center gap-4">
-              <img src={logo} alt="Envision Edge Tech" className="w-10 h-10 object-contain" />
+              <img src={logo} alt="Envision Edge Tech" className="w-16 h-16 object-contain" />
               <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
             </div>
             <button

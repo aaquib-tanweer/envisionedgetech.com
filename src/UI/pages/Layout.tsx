@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { useEffect } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { Toaster } from 'sonner'
 
 type Props = {
   children?: React.ReactNode
@@ -56,6 +57,7 @@ export const Layout = ({ children }: Props) => {
       
       <ScrollToTop />
       <Analytics />
+      <Toaster />
     </div>
   )
 }
