@@ -64,17 +64,19 @@ export const Footer = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25 bg-white dark:bg-gray-800 p-2">
-                    <img 
-                      src={logoImage} 
-                      alt="Envision Edge Tech Logo" 
-                      className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">Envision Edge Tech</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">Enterprise Solutions</p>
-                  </div>
+                  <Link to="/" className="flex items-center gap-3 group" aria-label="Go to homepage">
+                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25 bg-white dark:bg-gray-800 p-2">
+                      <img 
+                        src={logoImage} 
+                        alt="Envision Edge Tech Logo" 
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-lg font-bold text-gray-900 dark:text-white">Envision Edge Tech</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Enterprise Solutions</p>
+                    </div>
+                  </Link>
                 </motion.div>
                 
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

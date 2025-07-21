@@ -13,7 +13,7 @@ interface Testimonial {
   id: number;
   name: string;
   role: string;
-  company: string;
+  company?: string;
   content: string;
   rating: number;
   image?: string;
@@ -27,9 +27,8 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Lena Kowalski",
     role: "CTO",
-    company: "TechCorp Solutions",
     content: "Envision Edge Tech transformed our entire digital infrastructure. Their AI-powered MIS system increased our operational efficiency by 40% and reduced costs significantly. The team's expertise and professionalism are unmatched.",
     rating: 5,
     metrics: {
@@ -39,9 +38,8 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Carlos Mendes",
     role: "CEO",
-    company: "HealthCare Plus",
     content: "The CRM platform they built for us revolutionized how we handle patient relationships. The intuitive design and powerful analytics have helped us serve over 1,200 patients more effectively.",
     rating: 5,
     metrics: {
@@ -51,9 +49,8 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
+    name: "Fatima El Amrani",
     role: "Director of Operations",
-    company: "EduTech Innovations",
     content: "Their education management system streamlined our entire operation. Student engagement increased by 60%, and administrative tasks are now 70% faster. Exceptional work and ongoing support.",
     rating: 5,
     metrics: {
@@ -63,14 +60,58 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 4,
-    name: "David Wilson",
+    name: "Jonas Bergström",
     role: "Founder",
-    company: "Hospitality Masters",
     content: "The custom ERP solution exceeded all expectations. Our revenue increased by 35% in the first quarter alone. The real-time analytics and automation features are game-changing.",
     rating: 5,
     metrics: {
       improvement: "35%",
       metric: "Revenue Growth"
+    }
+  },
+  // New Indian testimonials
+  {
+    id: 5,
+    name: "Priya Sharma",
+    role: "Product Manager",
+    content: "The team at Envision Edge Tech delivered our project ahead of schedule and with outstanding quality. Their attention to detail and support made all the difference.",
+    rating: 5,
+    metrics: {
+      improvement: "Ahead of Schedule",
+      metric: "Delivery Time"
+    }
+  },
+  {
+    id: 6,
+    name: "Ravi Kumar",
+    role: "Operations Head",
+    content: "We saw a 50% reduction in manual work after implementing their automation solutions. Highly recommended for any business looking to scale efficiently.",
+    rating: 5,
+    metrics: {
+      improvement: "50%",
+      metric: "Manual Work Reduced"
+    }
+  },
+  {
+    id: 7,
+    name: "Ayesha Patel",
+    role: "Marketing Lead",
+    content: "Their digital marketing dashboard gave us real-time insights and improved our campaign ROI. The user experience is top-notch!",
+    rating: 5,
+    metrics: {
+      improvement: "2x",
+      metric: "Campaign ROI"
+    }
+  },
+  {
+    id: 8,
+    name: "Siddharth Menon",
+    role: "IT Consultant",
+    content: "From consultation to deployment, the process was seamless. The support team is responsive and knowledgeable. We are very satisfied!",
+    rating: 5,
+    metrics: {
+      improvement: "Seamless",
+      metric: "Implementation"
     }
   }
 ];
@@ -151,7 +192,6 @@ const TestimonialCard = ({ testimonial, isActive }: { testimonial: Testimonial, 
             <div>
               <h4 className="text-gray-900 dark:text-white font-bold text-lg">{testimonial.name}</h4>
               <p className="text-gray-600 dark:text-gray-400">{testimonial.role}</p>
-              <p className="text-blue-600 dark:text-electric-400 font-medium">{testimonial.company}</p>
             </div>
           </div>
         </div>
@@ -350,7 +390,7 @@ export const ClientsTestimonial = () => {
 
           {/* Testimonials Grid */}
           <div className="grid md:grid-cols-3 gap-8 px-16">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {getVisibleTestimonials().map((testimonial, index) => (
                 <motion.div
                   key={`${testimonial.id}-${currentIndex}`}
