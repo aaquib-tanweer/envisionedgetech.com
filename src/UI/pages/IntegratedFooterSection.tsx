@@ -172,14 +172,14 @@ export const IntegratedFooterSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-16 px-2"
         >
-          <div className="flex bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-gray-200/50 dark:border-white/20 rounded-2xl p-2 shadow-xl dark:shadow-none">
+          <div className="flex bg-white/90 dark:bg-white/10 backdrop-blur-xl border-2 border-gray-200/80 dark:border-white/30 rounded-2xl p-2 shadow-xl dark:shadow-none w-full max-w-md">
             {navigationTabs.map((tab, index) => (
               <motion.button
                 key={tab.id}
                 onClick={() => setActiveSection(tab.id as 'faq' | 'contact' | 'tech')}
-                className={`flex items-center gap-3 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-3 sm:px-4 py-3 rounded-xl font-medium transition-all duration-300 flex-1 ${
                   activeSection === tab.id
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 dark:from-electric-600 dark:to-electric-500 text-white shadow-lg shadow-blue-500/25 dark:shadow-electric-500/25'
                     : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'
