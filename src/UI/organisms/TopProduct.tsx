@@ -58,33 +58,33 @@ const WebsitePreview = () => {
     switch (activeType) {
       case 'portfolio':
         return (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Header */}
-            <div className="flex justify-between items-center p-6">
-              <div className="w-32 h-5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-              <div className="flex gap-3">
-                <div className="w-10 h-3 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-                <div className="w-10 h-3 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
-                <div className="w-10 h-3 bg-purple-400 rounded-full"></div>
+            <div className="flex justify-between items-center p-4 sm:p-6">
+              <div className="w-20 sm:w-32 h-4 sm:h-5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
+              <div className="flex gap-2 sm:gap-3">
+                <div className="w-6 sm:w-10 h-2 sm:h-3 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                <div className="w-6 sm:w-10 h-2 sm:h-3 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+                <div className="w-6 sm:w-10 h-2 sm:h-3 bg-purple-400 rounded-full"></div>
               </div>
             </div>
             
             {/* Hero Section */}
-            <div className="px-6 py-8 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-400 rounded-3xl mx-auto mb-6"></div>
-              <div className="w-40 h-4 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-3"></div>
-              <div className="w-32 h-3 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto"></div>
+            <div className="px-4 sm:px-6 py-4 sm:py-8 text-center">
+              <div className="w-12 sm:w-20 h-12 sm:h-20 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl sm:rounded-3xl mx-auto mb-4 sm:mb-6"></div>
+              <div className="w-24 sm:w-40 h-3 sm:h-4 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-2 sm:mb-3"></div>
+              <div className="w-20 sm:w-32 h-2 sm:h-3 bg-gray-200 dark:bg-gray-700 rounded-full mx-auto"></div>
             </div>
             
             {/* Portfolio Grid */}
-            <div className="grid grid-cols-3 gap-4 px-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 px-4 sm:px-6">
               {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
-                  className="aspect-square bg-gradient-to-br from-purple-200 to-pink-200 dark:from-purple-800 dark:to-pink-800 rounded-2xl shadow-xl"
+                  className="aspect-square bg-gradient-to-br from-purple-200 to-pink-200 dark:from-purple-800 dark:to-pink-800 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl"
                 />
               ))}
             </div>
@@ -93,29 +93,29 @@ const WebsitePreview = () => {
       
       case 'ecommerce':
         return (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Header */}
-            <div className="flex justify-between items-center p-6">
-              <div className="w-28 h-5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
-              <div className="flex gap-3">
-                <div className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-xl"></div>
-                <div className="w-8 h-8 bg-blue-400 rounded-xl"></div>
+            <div className="flex justify-between items-center p-4 sm:p-6">
+              <div className="w-16 sm:w-28 h-4 sm:h-5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
+              <div className="flex gap-2 sm:gap-3">
+                <div className="w-6 sm:w-8 h-6 sm:h-8 bg-gray-200 dark:bg-gray-600 rounded-lg sm:rounded-xl"></div>
+                <div className="w-6 sm:w-8 h-6 sm:h-8 bg-blue-400 rounded-lg sm:rounded-xl"></div>
               </div>
             </div>
             
             {/* Product Grid */}
-            <div className="grid grid-cols-2 gap-4 px-6">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 px-4 sm:px-6">
               {[...Array(4)].map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white dark:bg-gray-700 rounded-2xl p-4 shadow-xl"
+                  className="bg-white dark:bg-gray-700 rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg sm:shadow-xl"
                 >
-                  <div className="w-full h-20 bg-gradient-to-br from-blue-200 to-cyan-200 dark:from-blue-700 dark:to-cyan-700 rounded-xl mb-3"></div>
-                  <div className="w-full h-3 bg-gray-200 dark:bg-gray-600 rounded mb-2"></div>
-                  <div className="w-16 h-3 bg-blue-400 rounded"></div>
+                  <div className="w-full h-12 sm:h-20 bg-gradient-to-br from-blue-200 to-cyan-200 dark:from-blue-700 dark:to-cyan-700 rounded-lg sm:rounded-xl mb-2 sm:mb-3"></div>
+                  <div className="w-full h-2 sm:h-3 bg-gray-200 dark:bg-gray-600 rounded mb-1 sm:mb-2"></div>
+                  <div className="w-10 sm:w-16 h-2 sm:h-3 bg-blue-400 rounded"></div>
                 </motion.div>
               ))}
             </div>
@@ -124,42 +124,42 @@ const WebsitePreview = () => {
       
       case 'saas':
         return (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Header */}
-            <div className="flex justify-between items-center p-6">
-              <div className="w-28 h-5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
-              <div className="flex gap-3">
-                <div className="w-10 h-10 bg-gray-200 dark:bg-gray-600 rounded-2xl"></div>
-                <div className="w-10 h-10 bg-green-400 rounded-2xl"></div>
+            <div className="flex justify-between items-center p-4 sm:p-6">
+              <div className="w-16 sm:w-28 h-4 sm:h-5 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
+              <div className="flex gap-2 sm:gap-3">
+                <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gray-200 dark:bg-gray-600 rounded-xl sm:rounded-2xl"></div>
+                <div className="w-8 sm:w-10 h-8 sm:h-10 bg-green-400 rounded-xl sm:rounded-2xl"></div>
               </div>
             </div>
             
             {/* Dashboard */}
-            <div className="px-6">
-              <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="px-4 sm:px-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6">
                 {[...Array(3)].map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.1 }}
-                    className="bg-white dark:bg-gray-700 rounded-xl p-3 shadow-xl"
+                    className="bg-white dark:bg-gray-700 rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-lg sm:shadow-xl"
                   >
-                    <div className="w-6 h-6 bg-green-400 rounded mb-2"></div>
-                    <div className="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded mb-2"></div>
-                    <div className="w-12 h-2 bg-green-400 rounded"></div>
+                    <div className="w-4 sm:w-6 h-4 sm:h-6 bg-green-400 rounded mb-1 sm:mb-2"></div>
+                    <div className="w-full h-1 sm:h-2 bg-gray-200 dark:bg-gray-600 rounded mb-1 sm:mb-2"></div>
+                    <div className="w-8 sm:w-12 h-1 sm:h-2 bg-green-400 rounded"></div>
                   </motion.div>
                 ))}
               </div>
               
-              <div className="bg-white dark:bg-gray-700 rounded-2xl p-4 shadow-xl">
-                <div className="flex justify-between items-center mb-3">
-                  <div className="w-20 h-3 bg-gray-200 dark:bg-gray-600 rounded"></div>
-                  <div className="w-6 h-6 bg-green-400 rounded"></div>
+              <div className="bg-white dark:bg-gray-700 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg sm:shadow-xl">
+                <div className="flex justify-between items-center mb-2 sm:mb-3">
+                  <div className="w-12 sm:w-20 h-2 sm:h-3 bg-gray-200 dark:bg-gray-600 rounded"></div>
+                  <div className="w-4 sm:w-6 h-4 sm:h-6 bg-green-400 rounded"></div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   {[...Array(4)].map((_, i) => (
-                    <div key={i} className="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded"></div>
+                    <div key={i} className="w-full h-1 sm:h-2 bg-gray-200 dark:bg-gray-600 rounded"></div>
                   ))}
                 </div>
               </div>
@@ -175,26 +175,26 @@ const WebsitePreview = () => {
   return (
     <div className="relative">
       {/* Type Selector */}
-      <div className="flex justify-center mb-12">
-        <div className="flex bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-3xl p-2 shadow-2xl dark:shadow-none">
+      <div className="flex justify-center mb-8 sm:mb-12">
+        <div className="flex flex-col sm:flex-row bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl sm:rounded-3xl p-1 sm:p-2 shadow-2xl dark:shadow-none">
           {websiteTypes.map((type) => (
             <button
               key={type.id}
               onClick={() => setActiveType(type.id)}
-              className={`flex items-center gap-3 px-6 py-3 rounded-2xl transition-all duration-500 font-medium ${
+              className={`flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl transition-all duration-500 font-medium text-xs sm:text-sm ${
                 activeType === type.id
-                  ? `bg-gradient-to-r ${type.color} text-white shadow-2xl shadow-current/25 scale-105`
+                  ? `bg-gradient-to-r ${type.color} text-white shadow-xl sm:shadow-2xl shadow-current/25 scale-105`
                   : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10'
               }`}
             >
-              <type.icon className="w-5 h-5" />
-              <span className="text-sm">{type.label}</span>
+              <type.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>{type.label}</span>
             </button>
           ))}
         </div>
       </div>
 
-      {/* 3D Website Preview - Much Larger */}
+      {/* 3D Website Preview - Responsive */}
       <div className="relative perspective-1000">
         <motion.div
           animate={{ 
@@ -204,17 +204,17 @@ const WebsitePreview = () => {
           transition={{ duration: 0.3 }}
           className="relative"
         >
-          {/* Main Monitor - Significantly Larger */}
+          {/* Main Monitor - Responsive */}
           <div className="relative mx-auto">
             <motion.div
-              className="relative w-[600px] h-[380px] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-[40px] p-8 shadow-2xl"
+              className="relative w-[280px] h-[180px] sm:w-[400px] sm:h-[240px] md:w-[500px] md:h-[300px] lg:w-[600px] lg:h-[380px] bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl sm:rounded-3xl lg:rounded-[40px] p-4 sm:p-6 lg:p-8 shadow-2xl"
               style={{
                 background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
-                boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.1)',
               }}
             >
               {/* Screen */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-3xl overflow-hidden shadow-inner">
+              <div className="w-full h-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-inner">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeType}
@@ -230,14 +230,14 @@ const WebsitePreview = () => {
               </div>
               
               {/* Monitor Stand */}
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
-                <div className="w-16 h-8 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-xl"></div>
-                <div className="w-28 h-4 bg-gradient-to-b from-gray-800 to-gray-900 rounded-full mt-2"></div>
+              <div className="absolute -bottom-4 sm:-bottom-6 lg:-bottom-8 left-1/2 transform -translate-x-1/2">
+                <div className="w-8 sm:w-12 lg:w-16 h-4 sm:h-6 lg:h-8 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-lg sm:rounded-b-xl"></div>
+                <div className="w-14 sm:w-20 lg:w-28 h-2 sm:h-3 lg:h-4 bg-gradient-to-b from-gray-800 to-gray-900 rounded-full mt-1 sm:mt-2"></div>
               </div>
             </motion.div>
           </div>
 
-          {/* Floating Elements - Repositioned for larger monitor */}
+          {/* Floating Elements - Responsive */}
           <motion.div
             animate={{ 
               y: [-10, 10, -10],
@@ -248,9 +248,9 @@ const WebsitePreview = () => {
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-            className="absolute -top-12 -right-16 w-20 h-20 bg-gradient-to-br from-blue-500/30 dark:from-blue-500/20 to-purple-500/30 dark:to-purple-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-3xl flex items-center justify-center shadow-2xl dark:shadow-none"
+            className="absolute -top-6 sm:-top-8 lg:-top-12 -right-8 sm:-right-12 lg:-right-16 w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500/30 dark:from-blue-500/20 to-purple-500/30 dark:to-purple-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-xl sm:shadow-2xl dark:shadow-none"
           >
-            <Code2 className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+            <Code2 className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-blue-600 dark:text-blue-400" />
           </motion.div>
 
           <motion.div
@@ -264,9 +264,9 @@ const WebsitePreview = () => {
               ease: "easeInOut",
               delay: 1
             }}
-            className="absolute -bottom-8 -left-16 w-18 h-18 bg-gradient-to-br from-green-500/30 dark:from-green-500/20 to-emerald-500/30 dark:to-emerald-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-none"
+            className="absolute -bottom-4 sm:-bottom-6 lg:-bottom-8 -left-8 sm:-left-10 lg:-left-16 w-9 h-9 sm:w-14 sm:h-14 lg:w-18 lg:h-18 bg-gradient-to-br from-green-500/30 dark:from-green-500/20 to-emerald-500/30 dark:to-emerald-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl dark:shadow-none"
           >
-            <Palette className="w-9 h-9 text-green-600 dark:text-green-400" />
+            <Palette className="w-4 h-4 sm:w-7 sm:h-7 lg:w-9 lg:h-9 text-green-600 dark:text-green-400" />
           </motion.div>
 
           <motion.div
@@ -280,9 +280,9 @@ const WebsitePreview = () => {
               ease: "easeInOut",
               delay: 2
             }}
-            className="absolute top-1/2 -right-20 w-16 h-16 bg-gradient-to-br from-orange-500/30 dark:from-orange-500/20 to-red-500/30 dark:to-red-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-none"
+            className="absolute top-1/2 -right-10 sm:-right-14 lg:-right-20 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-orange-500/30 dark:from-orange-500/20 to-red-500/30 dark:to-red-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl dark:shadow-none"
           >
-            <Rocket className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+            <Rocket className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-orange-600 dark:text-orange-400" />
           </motion.div>
 
           <motion.div
@@ -296,16 +296,16 @@ const WebsitePreview = () => {
               ease: "easeInOut",
               delay: 1.5
             }}
-            className="absolute top-16 -left-12 w-14 h-14 bg-gradient-to-br from-purple-500/30 dark:from-purple-500/20 to-pink-500/30 dark:to-pink-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-2xl flex items-center justify-center shadow-2xl dark:shadow-none"
+            className="absolute top-8 sm:top-12 lg:top-16 -left-6 sm:-left-8 lg:-left-12 w-7 h-7 sm:w-10 sm:h-10 lg:w-14 lg:h-14 bg-gradient-to-br from-purple-500/30 dark:from-purple-500/20 to-pink-500/30 dark:to-pink-500/20 backdrop-blur-xl border border-gray-200 dark:border-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl sm:shadow-2xl dark:shadow-none"
           >
-            <Layers className="w-7 h-7 text-purple-600 dark:text-purple-400" />
+            <Layers className="w-3 h-3 sm:w-5 sm:h-5 lg:w-7 lg:h-7 text-purple-600 dark:text-purple-400" />
           </motion.div>
         </motion.div>
 
-        {/* Background Glow - Adjusted for larger monitor */}
+        {/* Background Glow - Responsive */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] sm:w-[600px] sm:h-[450px] lg:w-[800px] lg:h-[600px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
+          <div className="absolute top-1/3 right-1/3 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
         </div>
       </div>
     </div>
@@ -326,9 +326,9 @@ const FeatureHighlight = ({ feature, index, isActive }: {
       y: isActive ? -4 : 0
     }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className={`group relative p-8 rounded-3xl border transition-all duration-700 overflow-hidden ${
+    className={`group relative p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl border transition-all duration-700 overflow-hidden ${
       isActive 
-        ? 'bg-white/95 dark:bg-white/10 border-blue-200 dark:border-white/30 shadow-2xl backdrop-blur-2xl' 
+        ? 'bg-white/95 dark:bg-white/10 border-blue-200 dark:border-white/30 shadow-xl sm:shadow-2xl backdrop-blur-2xl' 
         : 'bg-white/80 dark:bg-white/5 border-gray-200 dark:border-white/10 backdrop-blur-xl hover:bg-white dark:hover:bg-white/8 hover:border-gray-300 dark:hover:border-white/20'
     }`}
   >
@@ -342,9 +342,9 @@ const FeatureHighlight = ({ feature, index, isActive }: {
       }}
     />
     
-    <div className="relative z-10 flex items-start gap-6">
+    <div className="relative z-10 flex items-start gap-4 sm:gap-6">
       <motion.div 
-        className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-2xl ${
+        className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl sm:shadow-2xl ${
           isActive 
             ? 'bg-gradient-to-br from-blue-500 to-purple-600 shadow-blue-500/25' 
             : 'bg-gradient-to-br from-gray-600 to-gray-700 group-hover:from-blue-500 group-hover:to-purple-600'
@@ -355,22 +355,22 @@ const FeatureHighlight = ({ feature, index, isActive }: {
         } : {}}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <feature.icon className="w-8 h-8 text-white" />
+        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
       </motion.div>
       
       <div className="flex-1">
-        <h3 className={`text-xl font-bold mb-3 transition-colors duration-500 ${
+        <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 transition-colors duration-500 ${
           isActive ? 'text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white'
         }`}>
           {feature.title}
         </h3>
-        <p className={`text-sm leading-relaxed mb-4 transition-colors duration-500 ${
+        <p className={`text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 transition-colors duration-500 ${
           isActive ? 'text-gray-700 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300'
         }`}>
           {feature.description}
         </p>
         <motion.div 
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-semibold transition-all duration-500 ${
+          className={`inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl text-xs font-semibold transition-all duration-500 ${
             isActive 
               ? 'bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-400/30' 
               : 'bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600/30 group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20 group-hover:text-blue-600 dark:group-hover:text-blue-300'
@@ -397,7 +397,7 @@ const StatsCard = ({ icon: Icon, value, label, color, delay }: {
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.6, delay }}
     whileHover={{ scale: 1.05, y: -8 }}
-    className="group relative p-8 bg-white/90 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl dark:shadow-none overflow-hidden"
+    className="group relative p-4 sm:p-6 lg:p-8 bg-white/90 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl dark:shadow-none overflow-hidden"
   >
     {/* Animated Background */}
     <motion.div
@@ -410,21 +410,21 @@ const StatsCard = ({ icon: Icon, value, label, color, delay }: {
     
     <div className="relative z-10">
       <motion.div 
-        className={`w-16 h-16 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center mb-6 shadow-2xl`}
+        className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br ${color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-xl sm:shadow-2xl`}
         whileHover={{ rotate: 360 }}
         transition={{ duration: 0.6 }}
       >
-        <Icon className="w-8 h-8 text-white" />
+        <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
       </motion.div>
       <motion.div 
-        className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
+        className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: delay + 0.3 }}
       >
         {value}
       </motion.div>
-      <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">{label}</div>
+      <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium">{label}</div>
     </div>
   </motion.div>
 )
@@ -505,12 +505,12 @@ export default function CustomWebDevelopmentShowcase() {
   };
 
   return (
-    <div ref={containerRef} className="relative py-32 overflow-hidden bg-gray-50/50 dark:bg-transparent">
+    <div ref={containerRef} className="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-gray-50/50 dark:bg-transparent">
       {/* Background Effects */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 dark:from-blue-500/10 to-purple-500/20 dark:to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-green-500/20 dark:from-green-500/10 to-emerald-500/20 dark:to-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-r from-orange-500/20 dark:from-orange-500/10 to-red-500/20 dark:to-red-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-gradient-to-r from-blue-500/20 dark:from-blue-500/10 to-purple-500/20 dark:to-purple-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 sm:w-64 lg:w-80 h-40 sm:h-64 lg:h-80 bg-gradient-to-r from-green-500/20 dark:from-green-500/10 to-emerald-500/20 dark:to-emerald-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-gradient-to-r from-orange-500/20 dark:from-orange-500/10 to-red-500/20 dark:to-red-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -519,30 +519,30 @@ export default function CustomWebDevelopmentShowcase() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <motion.div 
-            className="flex justify-center mb-8"
+            className="flex justify-center mb-6 sm:mb-8"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-white/90 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-2xl dark:shadow-none">
+            <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-white/90 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/20 rounded-full text-gray-900 dark:text-white shadow-2xl dark:shadow-none">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600 dark:text-blue-400" />
               </motion.div>
-              <span className="text-sm font-semibold">Featured Development Service</span>
-              <div className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs rounded-full font-bold">
+              <span className="text-xs sm:text-sm font-semibold">Featured Development Service</span>
+              <div className="px-2 sm:px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs rounded-full font-bold">
                 #1 Choice
               </div>
             </div>
           </motion.div>
 
           <motion.h2 
-            className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -554,7 +554,7 @@ export default function CustomWebDevelopmentShowcase() {
           </motion.h2>
 
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -565,22 +565,22 @@ export default function CustomWebDevelopmentShowcase() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-20 lg:mb-24">
           {stats.map((stat, index) => (
             <StatsCard key={index} {...stat} />
           ))}
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 items-center">
           {/* Features Section */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.8 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6 sm:space-y-8"
           >
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {features.map((feature, index) => (
                 <FeatureHighlight
                   key={index}
@@ -593,7 +593,7 @@ export default function CustomWebDevelopmentShowcase() {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 pt-12"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-8 sm:pt-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
@@ -602,12 +602,12 @@ export default function CustomWebDevelopmentShowcase() {
                 onClick={openCalendlyDemo}
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-3xl font-bold text-lg overflow-hidden shadow-2xl"
+                className="group relative px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl sm:rounded-3xl font-bold text-base sm:text-lg overflow-hidden shadow-2xl"
               >
-                <span className="relative z-10 flex items-center justify-center gap-3">
-                  <PlayCircle className="w-6 h-6" />
-                  View Live Demo
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                  <PlayCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="text-sm sm:text-base lg:text-lg">View Live Demo</span>
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100"
@@ -619,32 +619,32 @@ export default function CustomWebDevelopmentShowcase() {
                 onClick={openCalendlyQuotation}
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-10 py-5 bg-white/90 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-3xl font-bold text-lg hover:bg-white dark:hover:bg-white/20 hover:border-gray-300 dark:hover:border-white/30 transition-all duration-300 shadow-2xl dark:shadow-none"
+                className="group relative px-6 sm:px-8 lg:px-10 py-4 sm:py-5 bg-white/90 dark:bg-white/10 backdrop-blur-2xl border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-2xl sm:rounded-3xl font-bold text-base sm:text-lg hover:bg-white dark:hover:bg-white/20 hover:border-gray-300 dark:hover:border-white/30 transition-all duration-300 shadow-2xl dark:shadow-none"
               >
-                <span className="flex items-center justify-center gap-3">
-                  <Code2 className="w-6 h-6" />
-                  Get Free Quote
+                <span className="flex items-center justify-center gap-2 sm:gap-3">
+                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="text-sm sm:text-base lg:text-lg">Get Free Quote</span>
                 </span>
               </motion.button>
             </motion.div>
 
             {/* Additional Info */}
             <motion.div 
-              className="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 text-sm text-gray-600 dark:text-gray-400"
+              className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-4 sm:pt-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4, duration: 0.6 }}
             >
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400" />
                 <span>Free consultation</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400" />
                 <span>30-day free updates</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-400" />
                 <span>Lifetime support</span>
               </div>
             </motion.div>
@@ -666,21 +666,21 @@ export default function CustomWebDevelopmentShowcase() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1.6 }}
-          className="text-center mt-32 pt-20 border-t border-gray-200 dark:border-white/10"
+          className="text-center mt-20 sm:mt-24 lg:mt-32 pt-12 sm:pt-16 lg:pt-20 border-t border-gray-200 dark:border-white/10"
         >
-          <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
             Ready to Build Something Amazing?
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto text-base sm:text-lg px-4">
             Join 25+ businesses who trust us to create exceptional digital experiences.
           </p>
           <Link 
             to="/products"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-2xl shadow-2xl transition-all duration-300 group"
+            className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 group"
           >
-            <Layers className="w-5 h-5" />
-            Explore All Services
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Explore All Services</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
       </div>
