@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, Users, TrendingUp, Shield, Award } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
