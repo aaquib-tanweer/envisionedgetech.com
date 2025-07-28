@@ -1,8 +1,8 @@
 import { Button } from '@/UI/shadcn/ui/button'
 import { CheckCircle, ChevronRight, X, ArrowRight, Sparkles, Zap, Shield, Star, Users } from 'lucide-react'
 import { productsData } from '@/constants/data/products/products'
-import { useState, useRef } from 'react'
-import { Dialog, DialogContent } from '../shadcn/ui/dialog'
+import { useState, useRef, useEffect } from 'react'
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '../shadcn/ui/dialog'
 import { motion, useInView } from 'framer-motion'
 import { InlineWidget } from 'react-calendly'
 
@@ -88,6 +88,33 @@ export function Products() {
   const productsRef = useRef(null)
   const titleInView = useInView(titleRef, { once: true })
   const productsInView = useInView(productsRef, { once: true })
+
+  // Handle escape key to close dialogs
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        setIsCalendlyOpen(false)
+      }
+    }
+
+    if (open || isCalendlyOpen) {
+      document.addEventListener('keydown', handleEscape)
+      // Prevent body scroll when dialog is open
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [open, isCalendlyOpen])
+
+  // Close dialogs when clicking outside
+  const handleClose = () => {
+    setOpen(false)
+    setIsCalendlyOpen(false)
+  }
 
   return (
     <div className="container mx-auto px-4 py-24">
@@ -225,6 +252,7 @@ export function Products() {
         </motion.div>
       </motion.div>
 
+      {/* Products Grid */}
       <motion.div
         ref={productsRef}
         initial={{ opacity: 0, x: -100 }}
@@ -261,7 +289,7 @@ export function Products() {
                 </p>
               </div>
 
-              <div className="grid gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {product.features.slice(0, 6).map((feature, featureIndex) => (
                   <FeatureCard key={featureIndex} feature={feature} index={featureIndex} />
                 ))}
@@ -317,8 +345,10 @@ export function Products() {
       </motion.div>
 
       <Dialog onOpenChange={setOpen} open={open}>
-        <DialogContent className="w-[95%] max-w-6xl p-0 bg-white dark:bg-brand-950/95 backdrop-blur-2xl border border-gray-200 dark:border-white/10 [&>button]:hidden">
-          <div className="p-8">
+        <DialogContent className="w-[95%] max-w-6xl max-h-[90vh] p-0 bg-white dark:bg-brand-950/95 backdrop-blur-2xl border border-gray-200 dark:border-white/10 [&>button]:hidden overflow-hidden">
+          <DialogTitle className="sr-only">Select Your Investment Package</DialogTitle>
+          <DialogDescription className="sr-only">Choose the solution that fits your business goals and budget</DialogDescription>
+          <div className="p-8 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Select Your Investment Package</h2>
@@ -327,7 +357,7 @@ export function Products() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setOpen(false)}
+                onClick={handleClose}
                 className="rounded-full w-12 h-12 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 border border-gray-200 dark:border-white/10"
               >
                 <X className="h-6 w-6 text-gray-600 dark:text-white" />
@@ -350,13 +380,15 @@ export function Products() {
       </Dialog>
 
       <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
-        <DialogContent className="max-w-5xl h-[85vh] p-0 bg-white dark:bg-gray-900 [&>button]:hidden">
+        <DialogContent className="max-w-5xl h-[85vh] p-0 bg-white dark:bg-gray-900 [&>button]:hidden overflow-hidden">
+          <DialogTitle className="sr-only">Schedule a Meeting</DialogTitle>
+          <DialogDescription className="sr-only">Schedule a consultation with our team to discuss your project requirements</DialogDescription>
           <div className="h-full w-full relative rounded-xl overflow-hidden">
             <div className="absolute right-4 top-4 z-10">
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => setIsCalendlyOpen(false)}
+                onClick={handleClose}
                 className="rounded-full bg-white hover:bg-gray-100 border-gray-200"
               >
                 <X className="h-4 w-4 text-gray-600" />
