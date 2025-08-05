@@ -60,8 +60,7 @@ export const productsData = [
       ...UI_UX_PROFESSIONAL_FEATURES.slice(1),
       ...UI_UX_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://www.nullplex.com/uploads/blogs/coverimages/fad4b53c-9630-48ab-bcbf-2a9b3c536119-20240130071903.png',
+    image: '/UI.jpg',
   },
   {
     title: 'Cloud Services',
@@ -86,8 +85,7 @@ export const productsData = [
       ...CLOUD_SERVICES_PROFESSIONAL_FEATURES.slice(1),
       ...CLOUD_SERVICES_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://www.pulsion.co.uk/wp-content/uploads/2024/01/aws-vs-azure-blog-featured.png',
+    image: '/Cloud.jpg',
   },
   {
     title: 'Web Development',
@@ -112,8 +110,7 @@ export const productsData = [
       ...WEB_DEV_PROFESSIONAL_FEATURES.slice(1),
       ...WEB_DEV_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://miro.medium.com/v2/resize:fit:1200/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg',
+    image: '/Web.jpg',
   },
   {
     title: 'Maintenance & Support',
@@ -138,8 +135,7 @@ export const productsData = [
       ...MAINTENANCE_PROFESSIONAL_FEATURES.slice(1),
       ...MAINTENANCE_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://bairesdev.mo.cloudinary.net/blog/2023/10/IT-Maintenance-Support.jpg',
+    image: '/Maintenance.jpg',
   },
   {
     title: 'Domain Hosting MIS',
@@ -164,8 +160,7 @@ export const productsData = [
       ...DOMAIN_HOSTING_PROFESSIONAL_FEATURES.slice(1),
       ...DOMAIN_HOSTING_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://i.pinimg.com/736x/2b/e1/b9/2be1b972579a7fec9d7cb9a6eaf4e22f.jpg',
+    image: '/Domain.jpg',
   },
   {
     title: 'Mobile App Development',
@@ -190,8 +185,7 @@ export const productsData = [
       ...MOBILE_APP_PROFESSIONAL_FEATURES.slice(1),
       ...MOBILE_APP_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://i.pinimg.com/736x/71/77/b6/7177b6767cac546d5860d28d21fe15a6.jpg',
+    image: '/App dev.jpg',
   },
   {
     title: 'Shopify',
@@ -216,8 +210,7 @@ export const productsData = [
       ...SHOPIFY_PROFESSIONAL_PACKAGE_FEATURES.slice(1),
       ...SHOPIFY_ENTERPRISE_PACKAGE_FEATURES.slice(1),
     ],
-    image:
-      'https://i.pinimg.com/736x/07/10/4f/07104f00872551c28907f821554ec4ad.jpg',
+    image: '/Shopify.jpg',
   },
   {
     title: 'WordPress',
@@ -242,7 +235,6 @@ export const productsData = [
       ...WORDPRESS_PROFESSIONAL_FEATURES.slice(1),
       ...WORDPRESS_ENTERPRISE_FEATURES.slice(1),
     ],
-    image:
-      'https://i.pinimg.com/736x/27/93/2d/27932d86dbbea73ccd6f5e472ef668cf.jpg',
+    image: '/Wordpress.jpg',
   }
 ]
