@@ -1,5 +1,3 @@
-import { ImageConstants } from '../image.constant'
-
 export enum projectNames {
   'CLOUDFLOW' = 'CloudFlow',
   'DATAFORGE' = 'DataForge', 
