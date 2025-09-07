@@ -25,7 +25,7 @@ export const projectList = [
     description:
       'An online ecosystem for startups, connecting incubators, angel investors, venture capitalists, and academia for seamless access and growth.',
     type: 'Web Application', 
-    image: ImageConstants.PROJECTS.investiaa,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop&crop=center', // Fixed DataForge image with a startup/ecosystem themed image
     year: 2024,
   },
   {
