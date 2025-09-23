@@ -19,7 +19,8 @@ export const Blog = () => {
   const blogLikes: {[key: number]: number} = {
     1: 94,
     2: 127,
-    3: 189
+    3: 189,
+    4: 76
   };
 
   const getRouteFromBlogId = (blogId: number) => {
@@ -30,6 +31,8 @@ export const Blog = () => {
         return '/blog/woocommerce-vs-shopify';
       case 3:
         return '/blog/web-development-trends-2025';
+      case 4:
+        return '/blog/ai-transforming-websites';
       default:
         return '/blog';
     }
@@ -38,7 +41,7 @@ export const Blog = () => {
   const handleBlogCardClick = (blogId: number) => {
     const route = getRouteFromBlogId(blogId);
     console.log('Navigating to:', route);
-    navigate({ to: route });
+    navigate({ to: route as any });
   };
 
   return (

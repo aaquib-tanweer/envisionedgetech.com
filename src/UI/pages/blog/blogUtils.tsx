@@ -82,6 +82,24 @@ export const blogPosts = [
     },
     likes: 189,
     type: "trends"
+  },
+  {
+    id: 4,
+    title: "How AI is Transforming the Way Websites Are Built",
+    subtitle: "From automated design to hyper-personalized experiences",
+    date: "September 22, 2025",
+    readTime: "9 min read",
+    tags: ["AI", "Web Development", "Personalization", "Automation", "Testing"],
+    author: "EnvisionEdgeTech Team",
+    category: "AI & Automation",
+    categoryColor: "emerald",
+    heroImage: {
+      icon: Zap,
+      title: "AI-Powered Web",
+      subtitle: "Design, Content, Personalization"
+    },
+    likes: 76,
+    type: "ai"
   }
 ];
 
@@ -227,7 +245,8 @@ export const useBlogEngagement = () => {
   const [blogLikes, setBlogLikes] = useState<{[key: number]: number}>({
     1: 94,
     2: 127,
-    3: 189
+    3: 189,
+    4: 76
   });
   
   const [comments, setComments] = useState<{[key: number]: {comment: string, email: string, website: string}}>({});
