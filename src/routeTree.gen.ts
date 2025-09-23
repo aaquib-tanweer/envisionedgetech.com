@@ -25,6 +25,7 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index.route'
 import { Route as BlogWoocommerceVsShopifyRouteImport } from './routes/blog/woocommerce-vs-shopify.route'
 import { Route as BlogWebsiteBusinessNeeds2025RouteImport } from './routes/blog/website-business-needs-2025.route'
 import { Route as BlogWebDevelopmentTrends2025RouteImport } from './routes/blog/web-development-trends-2025.route'
+import { Route as BlogAiTransformingWebsitesRouteImport } from './routes/blog/ai-transforming-websites.route'
 
 // Create/Update Routes
 
@@ -115,6 +116,13 @@ const BlogWebDevelopmentTrends2025RouteRoute =
     getParentRoute: () => BlogRouteRoute,
   } as any)
 
+const BlogAiTransformingWebsitesRouteRoute =
+  BlogAiTransformingWebsitesRouteImport.update({
+    id: '/ai-transforming-websites',
+    path: '/ai-transforming-websites',
+    getParentRoute: () => BlogRouteRoute,
+  } as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -189,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRoute
     }
+    '/blog/ai-transforming-websites': {
+      id: '/blog/ai-transforming-websites'
+      path: '/ai-transforming-websites'
+      fullPath: '/blog/ai-transforming-websites'
+      preLoaderRoute: typeof BlogAiTransformingWebsitesRouteImport
+      parentRoute: typeof BlogRouteImport
+    }
     '/blog/web-development-trends-2025': {
       id: '/blog/web-development-trends-2025'
       path: '/web-development-trends-2025'
@@ -223,6 +238,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface BlogRouteRouteChildren {
+  BlogAiTransformingWebsitesRouteRoute: typeof BlogAiTransformingWebsitesRouteRoute
   BlogWebDevelopmentTrends2025RouteRoute: typeof BlogWebDevelopmentTrends2025RouteRoute
   BlogWebsiteBusinessNeeds2025RouteRoute: typeof BlogWebsiteBusinessNeeds2025RouteRoute
   BlogWoocommerceVsShopifyRouteRoute: typeof BlogWoocommerceVsShopifyRouteRoute
@@ -230,6 +246,7 @@ interface BlogRouteRouteChildren {
 }
 
 const BlogRouteRouteChildren: BlogRouteRouteChildren = {
+  BlogAiTransformingWebsitesRouteRoute: BlogAiTransformingWebsitesRouteRoute,
   BlogWebDevelopmentTrends2025RouteRoute:
     BlogWebDevelopmentTrends2025RouteRoute,
   BlogWebsiteBusinessNeeds2025RouteRoute:
@@ -253,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
+  '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
@@ -269,6 +287,7 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
+  '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
@@ -287,6 +306,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRouteRoute
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
+  '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
@@ -306,6 +326,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/terms-and-conditions'
+    | '/blog/ai-transforming-websites'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
     | '/blog/woocommerce-vs-shopify'
@@ -321,6 +342,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/terms-and-conditions'
+    | '/blog/ai-transforming-websites'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
     | '/blog/woocommerce-vs-shopify'
@@ -337,6 +359,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/terms-and-conditions'
+    | '/blog/ai-transforming-websites'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
     | '/blog/woocommerce-vs-shopify'
@@ -404,6 +427,7 @@ export const routeTree = rootRoute
     "/blog": {
       "filePath": "blog.route.tsx",
       "children": [
+        "/blog/ai-transforming-websites",
         "/blog/web-development-trends-2025",
         "/blog/website-business-needs-2025",
         "/blog/woocommerce-vs-shopify",
@@ -427,6 +451,10 @@ export const routeTree = rootRoute
     },
     "/terms-and-conditions": {
       "filePath": "terms-and-conditions.route.tsx"
+    },
+    "/blog/ai-transforming-websites": {
+      "filePath": "blog/ai-transforming-websites.route.tsx",
+      "parent": "/blog"
     },
     "/blog/web-development-trends-2025": {
       "filePath": "blog/web-development-trends-2025.route.tsx",
