@@ -13,7 +13,7 @@ function WooCommerceVsShopifyBlogRoute() {
         title="WooCommerce vs. Shopify: Which E-Commerce Platform is Better? - Envision Edge Tech"
         description="At Envision Edge Tech, we compare WooCommerce and Shopify to help you choose the right e-commerce platform for your business needs."
         keywords="WooCommerce vs Shopify, e-commerce platform comparison, online store, WordPress WooCommerce, Shopify store, Envision Edge Tech"
-        ogImage="https://www.envisionedgetech.com/ET logo.jpg"
+        ogImage="https://www.envisionedgetech.com/src/assets/images/shopifyvswoocommerce.jpeg"
         canonicalUrl="https://www.envisionedgetech.com/blog/woocommerce-vs-shopify"
         type="article"
         publishedTime="2025-01-20T00:00:00Z"

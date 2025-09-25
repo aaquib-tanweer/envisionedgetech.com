@@ -9,6 +9,7 @@ import {
   useBlogEngagement,
   BlogEngagement
 } from './blogUtils.tsx';
+import AICoverImage from '../../../assets/images/AI.png';
 
 export const AITransformingWebsitesBlog = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,18 @@ export const AITransformingWebsitesBlog = () => {
               </div>
               <div className="text-sm text-gray-500 dark:text-gray-400">{blogPost.readTime}</div>
             </div>
+          </div>
+
+          {/* Cover Image */}
+          <div className="mb-8">
+            <motion.img
+              src={AICoverImage}
+              alt="AI Transforming Websites - Artificial Intelligence in Web Development"
+              className="w-full h-auto rounded-xl shadow-lg object-cover"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isContentInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
           </div>
 
           {/* Content */}

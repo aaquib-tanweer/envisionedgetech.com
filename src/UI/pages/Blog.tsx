@@ -8,6 +8,10 @@ import {
   Calendar
 } from 'lucide-react';
 import { blogPosts } from './blog/blogUtils.tsx';
+import AICoverImage from '../../assets/images/AI.png';
+import WebDevTrendsCoverImage from '../../assets/images/Webdevelopmenttrends.jpeg';
+import BusinessWebsiteCoverImage from '../../assets/images/whyyourbusinessneedawebsite.jpeg';
+import WooCommerceShopifyCoverImage from '../../assets/images/shopifyvswoocommerce.jpeg';
 
 export const Blog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +39,21 @@ export const Blog = () => {
         return '/blog/ai-transforming-websites';
       default:
         return '/blog';
+    }
+  };
+
+  const getCoverImageFromBlogId = (blogId: number) => {
+    switch (blogId) {
+      case 1:
+        return BusinessWebsiteCoverImage;
+      case 2:
+        return WooCommerceShopifyCoverImage;
+      case 3:
+        return WebDevTrendsCoverImage;
+      case 4:
+        return AICoverImage;
+      default:
+        return BusinessWebsiteCoverImage;
     }
   };
 
@@ -104,45 +123,14 @@ export const Blog = () => {
                 onClick={() => handleBlogCardClick(post.id)}
                 className="group cursor-pointer bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-500 hover:scale-105"
               >
-                {/* Blog Card Hero */}
-                <div className={`relative h-48 bg-gradient-to-r ${
-                  post.categoryColor === 'orange' 
-                    ? 'from-orange-100 to-red-100 dark:from-orange-900/20 dark:to-red-900/20' 
-                    : post.categoryColor === 'blue'
-                    ? 'from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20'
-                    : 'from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20'
-                }`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {post.type === 'comparison' ? (
-                      <div className="flex items-center gap-8">
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mx-auto mb-2">
-                            <span className="text-white font-bold text-lg">W</span>
-                          </div>
-                          <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">WooCommerce</div>
-                        </div>
-                        <div className="text-3xl text-gray-400">VS</div>
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mx-auto mb-2">
-                            <span className="text-white font-bold text-lg">S</span>
-                          </div>
-                          <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Shopify</div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="text-center">
-                        <post.heroImage.icon className={`w-12 h-12 mx-auto mb-3 ${
-                          post.categoryColor === 'orange' ? 'text-orange-500' 
-                          : post.categoryColor === 'blue' ? 'text-blue-500' 
-                          : 'text-purple-500'
-                        }`} />
-                        <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                          {post.heroImage.title}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                {/* Blog Card Hero - Cover Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={getCoverImageFromBlogId(post.id)}
+                    alt={`${post.title} - Cover Image`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
 
                 <div className="p-6">

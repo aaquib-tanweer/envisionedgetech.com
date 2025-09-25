@@ -11,6 +11,7 @@ import {
   useBlogEngagement, 
   BlogEngagement 
 } from './blogUtils.tsx';
+import BusinessWebsiteCoverImage from '../../../assets/images/whyyourbusinessneedawebsite.jpeg';
 
 export const WebsiteBusinessNeedsBlog = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -62,6 +63,18 @@ export const WebsiteBusinessNeedsBlog = () => {
               </div>
               <div className="text-sm text-gray-500 dark:text-gray-400">{blogPost.readTime}</div>
             </div>
+          </div>
+
+          {/* Cover Image */}
+          <div className="mb-8">
+            <motion.img
+              src={BusinessWebsiteCoverImage}
+              alt="Why Your Business Needs a Website in 2025 - Professional Digital Presence"
+              className="w-full h-auto rounded-xl shadow-lg object-cover"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isContentInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
           </div>
 
           {/* Blog Content */}
