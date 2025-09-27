@@ -13,7 +13,7 @@ function AITransformingWebsitesBlogRoute() {
         title="How AI is Transforming the Way Websites Are Built - Envision Edge Tech"
         description="AI is reshaping web development—from design and content to personalization and maintenance. Learn how AI accelerates delivery and improves user experiences."
         keywords="AI websites, AI web development, personalized websites, AI testing, AI maintenance, Envision Edge Tech"
-        ogImage="https://www.envisionedgetech.com/ET logo.jpg"
+        ogImage="https://www.envisionedgetech.com/src/assets/images/AI.png"
         canonicalUrl="https://www.envisionedgetech.com/blog/ai-transforming-websites"
         type="article"
         publishedTime="2025-09-22T00:00:00Z"
