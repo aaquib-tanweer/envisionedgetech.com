@@ -100,6 +100,78 @@ export const blogPosts = [
     },
     likes: 76,
     type: "ai"
+  },
+  {
+    id: 5,
+    title: "From Reactive to Proactive: Why Your Business Needs Managed Cloud Services & Support",
+    subtitle: "Is Your Website's Foundation Holding You Back?",
+    date: "September 22, 2025",
+    readTime: "9 min read",
+    tags: ["Managed Services", "Cloud Hosting", "IT Support", "Website Maintenance", "Business Growth"],
+    author: "EnvisionEdgeTech Team",
+    category: "IT Infrastructure",
+    categoryColor: "green",
+    heroImage: {
+      icon: Shield,
+      title: "Proactive Cloud Management",
+      subtitle: "Security, Uptime, Scalability"
+    },
+    likes: 54,
+    type: "guide"
+  },
+  {
+    id: 6,
+    title: "WordPress vs. Custom Development: Finding the Perfect Fit for Your Website",
+    subtitle: "The Foundation of Your Digital Presence",
+    date: "September 27, 2025",
+    readTime: "10 min read",
+    tags: ["WordPress", "Web Development", "Custom Solutions", "Website Strategy", "Digital Presence"],
+    author: "EnvisionEdgeTech Team",
+    category: "Web Development",
+    categoryColor: "blue",
+    heroImage: {
+      icon: Monitor,
+      title: "WordPress vs Custom Build",
+      subtitle: "Flexibility, Cost, Performance"
+    },
+    likes: 47,
+    type: "guide"
+  },
+  {
+    id: 7,
+    title: "Domain & Hosting Decoded: Choosing the Right Foundation for Your Website's Success",
+    subtitle: "Your Digital Real Estate: It All Starts Here",
+    date: "September 28, 2025",
+    readTime: "7 min read",
+    tags: ["Domain Names", "Web Hosting", "SEO", "Website Performance", "Digital Foundation"],
+    author: "EnvisionEdgeTech Team",
+    category: "Web Infrastructure",
+    categoryColor: "purple",
+    heroImage: {
+      icon: Globe,
+      title: "Domain & Hosting Explained",
+      subtitle: "Your Digital Address and Land"
+    },
+    likes: 43,
+    type: "guide"
+  },
+  {
+    id: 8,
+    title: "UI vs. UX Design: What's the Difference and Why Both Are Non-Negotiable",
+    subtitle: "It's Not Just About Making It Pretty",
+    date: "September 29, 2025",
+    readTime: "11 min read",
+    tags: ["UI Design", "UX Design", "Web Design", "User Experience", "Product Strategy"],
+    author: "EnvisionEdgeTech Team",
+    category: "Design",
+    categoryColor: "pink",
+    heroImage: {
+      icon: Heart,
+      title: "UI vs. UX Design",
+      subtitle: "The Look vs. The Feel"
+    },
+    likes: 61,
+    type: "guide"
   }
 ];
 
@@ -246,7 +318,11 @@ export const useBlogEngagement = () => {
     1: 94,
     2: 127,
     3: 189,
-    4: 76
+    4: 76,
+    5: 54,
+    6: 47,
+    7: 43,
+    8: 61
   });
   
   const [comments, setComments] = useState<{[key: number]: {comment: string, email: string, website: string}}>({});
