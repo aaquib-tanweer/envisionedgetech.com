@@ -62,7 +62,7 @@ export const Top10WebsiteFeatures2025Blog = () => {
 
           {/* Blog Content */}
           <div className="prose prose-lg max-w-none dark:prose-invert blog-content">
-            <div dangerouslySetInnerHTML={{ __html: blogPost.content }} />
+            <div dangerouslySetInnerHTML={{ __html: blogPost.content ?? '' }} />
           </div>
 
           {/* Key Takeaways */}
