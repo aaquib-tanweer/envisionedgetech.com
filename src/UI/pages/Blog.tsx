@@ -12,6 +12,10 @@ import AICoverImage from '../../assets/images/AI.png';
 import WebDevTrendsCoverImage from '../../assets/images/Webdevelopmenttrends.jpeg';
 import BusinessWebsiteCoverImage from '../../assets/images/whyyourbusinessneedawebsite.jpeg';
 import WooCommerceShopifyCoverImage from '../../assets/images/shopifyvswoocommerce.jpeg';
+import Top10FeaturesCoverImage from '../../assets/images/10 must have features.jpeg';
+import PsychologyOfColorsCoverImage from '../../assets/images/the psychology of colors.png';
+import SecurityMistakesCoverImage from '../../assets/images/5 common security mistake.jpeg';
+import MinimalistUICoverImage from '../../assets/images/minimilistic UI.jpeg';
 
 export const Blog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,7 +28,11 @@ export const Blog = () => {
     1: 94,
     2: 127,
     3: 189,
-    4: 76
+    4: 76,
+    5: 142,
+    6: 88,
+    7: 101,
+    8: 79
   };
 
   const getRouteFromBlogId = (blogId: number) => {
@@ -37,6 +45,14 @@ export const Blog = () => {
         return '/blog/web-development-trends-2025';
       case 4:
         return '/blog/ai-transforming-websites';
+      case 5:
+        return '/blog/top-10-website-features-2025';
+      case 6:
+        return '/blog/psychology-of-colors-design';
+      case 7:
+        return '/blog/website-security-mistakes';
+      case 8:
+        return '/blog/minimalist-ui-ux-benefits';
       default:
         return '/blog';
     }
@@ -52,6 +68,14 @@ export const Blog = () => {
         return WebDevTrendsCoverImage;
       case 4:
         return AICoverImage;
+      case 5:
+        return Top10FeaturesCoverImage;
+      case 6:
+        return PsychologyOfColorsCoverImage;
+      case 7:
+        return SecurityMistakesCoverImage;
+      case 8:
+        return MinimalistUICoverImage;
       default:
         return BusinessWebsiteCoverImage;
     }

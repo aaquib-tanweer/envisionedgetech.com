@@ -23,8 +23,12 @@ import { Route as AboutRouteImport } from './routes/about.route'
 import { Route as IndexRouteImport } from './routes/index.route'
 import { Route as BlogIndexRouteImport } from './routes/blog/index.route'
 import { Route as BlogWoocommerceVsShopifyRouteImport } from './routes/blog/woocommerce-vs-shopify.route'
+import { Route as BlogWebsiteSecurityMistakesRouteImport } from './routes/blog/website-security-mistakes.route'
 import { Route as BlogWebsiteBusinessNeeds2025RouteImport } from './routes/blog/website-business-needs-2025.route'
 import { Route as BlogWebDevelopmentTrends2025RouteImport } from './routes/blog/web-development-trends-2025.route'
+import { Route as BlogTop10WebsiteFeatures2025RouteImport } from './routes/blog/top-10-website-features-2025.route'
+import { Route as BlogPsychologyOfColorsDesignRouteImport } from './routes/blog/psychology-of-colors-design.route'
+import { Route as BlogMinimalistUiUxBenefitsRouteImport } from './routes/blog/minimalist-ui-ux-benefits.route'
 import { Route as BlogAiTransformingWebsitesRouteImport } from './routes/blog/ai-transforming-websites.route'
 
 // Create/Update Routes
@@ -102,6 +106,13 @@ const BlogWoocommerceVsShopifyRouteRoute =
     getParentRoute: () => BlogRouteRoute,
   } as any)
 
+const BlogWebsiteSecurityMistakesRouteRoute =
+  BlogWebsiteSecurityMistakesRouteImport.update({
+    id: '/website-security-mistakes',
+    path: '/website-security-mistakes',
+    getParentRoute: () => BlogRouteRoute,
+  } as any)
+
 const BlogWebsiteBusinessNeeds2025RouteRoute =
   BlogWebsiteBusinessNeeds2025RouteImport.update({
     id: '/website-business-needs-2025',
@@ -113,6 +124,27 @@ const BlogWebDevelopmentTrends2025RouteRoute =
   BlogWebDevelopmentTrends2025RouteImport.update({
     id: '/web-development-trends-2025',
     path: '/web-development-trends-2025',
+    getParentRoute: () => BlogRouteRoute,
+  } as any)
+
+const BlogTop10WebsiteFeatures2025RouteRoute =
+  BlogTop10WebsiteFeatures2025RouteImport.update({
+    id: '/top-10-website-features-2025',
+    path: '/top-10-website-features-2025',
+    getParentRoute: () => BlogRouteRoute,
+  } as any)
+
+const BlogPsychologyOfColorsDesignRouteRoute =
+  BlogPsychologyOfColorsDesignRouteImport.update({
+    id: '/psychology-of-colors-design',
+    path: '/psychology-of-colors-design',
+    getParentRoute: () => BlogRouteRoute,
+  } as any)
+
+const BlogMinimalistUiUxBenefitsRouteRoute =
+  BlogMinimalistUiUxBenefitsRouteImport.update({
+    id: '/minimalist-ui-ux-benefits',
+    path: '/minimalist-ui-ux-benefits',
     getParentRoute: () => BlogRouteRoute,
   } as any)
 
@@ -204,6 +236,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogAiTransformingWebsitesRouteImport
       parentRoute: typeof BlogRouteImport
     }
+    '/blog/minimalist-ui-ux-benefits': {
+      id: '/blog/minimalist-ui-ux-benefits'
+      path: '/minimalist-ui-ux-benefits'
+      fullPath: '/blog/minimalist-ui-ux-benefits'
+      preLoaderRoute: typeof BlogMinimalistUiUxBenefitsRouteImport
+      parentRoute: typeof BlogRouteImport
+    }
+    '/blog/psychology-of-colors-design': {
+      id: '/blog/psychology-of-colors-design'
+      path: '/psychology-of-colors-design'
+      fullPath: '/blog/psychology-of-colors-design'
+      preLoaderRoute: typeof BlogPsychologyOfColorsDesignRouteImport
+      parentRoute: typeof BlogRouteImport
+    }
+    '/blog/top-10-website-features-2025': {
+      id: '/blog/top-10-website-features-2025'
+      path: '/top-10-website-features-2025'
+      fullPath: '/blog/top-10-website-features-2025'
+      preLoaderRoute: typeof BlogTop10WebsiteFeatures2025RouteImport
+      parentRoute: typeof BlogRouteImport
+    }
     '/blog/web-development-trends-2025': {
       id: '/blog/web-development-trends-2025'
       path: '/web-development-trends-2025'
@@ -216,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/website-business-needs-2025'
       fullPath: '/blog/website-business-needs-2025'
       preLoaderRoute: typeof BlogWebsiteBusinessNeeds2025RouteImport
+      parentRoute: typeof BlogRouteImport
+    }
+    '/blog/website-security-mistakes': {
+      id: '/blog/website-security-mistakes'
+      path: '/website-security-mistakes'
+      fullPath: '/blog/website-security-mistakes'
+      preLoaderRoute: typeof BlogWebsiteSecurityMistakesRouteImport
       parentRoute: typeof BlogRouteImport
     }
     '/blog/woocommerce-vs-shopify': {
@@ -239,18 +299,28 @@ declare module '@tanstack/react-router' {
 
 interface BlogRouteRouteChildren {
   BlogAiTransformingWebsitesRouteRoute: typeof BlogAiTransformingWebsitesRouteRoute
+  BlogMinimalistUiUxBenefitsRouteRoute: typeof BlogMinimalistUiUxBenefitsRouteRoute
+  BlogPsychologyOfColorsDesignRouteRoute: typeof BlogPsychologyOfColorsDesignRouteRoute
+  BlogTop10WebsiteFeatures2025RouteRoute: typeof BlogTop10WebsiteFeatures2025RouteRoute
   BlogWebDevelopmentTrends2025RouteRoute: typeof BlogWebDevelopmentTrends2025RouteRoute
   BlogWebsiteBusinessNeeds2025RouteRoute: typeof BlogWebsiteBusinessNeeds2025RouteRoute
+  BlogWebsiteSecurityMistakesRouteRoute: typeof BlogWebsiteSecurityMistakesRouteRoute
   BlogWoocommerceVsShopifyRouteRoute: typeof BlogWoocommerceVsShopifyRouteRoute
   BlogIndexRouteRoute: typeof BlogIndexRouteRoute
 }
 
 const BlogRouteRouteChildren: BlogRouteRouteChildren = {
   BlogAiTransformingWebsitesRouteRoute: BlogAiTransformingWebsitesRouteRoute,
+  BlogMinimalistUiUxBenefitsRouteRoute: BlogMinimalistUiUxBenefitsRouteRoute,
+  BlogPsychologyOfColorsDesignRouteRoute:
+    BlogPsychologyOfColorsDesignRouteRoute,
+  BlogTop10WebsiteFeatures2025RouteRoute:
+    BlogTop10WebsiteFeatures2025RouteRoute,
   BlogWebDevelopmentTrends2025RouteRoute:
     BlogWebDevelopmentTrends2025RouteRoute,
   BlogWebsiteBusinessNeeds2025RouteRoute:
     BlogWebsiteBusinessNeeds2025RouteRoute,
+  BlogWebsiteSecurityMistakesRouteRoute: BlogWebsiteSecurityMistakesRouteRoute,
   BlogWoocommerceVsShopifyRouteRoute: BlogWoocommerceVsShopifyRouteRoute,
   BlogIndexRouteRoute: BlogIndexRouteRoute,
 }
@@ -271,8 +341,12 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
   '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
+  '/blog/minimalist-ui-ux-benefits': typeof BlogMinimalistUiUxBenefitsRouteRoute
+  '/blog/psychology-of-colors-design': typeof BlogPsychologyOfColorsDesignRouteRoute
+  '/blog/top-10-website-features-2025': typeof BlogTop10WebsiteFeatures2025RouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
+  '/blog/website-security-mistakes': typeof BlogWebsiteSecurityMistakesRouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
   '/blog/': typeof BlogIndexRouteRoute
 }
@@ -288,8 +362,12 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
   '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
+  '/blog/minimalist-ui-ux-benefits': typeof BlogMinimalistUiUxBenefitsRouteRoute
+  '/blog/psychology-of-colors-design': typeof BlogPsychologyOfColorsDesignRouteRoute
+  '/blog/top-10-website-features-2025': typeof BlogTop10WebsiteFeatures2025RouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
+  '/blog/website-security-mistakes': typeof BlogWebsiteSecurityMistakesRouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
   '/blog': typeof BlogIndexRouteRoute
 }
@@ -307,8 +385,12 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteRoute
   '/terms-and-conditions': typeof TermsAndConditionsRouteRoute
   '/blog/ai-transforming-websites': typeof BlogAiTransformingWebsitesRouteRoute
+  '/blog/minimalist-ui-ux-benefits': typeof BlogMinimalistUiUxBenefitsRouteRoute
+  '/blog/psychology-of-colors-design': typeof BlogPsychologyOfColorsDesignRouteRoute
+  '/blog/top-10-website-features-2025': typeof BlogTop10WebsiteFeatures2025RouteRoute
   '/blog/web-development-trends-2025': typeof BlogWebDevelopmentTrends2025RouteRoute
   '/blog/website-business-needs-2025': typeof BlogWebsiteBusinessNeeds2025RouteRoute
+  '/blog/website-security-mistakes': typeof BlogWebsiteSecurityMistakesRouteRoute
   '/blog/woocommerce-vs-shopify': typeof BlogWoocommerceVsShopifyRouteRoute
   '/blog/': typeof BlogIndexRouteRoute
 }
@@ -327,8 +409,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms-and-conditions'
     | '/blog/ai-transforming-websites'
+    | '/blog/minimalist-ui-ux-benefits'
+    | '/blog/psychology-of-colors-design'
+    | '/blog/top-10-website-features-2025'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
+    | '/blog/website-security-mistakes'
     | '/blog/woocommerce-vs-shopify'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -343,8 +429,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms-and-conditions'
     | '/blog/ai-transforming-websites'
+    | '/blog/minimalist-ui-ux-benefits'
+    | '/blog/psychology-of-colors-design'
+    | '/blog/top-10-website-features-2025'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
+    | '/blog/website-security-mistakes'
     | '/blog/woocommerce-vs-shopify'
     | '/blog'
   id:
@@ -360,8 +450,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms-and-conditions'
     | '/blog/ai-transforming-websites'
+    | '/blog/minimalist-ui-ux-benefits'
+    | '/blog/psychology-of-colors-design'
+    | '/blog/top-10-website-features-2025'
     | '/blog/web-development-trends-2025'
     | '/blog/website-business-needs-2025'
+    | '/blog/website-security-mistakes'
     | '/blog/woocommerce-vs-shopify'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -428,8 +522,12 @@ export const routeTree = rootRoute
       "filePath": "blog.route.tsx",
       "children": [
         "/blog/ai-transforming-websites",
+        "/blog/minimalist-ui-ux-benefits",
+        "/blog/psychology-of-colors-design",
+        "/blog/top-10-website-features-2025",
         "/blog/web-development-trends-2025",
         "/blog/website-business-needs-2025",
+        "/blog/website-security-mistakes",
         "/blog/woocommerce-vs-shopify",
         "/blog/"
       ]
@@ -456,12 +554,28 @@ export const routeTree = rootRoute
       "filePath": "blog/ai-transforming-websites.route.tsx",
       "parent": "/blog"
     },
+    "/blog/minimalist-ui-ux-benefits": {
+      "filePath": "blog/minimalist-ui-ux-benefits.route.tsx",
+      "parent": "/blog"
+    },
+    "/blog/psychology-of-colors-design": {
+      "filePath": "blog/psychology-of-colors-design.route.tsx",
+      "parent": "/blog"
+    },
+    "/blog/top-10-website-features-2025": {
+      "filePath": "blog/top-10-website-features-2025.route.tsx",
+      "parent": "/blog"
+    },
     "/blog/web-development-trends-2025": {
       "filePath": "blog/web-development-trends-2025.route.tsx",
       "parent": "/blog"
     },
     "/blog/website-business-needs-2025": {
       "filePath": "blog/website-business-needs-2025.route.tsx",
+      "parent": "/blog"
+    },
+    "/blog/website-security-mistakes": {
+      "filePath": "blog/website-security-mistakes.route.tsx",
       "parent": "/blog"
     },
     "/blog/woocommerce-vs-shopify": {
