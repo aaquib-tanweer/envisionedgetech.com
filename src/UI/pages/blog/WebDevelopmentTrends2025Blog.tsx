@@ -244,7 +244,7 @@ export const WebDevelopmentTrends2025Blog = () => {
           </div>
 
           {/* Blog Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="prose prose-lg dark:prose-invert max-w-none blog-content">
             {/* Trends Section */}
             <div className="space-y-12">
               {trends.map((trend, index) => (

@@ -80,7 +80,7 @@ export const WooCommerceVsShopifyBlog = () => {
           </div>
 
           {/* Blog Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="prose prose-lg dark:prose-invert max-w-none blog-content">
             {/* Introduction Section */}
             <div className="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/10 p-8 mb-12 rounded-r-lg">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">

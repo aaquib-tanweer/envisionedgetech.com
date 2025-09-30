@@ -100,6 +100,270 @@ export const blogPosts = [
     },
     likes: 76,
     type: "ai"
+  },
+  {
+    id: 5,
+    title: "Top 10 Must-Have Features for Modern Business Websites in 2025",
+    subtitle: "Essential capabilities every growth-focused site needs",
+    slug: "top-10-website-features-2025",
+    date: "September 22, 2025",
+    readTime: "10 min read",
+    tags: ["Features", "Performance", "AI", "Security", "Accessibility"],
+    author: "EnvisionEdgeTech Team",
+    category: "Best Practices",
+    categoryColor: "indigo",
+    heroImage: {
+      icon: Zap,
+      title: "Modern Website Features",
+      subtitle: "Speed, AI, Security & Scale"
+    },
+    likes: 0,
+    type: "website",
+    content: `<p>A modern website is more than a digital brochure—it’s a growth engine. In 2025, businesses must integrate certain features to stay competitive.</p>  
+
+<h2>1. Mobile-First Design</h2>  
+<p>Over 70% of web traffic comes from mobile. A mobile-first strategy is essential.</p>  
+
+<h2>2. Lightning-Fast Loading</h2>  
+<p>Page speed impacts both user experience and SEO rankings.</p>  
+
+<h2>3. AI Chatbots</h2>  
+<p>24/7 intelligent customer support improves conversions and satisfaction.</p>  
+
+<h2>4. Personalization</h2>  
+<p>Content tailored to each user boosts engagement and retention.</p>  
+
+<h2>5. Enhanced Security</h2>  
+<p>SSL, HTTPS, and real-time monitoring are no longer optional.</p>  
+
+<h2>6. Accessibility</h2>  
+<p>Websites must be inclusive, meeting WCAG standards.</p>  
+
+<h2>7. Progressive Web Apps (PWAs)</h2>  
+<p>Offline-ready, app-like experiences directly in browsers.</p>  
+
+<h2>8. Voice Search Optimization</h2>  
+<p>With smart speakers rising, websites need to optimize for voice queries.</p>  
+
+<h2>9. Seamless Integrations</h2>  
+<p>Connecting CRMs, payment gateways, and analytics tools.</p>  
+
+<h2>10. Scalable Architecture</h2>  
+<p>Websites should grow with your business without performance drops.</p>  
+
+<h3>Conclusion</h3>  
+<p>Adopting these features ensures your website isn’t just modern—it’s future-ready.</p>
+
+<h3>Implementation Tips</h3>
+<ul>
+  <li>Start with a performance budget—set targets for LCP, CLS, and TTI.</li>
+  <li>Adopt design tokens to unify themes across web and mobile.</li>
+  <li>Use feature flags to roll out new capabilities safely.</li>
+  <li>Audit integrations quarterly to remove unused tools and reduce bloat.</li>
+  <li>Enable server-side rendering or static generation for critical pages.</li>
+  <li>Bundle monitor with RUM (Real User Monitoring) to track real performance.</li>
+  <li>Build an accessibility checklist into your PR process.</li>
+</ul>
+
+<h3>Recommended Stack</h3>
+<ul>
+  <li>Core Web Vitals: Lighthouse CI, WebPageTest, Sentry Performance</li>
+  <li>Security: security.txt, Mozilla Observatory, automated dependency scans</li>
+  <li>AI: Chatbot via API (OpenAI), personalization via rules + embeddings</li>
+  <li>PWA: Workbox, Background Sync, Add to Home Screen</li>
+  <li>Integrations: native CRM connectors, webhook gateway, retry queues</li>
+</ul>
+
+<h3>Business KPIs to Track</h3>
+<ul>
+  <li>Conversion rate uplift after personalization</li>
+  <li>Form completion rate and drop-off</li>
+  <li>Time to First Byte (TTFB) and Largest Contentful Paint (LCP)</li>
+  <li>Organic traffic growth after structured data implementation</li>
+  <li>Support deflection via chatbot vs. human</li>
+</ul>
+
+<h3>Mini Case Study</h3>
+<p>A multi-location service brand cut page load from 4.8s to 1.9s and increased lead submissions by 28% after implementing image optimization, SSR, and a guided booking flow.</p>`
+  },
+  {
+    id: 6,
+    title: "The Psychology of Colors in Web & App Design",
+    subtitle: "How color choices influence trust and conversion",
+    slug: "psychology-of-colors-design",
+    date: "September 24, 2025",
+    readTime: "7 min read",
+    tags: ["Design", "UI/UX", "Branding", "Psychology"],
+    author: "EnvisionEdgeTech Team",
+    category: "Design",
+    categoryColor: "rose",
+    heroImage: {
+      icon: Monitor,
+      title: "Color Psychology",
+      subtitle: "Meaningful palettes that drive action"
+    },
+    likes: 0,
+    type: "design",
+    content: `<p>Colors aren’t just aesthetics—they influence behavior, trust, and brand perception. In web and app design, color psychology plays a powerful role.</p>  
+
+<h2>Red: Energy and Urgency</h2>  
+<p>Often used in sales banners and notifications to drive action.</p>  
+
+<h2>Blue: Trust and Stability</h2>  
+<p>Banks and tech companies often use blue to convey reliability.</p>  
+
+<h2>Green: Growth and Balance</h2>  
+<p>Commonly used in finance, health, and eco-friendly brands.</p>  
+
+<h2>Yellow: Optimism and Attention</h2>  
+<p>Effective in highlighting key sections but should be used sparingly.</p>  
+
+<h2>Black & White: Sophistication and Simplicity</h2>  
+<p>Minimalist designs often lean on monochrome palettes.</p>  
+
+<h3>Conclusion</h3>  
+<p>Choosing colors isn’t random—it’s strategy. The right palette enhances user trust, conversion, and brand identity.</p>
+
+<h3>Practical Guidelines</h3>
+<ul>
+  <li>Use color to reinforce hierarchy—headings, buttons, and links should be scannable.</li>
+  <li>Reserve a single accent color for primary CTAs to avoid decision fatigue.</li>
+  <li>Test color choices under different ambient light and device conditions.</li>
+  <li>Meet WCAG AA contrast (at minimum); consider AAA for text-heavy pages.</li>
+</ul>
+
+<h3>Testing Toolkit</h3>
+<ul>
+  <li>Contrast Checkers: Stark, Polypane, WebAIM</li>
+  <li>User Testing: 5-second tests for color recognition and CTA clarity</li>
+  <li>Heatmaps: Verify that color emphasis draws attention to the right places</li>
+</ul>
+
+<h3>Brand Consistency Tips</h3>
+<ul>
+  <li>Create semantic color tokens (primary, success, warning) rather than raw hex codes.</li>
+  <li>Document usage—where each color appears and where it must not.</li>
+  <li>Provide light/dark variants to maintain mood and contrast parity.</li>
+</ul>
+
+<h3>Mini Case Study</h3>
+<p>A fintech app increased onboarding completion by 17% after switching to a calmer palette (blue/green), reducing visual noise, and standardizing CTA color use across screens.</p>`
+  },
+  {
+    id: 7,
+    title: "5 Common Website Security Mistakes Businesses Make",
+    subtitle: "Simple oversights that put your site at risk",
+    slug: "website-security-mistakes",
+    date: "September 26, 2025",
+    readTime: "6 min read",
+    tags: ["Security", "Best Practices", "HTTPS", "Backups"],
+    author: "EnvisionEdgeTech Team",
+    category: "Security",
+    categoryColor: "emerald",
+    heroImage: {
+      icon: Shield,
+      title: "Website Security",
+      subtitle: "Avoid the most common pitfalls"
+    },
+    likes: 0,
+    type: "security",
+    content: `<p>Website security is often overlooked until it’s too late. Businesses frequently make simple mistakes that leave them vulnerable.</p>  
+
+<h2>1. Weak Passwords</h2>  
+<p>Using simple or reused passwords across platforms invites hackers.</p>  
+
+<h2>2. Outdated Plugins & Themes</h2>  
+<p>Neglecting updates opens the door to exploits.</p>  
+
+<h2>3. No SSL/HTTPS</h2>  
+<p>Without encryption, sensitive data is exposed.</p>  
+
+<h2>4. Poor Backup Practices</h2>  
+<p>Not having regular backups means longer recovery times after attacks.</p>  
+
+<h2>5. Ignoring Regular Security Audits</h2>  
+<p>Many businesses never test their defenses until a breach happens.</p>  
+
+<h3>Conclusion</h3>  
+<p>Proactive security prevents costly disasters. Fixing these mistakes strengthens trust and keeps your digital presence safe.</p>
+
+<h3>Hardening Basics</h3>
+<ul>
+  <li>Implement a WAF (Web Application Firewall) and rate limiting.</li>
+  <li>Use CSP, X-Frame-Options, and Referrer-Policy headers.</li>
+  <li>Rotate API keys regularly; prefer short-lived tokens with scopes.</li>
+  <li>Enable 2FA on admin panels and cloud providers.</li>
+  <li>Encrypt secrets at rest; avoid storing credentials in repos.</li>
+</ul>
+
+<h3>Security Operations</h3>
+<ul>
+  <li>Run monthly vulnerability scans and dependency checks.</li>
+  <li>Adopt a backup strategy: 3-2-1 rule with periodic restore drills.</li>
+  <li>Maintain an incident runbook with contacts and escalation steps.</li>
+</ul>
+
+<h3>Mini Case Study</h3>
+<p>An e-commerce store eliminated credential stuffing incidents after enforcing MFA, adding a WAF challenge for suspicious IPs, and introducing device fingerprinting on login.</p>`
+  },
+  {
+    id: 8,
+    title: "Why Minimalist UI/UX Design Outperforms Heavy Interfaces",
+    subtitle: "Clarity and speed that boost engagement",
+    slug: "minimalist-ui-ux-benefits",
+    date: "September 28, 2025",
+    readTime: "6 min read",
+    tags: ["UI/UX", "Performance", "Accessibility", "Design"],
+    author: "EnvisionEdgeTech Team",
+    category: "UI/UX",
+    categoryColor: "gray",
+    heroImage: {
+      icon: Smartphone,
+      title: "Minimalist Design",
+      subtitle: "Faster, clearer, more inclusive"
+    },
+    likes: 0,
+    type: "design",
+    content: `<p>Minimalist design isn’t just aesthetics—it improves usability and performance.</p>  
+
+<h2>Faster Load Times</h2>  
+<p>Clean interfaces reduce heavy assets, improving site speed.</p>  
+
+<h2>Reduced Cognitive Load</h2>  
+<p>Minimalism makes navigation easier and less overwhelming.</p>  
+
+<h2>Better Accessibility</h2>  
+<p>Simple layouts are more inclusive and easier to adapt.</p>  
+
+<h2>Improved Focus</h2>  
+<p>Users pay more attention to the content that matters.</p>  
+
+<h2>Timeless Appeal</h2>  
+<p>Minimalist designs stay modern longer compared to trend-heavy designs.</p>  
+
+<h3>Examples</h3>  
+<p>Apple’s product pages and Google’s search interface show the power of simplicity.</p>  
+
+<h3>Conclusion</h3>  
+<p>Minimalism drives clarity, engagement, and better conversions—making it a winning UI/UX strategy.</p>
+
+<h3>Design Principles</h3>
+<ul>
+  <li>Define a clear visual hierarchy using size, weight, and spacing.</li>
+  <li>Use a tight palette and limit font families to one or two.</li>
+  <li>Adopt an 8px spacing system to maintain rhythm.</li>
+  <li>Prefer progressive disclosure—hide advanced options until needed.</li>
+</ul>
+
+<h3>Performance Practices</h3>
+<ul>
+  <li>Defer non-critical scripts and avoid layout thrashing animations.</li>
+  <li>Compress images and prefer responsive formats (AVIF/WebP).</li>
+  <li>Use skeleton screens and optimistic UI to smooth perceived latency.</li>
+</ul>
+
+<h3>Mini Case Study</h3>
+<p>A SaaS dashboard reduced cognitive load and support tickets by 22% after removing decorative clutter, tightening spacing, and simplifying primary flows to one CTA per view.</p>`
   }
 ];
 
@@ -246,7 +510,11 @@ export const useBlogEngagement = () => {
     1: 94,
     2: 127,
     3: 189,
-    4: 76
+    4: 76,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0
   });
   
   const [comments, setComments] = useState<{[key: number]: {comment: string, email: string, website: string}}>({});

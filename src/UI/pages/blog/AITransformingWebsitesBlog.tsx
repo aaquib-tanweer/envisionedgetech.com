@@ -73,7 +73,7 @@ export const AITransformingWebsitesBlog = () => {
           </div>
 
           {/* Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="prose prose-lg dark:prose-invert max-w-none blog-content">
             {/* 1. AI-Powered Design Tools */}
             <div className="space-y-4 mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
